@@ -1,0 +1,16 @@
+﻿@import "../../../css/common/globalvar.less";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: @popup-back-color;
+    color: @content-fore-color;
+    overflow: hidden;
+}
+
+/* Inclusion font in the body adds unexpected pixel to the document height */
+div {
+    font-family: @default-font-family;
+    font-size: @form-font-size;
+    box-sizing: border-box;
+}

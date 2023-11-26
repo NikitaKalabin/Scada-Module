@@ -1,0 +1,17 @@
+﻿@import "../../../css/common/contentform.less";
+
+@inactive-state-color: #aaa;
+@notloaded-state-color: #a00;
+
+td.name-cell span {
+    font-weight: @bold-weight;
+}
+
+tr.state-inactive td.name-cell,
+tr.state-inactive td.state-cell {
+    color: @inactive-state-color;
+}
+
+tr.state-notloaded {
+    color: @notloaded-state-color;
+}

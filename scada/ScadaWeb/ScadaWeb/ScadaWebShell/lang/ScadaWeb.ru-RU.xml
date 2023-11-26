@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScadaWebDictionaries>
+  <Dictionary key="Scada.Web">
+    <Phrase key="NotLoggedOn">Пользователь не вошёл в систему.</Phrase>
+    <Phrase key="IncorrectDate">Некорректная дата запрашиваемых данных.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.AppData">
+    <Phrase key="ServerUnavailable">Сервер недоступен.</Phrase>
+    <Phrase key="UserDisabled">Пользователь отключен.</Phrase>
+    <Phrase key="WrongPassword">Неверное имя пользователя или пароль.</Phrase>
+    <Phrase key="IllegalRole">Недопустимая роль пользователя.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Dialogs.WFrmConfirm">
+    <Phrase key="this">Подтверждение</Phrase>
+    <Phrase key="lblConfirm">Вы уверены?</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Js.ModalButtons">
+    <Phrase key="ok">OK</Phrase>
+    <Phrase key="yes">Да</Phrase>
+    <Phrase key="no">Нет</Phrase>
+    <Phrase key="execute">Выполнить</Phrase>
+    <Phrase key="cancel">Отмена</Phrase>
+    <Phrase key="close">Закрыть</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Js.NotifPanel">
+    <Phrase key="unmute">Включить звук</Phrase>
+    <Phrase key="mute">Отключить звук</Phrase>
+    <Phrase key="emptyNotif">Уведомлений нет</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Js.SearchForm">
+    <Phrase key="deleteRowConfirm">Вы уверены, что хотите удалить строку?</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.MasterMain">
+    <Phrase key="lblMainNotifBtn.ToolTip">Уведомления</Phrase>
+    <Phrase key="lbtnMainLogout">Выйти</Phrase>
+    <Phrase key="lblMainFullscreenBtn.ToolTip">На весь экран</Phrase>
+    <Phrase key="lblMainMenuTab">Главное меню</Phrase>
+    <Phrase key="lblMainExplorerTab">Представления</Phrase>
+    <Phrase key="lblMainCollapseMenu">Свернуть меню</Phrase>
+    <Phrase key="lblMainNormalViewBtn.ToolTip">Нормальный вид</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Report">
+    <Phrase key="GenReport">Генерация отчёта &quot;{0}&quot; пользователем {1}</Phrase>
+    <Phrase key="IncorrectRepTemplate">Некорректный шаблон отчёта.</Phrase>
+    <Phrase key="IncorrectStartDate">Некорректная дата начала.</Phrase>
+    <Phrase key="IncorrectEndDate">Некорректная дата окончания.</Phrase>
+    <Phrase key="IncorrectPeriod">Дата начала должна быть меньше или равна дате окончания.</Phrase>
+    <Phrase key="DayPeriodTooLong">Максимальная длина периода {0} дн.</Phrase>
+    <Phrase key="MonthPeriodTooLong">Максимальная длина периода {0} мес.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.UserRights">
+    <Phrase key="CnlNumsEmptyError">Номера каналов не заданы.</Phrase>
+    <Phrase key="CnlsViewsCountError">Несоответствие количества каналов и ид. представлений.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.ViewSettings">
+    <Phrase key="LoadViewSettingsError">Ошибка при загрузке настроек представлений</Phrase>
+    <Phrase key="SaveViewSettingsError">Ошибка при сохранении настроек представлений</Phrase>
+    <Phrase key="LoadViewSettingsBaseError">Ошибка при загрузке настроек представлений из базы конфигурации</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WebSettings">
+    <Phrase key="LoadWebSettingsError">Ошибка при загрузке настроек веб-приложения</Phrase>
+    <Phrase key="SaveWebSettingsError">Ошибка при сохранении настроек веб-приложения</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmAbout">
+    <Phrase key="this">О приложении</Phrase>
+    <Phrase key="hlAppName">Вебстанция</Phrase>
+    <Phrase key="hlAppName.NavigateUrl">http://rapidscada.ru</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmError">
+    <Phrase key="this">Ошибка приложения</Phrase>
+    <Phrase key="lblTitle">Ошибка приложения</Phrase>
+    <Phrase key="lblErrMsg">Произошла ошибка приложения. Если она повторяется часто, обратитесь в службу поддержки, пожалуйста.</Phrase>
+    <Phrase key="lblErrDetailsCaption">Дополнительная информация:</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmLogin">
+    <Phrase key="this">Вход в систему</Phrase>
+    <Phrase key="hlRapidScada.NavigateUrl">http://rapidscada.ru</Phrase>
+    <Phrase key="lblUsername">Имя пользователя</Phrase>
+    <Phrase key="lblPassword">Пароль</Phrase>
+    <Phrase key="lblRememberMe">Запомнить меня</Phrase>
+    <Phrase key="btnLogin">Войти</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmLogin.Js">
+    <Phrase key="BrowserOutdated">Ваш браузер устарел. Установите современный браузер, пожалуйста.</Phrase>
+    <Phrase key="CookiesDisabled">Файлы cookie запрещены. Разрешите их, пожалуйста.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmNoView">
+    <Phrase key="this">Представление не существует</Phrase>
+    <Phrase key="lblViewNotExist">Запрошенное представление не существует или у Вас недостаточно прав для доступа к нему.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmReports">
+    <Phrase key="this">Отчёты</Phrase>
+    <Phrase key="lblTitle">Доступные отчёты</Phrase>
+    <Phrase key="lblNoReports">Нет доступных отчетов</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmUser">
+    <Phrase key="this">Профиль пользователя</Phrase>
+    <Phrase key="lblTitle">Профиль пользователя</Phrase>
+    <Phrase key="lblUserNameCaption">Имя пользователя:</Phrase>
+    <Phrase key="lblRoleNameCaption">Роль:</Phrase>
+    <Phrase key="lblGeneralRightsTitle">Основные права</Phrase>
+    <Phrase key="lblViewAllRightCaption">Просмотр всех данных:</Phrase>
+    <Phrase key="lblControlAllRightCaption">Управление всеми устройствами:</Phrase>
+    <Phrase key="lblConfigRightCaption">Конфигурирование системы:</Phrase>
+    <Phrase key="RightYes">Да</Phrase>
+    <Phrase key="RightNo">Нет</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.WFrmView">
+    <Phrase key="this">Представление</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Plugins">
+    <Phrase key="LoadPluginConfigError">Ошибка при загрузке конфигурации плагина {0}: {1}</Phrase>
+    <Phrase key="SavePluginConfigError">Ошибка при сохранении конфигурации плагина {0}: {1}</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Shell.MenuItem">
+    <Phrase key="ReportsMenuItem">Отчёты</Phrase>
+    <Phrase key="AdminMenuItem">Администрирование</Phrase>
+    <Phrase key="ConfigMenuItem">Конфигурация</Phrase>
+    <Phrase key="RegMenuItem">Регистрация</Phrase>
+    <Phrase key="PluginsMenuItem">Плагины</Phrase>
+    <Phrase key="AboutMenuItem">О приложении</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Shell.RememberMe">
+    <Phrase key="SecurityViolation">Обнаружено нарушение безопасности. Незамедлительно обратитесь к системному администратору.</Phrase>
+  </Dictionary>
+  <Dictionary key="Scada.Web.Shell.UserContent">
+    <Phrase key="ReportNotFound">Отчёт с ид.={0} не найден.</Phrase>
+    <Phrase key="UnexpectedReportSpec">Отчёт с ид.={0} имеет несоответствующий тип спецификации.</Phrase>
+    <Phrase key="DataWndNotFound">Окно данных с ид.={0} не найдено.</Phrase>
+    <Phrase key="UnexpectedDataWndSpec">Окно данных с ид.={0} имеет несоответствующий тип спецификации.</Phrase>
+  </Dictionary>
+</ScadaWebDictionaries>

@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterMain.Master.cs" Inherits="Scada.Web.MasterMain" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags are required by Bootstrap -->
+    <title>Rapid SCADA</title>
+    <link href="~/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/open-sans/css/open-sans.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/controls/notifpanel.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/controls/popup.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/controls/treeview.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/mastermain.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/lib/jquery/jquery.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/lib/bootstrap/js/bootstrap.min.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/utils.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/ajaxqueue.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/clientapi.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/eventtypes.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/api/notiftypes.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/controls/notifpanel.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/controls/popup.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/controls/treeview.js") %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/dialogs/dialogs.js") %>"></script>
+    <script type="text/javascript">
+        var scada = scada || {};
+        scada.env = {
+            rootPath: "<%= VirtualPathUtility.AppendTrailingSlash(VirtualPathUtility.ToAbsolute("~")) %>",
+            locale: "<%= Scada.Localization.Culture.Name %>",
+            productName: "<%= Scada.CommonPhrases.ProductName %>",
+            dataRefrRate: <%= userData.WebSettings.DataRefrRate %>,
+            arcRefrRate: <%= userData.WebSettings.ArcRefrRate %>
+        };
+        scada.modalButtonCaptions = <%= Scada.Web.WebUtils.DictionaryToJs("Scada.Web.Js.ModalButtons") %>;
+        scada.notifPhrases = <%= Scada.Web.WebUtils.DictionaryToJs("Scada.Web.Js.NotifPanel") %>;
+    </script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/js/mastermain.js") %>"></script>
+    <%= GenScriptPathsHtml() %>
+    <asp:ContentPlaceHolder ID="cphMainHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <div id="divMainHeader" class="main-shell">
+            <span 
+                id="spanMainShowMenuBtn" class="main-hdr-btn main-img-btn hidden"><span class="glyphicon glyphicon-menu-hamburger"></span></span><span 
+                id="spanMainAppName"><asp:Label ID="lblProductName" runat="server" Text="Rapid SCADA"></asp:Label></span>
+            <div id="divMainUserMenu">
+                <asp:Label 
+                    ID="lblMainNotifBtn" ClientIDMode="Static" runat="server" CssClass="main-hdr-btn notif-bell hidden" ToolTip="Notifications"><i class="fa fa-bell-o"></i><i class="fa fa-bell"></i></asp:Label><asp:HyperLink 
+                    ID="hlMainUser" runat="server" CssClass="main-hdr-btn main-txt-btn" NavigateUrl="#">Admin</asp:HyperLink><asp:LinkButton 
+                    ID="lbtnMainLogout" runat="server" CssClass="main-hdr-btn main-txt-btn" OnClick="lbtnMainLogout_Click">Logout</asp:LinkButton><asp:Label 
+                    ID="lblMainFullscreenBtn" ClientIDMode="Static" runat="server" CssClass="main-hdr-btn main-img-btn" ToolTip="Full Screen"><span class="glyphicon glyphicon-fullscreen"></span></asp:Label>
+            </div>
+        </div>
+        <div id="divMainLeftPane" class="main-shell">
+            <div id="divMainTabs">
+                <div id="divMainMenuTab" class="tab selected"><asp:Label ID="lblMainMenuTab" runat="server" Text="Main Menu"></asp:Label></div>
+                <div id="divMainExplorerTab" class="tab"><asp:Label ID="lblMainExplorerTab" runat="server" Text="Views"></asp:Label></div>
+            </div>
+            <div id="divMainMenu" class="tool-window hidden">
+                <%= GenMainMenuHtml() %>
+            </div>
+            <div id="divMainExplorer" class="tool-window hidden">
+                <%= GenExplorerHtml() %>
+            </div>
+            <div id="divMainCollapseLeftPaneBtn">
+                <i class="fa fa-chevron-circle-left"></i><asp:Label ID="lblMainCollapseMenu" runat="server" Text="Collapse menu"></asp:Label>
+            </div>
+        </div>
+        <div id="divMainContent" class="main-content">
+            <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="divMainNotifPanel" class="main-shell notif-panel hidden"></div>
+        <div id="divMainFullscreenMenu" class="light-back hidden"><asp:Label 
+            ID="lblMainNormalViewBtn" ClientIDMode="Static" runat="server" CssClass="main-hdr-btn main-img-btn" ToolTip="Normal View"><span class="glyphicon glyphicon-fullscreen"></span></asp:Label></div>
+        <%= GenStatsHtml() %>
+    </form>
+</body>
+</html>

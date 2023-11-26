@@ -1,0 +1,30 @@
+﻿@import "common/plainform.less";
+
+@error-fore-color: red;
+
+body.popup {
+    background-color: @popup-back-color;
+    min-width: @popup-min-width;
+    overflow: hidden;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+#divContent {
+    font-size: 14px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: @error-fore-color;
+}
+
+div.error {
+    color: @error-fore-color;
+    margin: 0 0 10px;
+}
