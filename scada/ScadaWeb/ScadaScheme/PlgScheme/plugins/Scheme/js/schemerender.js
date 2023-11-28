@@ -725,6 +725,7 @@ scada.scheme.ChartRenderer.prototype.createDom = function (component, renderCont
 };
 
 
+
 /********** Static Picture Renderer **********/
 
 // Static picture renderer type extends scada.scheme.ComponentRenderer

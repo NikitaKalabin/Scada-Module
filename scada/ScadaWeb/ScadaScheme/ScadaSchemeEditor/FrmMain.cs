@@ -159,7 +159,7 @@ namespace Scada.Scheme.Editor
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Sets the standard component images.
         /// </summary>
@@ -196,7 +196,8 @@ namespace Scada.Scheme.Editor
 
                     // добавление элемента с указателем
                     lvCompTypes.Items.Add(new ListViewItem(
-                        AppPhrases.PointerItem, "pointer.png", listViewGroup) { IndentCount = 1 });
+                        AppPhrases.PointerItem, "pointer.png", listViewGroup)
+                    { IndentCount = 1 });
 
                     // добавление компонентов
                     foreach (CompItem compItem in spec.CompItems)
@@ -548,7 +549,7 @@ namespace Scada.Scheme.Editor
         }
 
 
-        private void Scheme_ItemChanged(object sender, SchemeChangeTypes changeType, 
+        private void Scheme_ItemChanged(object sender, SchemeChangeTypes changeType,
             object changedObject, object oldKey)
         {
             ExecuteAction(() =>

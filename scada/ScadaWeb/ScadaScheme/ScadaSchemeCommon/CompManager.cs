@@ -361,7 +361,7 @@ namespace Scada.Scheme
 
                 if (ex is ScadaException)
                     log.WriteError(errMsg + ": " + ex.Message);
-                else 
+                else
                     log.WriteException(ex, errMsg);
 
                 return null;
