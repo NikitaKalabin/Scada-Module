@@ -125,6 +125,7 @@ namespace Scada.Scheme.Editor
                 attrTranslator.TranslateAttrs(typeof(StaticText));
                 attrTranslator.TranslateAttrs(typeof(DynamicText));
                 attrTranslator.TranslateAttrs(typeof(Chart));
+                attrTranslator.TranslateAttrs(typeof(Table));
                 attrTranslator.TranslateAttrs(typeof(StaticPicture));
                 attrTranslator.TranslateAttrs(typeof(DynamicPicture));
                 attrTranslator.TranslateAttrs(typeof(UnknownComponent));

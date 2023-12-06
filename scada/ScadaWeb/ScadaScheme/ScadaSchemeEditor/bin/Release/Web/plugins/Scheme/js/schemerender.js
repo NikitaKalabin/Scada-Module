@@ -782,7 +782,10 @@ scada.scheme.ChartRenderer.prototype.createDom = function (component, renderCont
                     name: "Max",
                     data: maxPoints
                 }
-            ]
+            ],
+            stroke: {
+                curve: curveStyleMap[props.CurveStyle]
+            }
         };
     } else
     {
@@ -864,6 +867,68 @@ scada.scheme.ChartRenderer.prototype.createDom = function (component, renderCont
 
     return divComp;
 };
+
+/********** Table Renderer **********/
+scada.scheme.TableRenderer = function () {
+    scada.scheme.ComponentRenderer.call(this);
+};
+
+scada.scheme.TableRenderer.prototype = Object.create(scada.scheme.ComponentRenderer.prototype);
+scada.scheme.TableRenderer.constructor = scada.scheme.TableRenderer;
+
+scada.scheme.TableRenderer.prototype.createDom = function (component, renderContext) {
+    var props = component.props;
+    console.log("Props:", props);
+    var divComp = $("<div id='chart" + component.id + "'></div>");
+    this.prepareComponent(divComp, component);
+
+    divComp.css({
+        width: 'auto',
+        height: 'auto'
+    });
+
+    component.dom = divComp;
+    if (props.InCnlNum == 0 || props.CtrlCnlNum == 0)  {
+        console.error('No data');
+        return divComp;
+    }
+    var table = createDynamicTable(props.InCnlNum, props.CtrlCnlNum, props);
+    //var table = createDynamicTable(1, 3, props);
+    divComp.append(table);
+    // Initialize DataTable on the table element
+    table.DataTable({
+        searching: false,
+        responsive: true
+    });
+    return divComp;
+};
+
+function createDynamicTable(rows, columns, props) {
+    var table = $("<table class='display' cellspacing='0' width='100%'></table>");
+    var thead = $("<thead><tr></tr></thead>").appendTo(table);
+    for (var i = 1; i <= columns; i++) {
+        thead.find("tr").append("<th>Column " + i + "</th>");
+    }
+    var tbody = $("<tbody></tbody>").appendTo(table);
+    for (var i = 0; i < rows; i++) {
+        var rowData = [];
+        for (var j = 0; j < columns; j++) {
+            var cellData = props.Cells.find(cell => cell.Row === i && cell.Column === j);
+            if (cellData) {
+                var cellContent = cellData.Text || "";
+                var rowspan = cellData.RowSpan || 1;
+                var colspan = cellData.ColSpan || 1;
+                var cellHtml = "<td rowspan='" + rowspan + "' colspan='" + colspan + "'>" + cellContent + "</td>";
+                rowData.push(cellHtml);
+            } else {
+                rowData.push("<td></td>");
+            }
+        }
+        tbody.append("<tr>" + rowData.join("") + "</tr>");
+    }
+
+    return table;
+}
 
 
 /********** Static Picture Renderer **********/
@@ -1055,6 +1120,7 @@ scada.scheme.rendererMap = new Map([
     ["Scada.Scheme.Model.StaticText", new scada.scheme.StaticTextRenderer()],
     ["Scada.Scheme.Model.DynamicText", new scada.scheme.DynamicTextRenderer()],
     ["Scada.Scheme.Model.Chart", new scada.scheme.ChartRenderer()],
+    ["Scada.Scheme.Model.Table", new scada.scheme.TableRenderer()],
     ["Scada.Scheme.Model.StaticPicture", new scada.scheme.StaticPictureRenderer()],
     ["Scada.Scheme.Model.DynamicPicture", new scada.scheme.DynamicPictureRenderer()],
     ["Scada.Scheme.Model.UnknownComponent", new scada.scheme.UnknownComponentRenderer()]

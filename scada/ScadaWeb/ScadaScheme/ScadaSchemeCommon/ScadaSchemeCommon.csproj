@@ -147,6 +147,7 @@
     <Compile Include="Model\StaticPicture.cs" />
     <Compile Include="Model\StaticText.cs" />
     <Compile Include="Model\DataTypes\VerticalAlignments.cs" />
+    <Compile Include="Model\Table.cs" />
     <Compile Include="Model\UnknownComponent.cs" />
     <Compile Include="SchemeContext.cs" />
     <Compile Include="SchemeUtils.cs" />
