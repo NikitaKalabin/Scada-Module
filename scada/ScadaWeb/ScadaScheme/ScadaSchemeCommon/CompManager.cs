@@ -73,7 +73,9 @@ namespace Scada.Scheme
                 { typeof(DynamicText).FullName, typeof(DynamicText) },
                 { typeof(StaticPicture).FullName, typeof(StaticPicture) },
                 { typeof(DynamicPicture).FullName, typeof(DynamicPicture) },
-                { typeof(Chart).FullName, typeof(Chart) }  // added this line for Chart
+                { typeof(Chart).FullName, typeof(Chart) },// added this line for Chart
+                { typeof(Table).FullName, typeof(Table) },
+
             };
 
             instance = new CompManager();
@@ -153,7 +155,7 @@ namespace Scada.Scheme
         {
             return compType == typeof(StaticText) || compType == typeof(DynamicText) ||
                 compType == typeof(StaticPicture) || compType == typeof(DynamicPicture) ||
-                compType == typeof(Chart);  // added this condition for Chart
+                compType == typeof(Chart) || compType == typeof(Table);  // added this condition for Chart
         }
 
 
@@ -279,7 +281,7 @@ namespace Scada.Scheme
                 {
                     string xmlPrefix = compNode.Prefix;
                     string localName = compNode.LocalName.ToLowerInvariant();
-
+                    Console.WriteLine(xmlPrefix + " " + localName);
                     if (string.IsNullOrEmpty(xmlPrefix))
                     {
                         if (localName == "statictext")
@@ -288,6 +290,8 @@ namespace Scada.Scheme
                             return new DynamicText();
                         else if (localName == "chart")
                             return new Chart();
+                        else if (localName == "table")
+                            return new Table();
                         else if (localName == "staticpicture")
                             return new StaticPicture();
                         else if (localName == "dynamicpicture")

@@ -224,6 +224,57 @@
     <Content Include="Web\js\api\checkbrowser.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bootstrap.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bootstrap.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bootstrap4.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bootstrap5.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bulma.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.bulma.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.dataTables.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.dataTables.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.foundation.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.foundation.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.jqueryui.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.jqueryui.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.semanticui.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\dataTables.semanticui.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\jquery.dataTables.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\css\jquery.dataTables.min.css" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\images\sort_asc.png" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\images\sort_asc_disabled.png" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\images\sort_both.png" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\images\sort_desc.png" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\images\sort_desc_disabled.png" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bootstrap.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bootstrap.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bootstrap4.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bootstrap5.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bootstrap5.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bulma.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.bulma.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.dataTables.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.dataTables.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.foundation.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.foundation.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.jqueryui.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.jqueryui.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.semanticui.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\dataTables.semanticui.min.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\jquery.dataTables.js" />
+    <Content Include="Web\lib\datatables\DataTables-1.13.8\js\jquery.dataTables.min.js" />
+    <Content Include="Web\lib\datatables\datatables.css" />
+    <Content Include="Web\lib\datatables\datatables.js" />
+    <Content Include="Web\lib\datatables\datatables.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web\lib\datatables\datatables.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web\lib\datatables\jQuery-3.7.0\jquery-3.7.0.js" />
+    <Content Include="Web\lib\datatables\jQuery-3.7.0\jquery-3.7.0.min.js" />
     <Content Include="Web\plugins\SchemeEditor\css\editor.css">
       <DependentUpon>editor.less</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
