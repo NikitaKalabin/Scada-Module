@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaData.Dao</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Dao.BaseDAO">
+            <summary>
+            The base class for database access
+            <para>Базовый класс для доступа к базе данных</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Dao.BaseDAO.selectedCount">
+            <summary>
+            Количество выбраных записей
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Dao.BaseDAO.SelectedCount">
+            <summary>
+            Gets the number of records selected as a result of the last request.
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.BuildLikePattern(System.String)">
+            <summary>
+            Получить шаблон для поиска с помощью выражения LIKE
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.ConvertToInt(System.Object)">
+            <summary>
+            Преобразовать полученный из БД объект в целое число
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.ConvertToDouble(System.Object)">
+            <summary>
+            Преобразовать полученный из БД объект в вещественное число
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.ConvertToDateTime(System.Object)">
+            <summary>
+            Преобразовать полученный из БД объект в дату и время
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.GetParamValue(System.String)">
+            <summary>
+            Получить значение строки для записи в БД
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.GetParamValue(System.Int32)">
+            <summary>
+            Получить значение идентификатора для записи в БД
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.GetParamValue(System.Double)">
+            <summary>
+            Получить значение вещественного числа для записи в БД
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.BaseDAO.GetParamValue(System.DateTime)">
+            <summary>
+            Получить значение даты и времени для записи в БД
+            </summary>
+        </member>
+        <member name="T:Scada.Dao.PgSqlDAO">
+            <summary>
+            The base class for accessing PostgreSQL database
+            <para>Базовый класс для доступа к базе данных PostgreSQL</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Dao.PgSqlDAO.conn">
+            <summary>
+            Соединение с БД
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.PgSqlDAO.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.PgSqlDAO.#ctor(Npgsql.NpgsqlConnection)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="T:Scada.Dao.RequestParams">
+            <summary>
+            The class to simplify work with parameters of an SQL command.
+            <para>Класс для упрощения работы с параметрами SQL-команды.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Dao.RequestParams.Param">
+            <summary>
+            Parameter of SQL command.
+            </summary>
+        </member>
+        <member name="P:Scada.Dao.RequestParams.Param.SqlStatement">
+            <summary>
+            Gets or sets the statement to insert into an SQL clause.
+            </summary>
+        </member>
+        <member name="P:Scada.Dao.RequestParams.Param.ParameterName">
+            <summary>
+            Gets or sets the parameter name of used by a command.
+            </summary>
+        </member>
+        <member name="P:Scada.Dao.RequestParams.Param.Value">
+            <summary>
+            Gets or sets the parameter value.
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.RequestParams.Param.AddToCommand(System.Data.Common.DbCommand)">
+            <summary>
+            Adds the parameter to the command.
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.RequestParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Dao.RequestParams.ParamList">
+            <summary>
+            Gets or sets the list of the request parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.RequestParams.Add(System.String,System.String,System.Object,System.Boolean)">
+            <summary>
+            Adds a new parameter with the specified properties.
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.RequestParams.BuildWhereClause">
+            <summary>
+            Builds a string contains WHERE clause that includes the parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Dao.RequestParams.AddToCommand(System.Data.Common.DbCommand)">
+            <summary>
+            Adds the parameters to the command.
+            </summary>
+        </member>
+    </members>
+</doc>

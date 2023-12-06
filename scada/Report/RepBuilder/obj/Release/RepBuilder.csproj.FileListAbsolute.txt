@@ -1,0 +1,15 @@
+C:\Users\Admin\source\repos\scada\Report\RepBuilder\bin\Release\RepBuilder.XML
+C:\Users\Admin\source\repos\scada\Report\RepBuilder\bin\Release\RepBuilder.dll
+C:\Users\Admin\source\repos\scada\Report\RepBuilder\obj\Release\RepBuilder.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\scada\Report\RepBuilder\obj\Release\RepBuilder.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\scada\Report\RepBuilder\obj\Release\RepBuilder.dll
+C:\Users\Admin\source\repos2\scada\Report\RepBuilder\bin\Release\RepBuilder.XML
+C:\Users\Admin\source\repos2\scada\Report\RepBuilder\bin\Release\RepBuilder.dll
+C:\Users\Admin\source\repos2\scada\Report\RepBuilder\obj\Release\RepBuilder.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos2\scada\Report\RepBuilder\obj\Release\RepBuilder.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos2\scada\Report\RepBuilder\obj\Release\RepBuilder.dll
+C:\Users\User\Documents\SPE\repos2\scada\Report\RepBuilder\bin\Release\RepBuilder.XML
+C:\Users\User\Documents\SPE\repos2\scada\Report\RepBuilder\bin\Release\RepBuilder.dll
+C:\Users\User\Documents\SPE\repos2\scada\Report\RepBuilder\obj\Release\RepBuilder.csproj.AssemblyReference.cache
+C:\Users\User\Documents\SPE\repos2\scada\Report\RepBuilder\obj\Release\RepBuilder.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\SPE\repos2\scada\Report\RepBuilder\obj\Release\RepBuilder.dll

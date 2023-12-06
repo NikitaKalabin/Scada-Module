@@ -73,7 +73,7 @@ namespace Scada.Scheme
                 { typeof(DynamicText).FullName, typeof(DynamicText) },
                 { typeof(StaticPicture).FullName, typeof(StaticPicture) },
                 { typeof(DynamicPicture).FullName, typeof(DynamicPicture) },
-                { typeof(ChartComponent).FullName, typeof(ChartComponent) }
+                { typeof(Chart).FullName, typeof(Chart) }  // added this line for Chart
             };
 
             instance = new CompManager();
@@ -153,7 +153,7 @@ namespace Scada.Scheme
         {
             return compType == typeof(StaticText) || compType == typeof(DynamicText) ||
                 compType == typeof(StaticPicture) || compType == typeof(DynamicPicture) ||
-                compType == typeof(ChartComponent);
+                compType == typeof(Chart);  // added this condition for Chart
         }
 
 
@@ -287,7 +287,7 @@ namespace Scada.Scheme
                         else if (localName == "dynamictext")
                             return new DynamicText();
                         else if (localName == "chart")
-                            return new ChartComponent();
+                            return new Chart();
                         else if (localName == "staticpicture")
                             return new StaticPicture();
                         else if (localName == "dynamicpicture")
@@ -361,7 +361,7 @@ namespace Scada.Scheme
 
                 if (ex is ScadaException)
                     log.WriteError(errMsg + ": " + ex.Message);
-                else
+                else 
                     log.WriteException(ex, errMsg);
 
                 return null;

@@ -1,0 +1,3547 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaCommCommon</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Comm.AppDirs">
+            <summary>
+            Application directories
+            <para>Директории приложения</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.AppDirs.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.ExeDir">
+            <summary>
+            Получить директорию исполняемого файла
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.CmdDir">
+            <summary>
+            Получить директорию команд
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.ConfigDir">
+            <summary>
+            Получить директорию конфигурации
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.KPDir">
+            <summary>
+            Получить директорию библиотек КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.LangDir">
+            <summary>
+            Получить директорию языковых файлов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.LogDir">
+            <summary>
+            Получить директорию журналов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.StorageDir">
+            <summary>
+            Gets the storage directory.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.AppDirs.Exist">
+            <summary>
+            Проверить существование директорий
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.AppDirs.Init(System.String)">
+            <summary>
+            Инициализировать директории на основе директории исполняемого файла приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.AppDirs.GetRequiredDirs">
+            <summary>
+            Получить необходимые директории
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommChannelFactory">
+            <summary>
+            Factory for creating communication channel instances
+            <para>Фабрика для создания экземпляров классов каналов связи</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelFactory.GetCommChannel(System.String)">
+            <summary>
+            Получить экземпляр класса логики канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommChannelLogic">
+            <summary>
+            The base class for communication channel logic
+            <para>Родительский класс логики работы канала связи</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommChannelLogic.OperatingBehaviors">
+            <summary>
+            Режимы работы канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.OperatingBehaviors.Master">
+            <summary>
+            Ведущий - циклический опрос
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.OperatingBehaviors.Slave">
+            <summary>
+            Ведомый - ожидание данных
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.MasterThreadDelay">
+            <summary>
+            Задержка потока работы канала связи для экономии ресурсов в режиме ведущего, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.SlaveThreadDelay">
+            <summary>
+            Задержка потока работы канала связи для экономии ресурсов в режиме ведомого, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.WaitForStop">
+            <summary>
+            Время ожидания остановки потока работы канала связи, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.CommCnlParamRequired">
+            <summary>
+            Сообщение об отсутствии требуемого параметра канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.writeToLog">
+            <summary>
+            Метод записи в журнал линии связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.kpList">
+            <summary>
+            Список КП на линии связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.kpListNotEmpty">
+            <summary>
+            Признак, что список КП не пустой
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.firstKP">
+            <summary>
+            Первый (нулевой) КП в списке
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.thread">
+            <summary>
+            Поток работы канала связи
+            </summary>
+            <remarks>Использование потока опционально</remarks>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommChannelLogic.terminated">
+            <summary>
+            Работа потока канала связи прервана
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelLogic.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+            <remarks>Используется для вывода в журнал и идентификации канала связи</remarks>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelLogic.Behavior">
+            <summary>
+            Получить режим работы
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelLogic.WriteToLog">
+            <summary>
+            Получить или установить метод записи в журнал линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.AreDllsEqual(System.String@)">
+            <summary>
+            Проверить, что все КП на линии связи имеют одинаковые библиотеки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.CheckBehaviorSupport">
+            <summary>
+            Проверить поддержку режима работы канала связи подключенными КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.StartThread(System.Threading.ThreadStart)">
+            <summary>
+            Запустить поток работы канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.StopThread">
+            <summary>
+            Остановить поток работы канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.ExecProcIncomingReq(Scada.Comm.Devices.KPLogic,System.Byte[],System.Int32,System.Int32,Scada.Comm.Devices.KPLogic@)">
+            <summary>
+            Выполнить метод ProcIncomingReq для заданного КП с обработкой исключений
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.ExecProcUnreadIncomingReq(Scada.Comm.Devices.KPLogic,Scada.Comm.Channels.Connection,Scada.Comm.Devices.KPLogic@)">
+            <summary>
+            Выполнить метод ProcUnreadIncomingReq для заданного КП с обработкой исключений
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Collections.Generic.List{Scada.Comm.Devices.KPLogic})">
+            <summary>
+            Инициализировать канал связи
+            </summary>
+            <remarks>В случае исключения дальнейшая работа линии связи невозможна</remarks>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.Start">
+            <summary>
+            Запустить работу канала связи
+            </summary>
+            <remarks>В случае исключения линия связи попытается повторно запустить работу</remarks>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.Stop">
+            <summary>
+            Остановить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.BeforeSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия перед сеансом опроса КП или отправкой команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.AfterSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия после сеанса опроса КП или отправки команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelLogic.GetInfo">
+            <summary>
+            Получить информацию о работе канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommChannelView">
+            <summary>
+            The base class for communication channel user interface
+            <para>Родительский класс пользовательского интерфейса канала связи</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelView.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelView.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelView.Name">
+            <summary>
+            Получить наименование канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelView.Descr">
+            <summary>
+            Получить описание канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelView.LangDir">
+            <summary>
+            Получить или установить директорию языковых файлов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommChannelView.CanShowProps">
+            <summary>
+            Получить возможность отображения свойств канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelView.BuildPropsInfo(System.Collections.Generic.SortedList{System.String,System.String},System.String[],System.Object[])">
+            <summary>
+            Построить строку информации о свойствах канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelView.SetCommCnlParamsToDefault(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelView.ShowProps(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить свойства канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelView.GetPropsInfo(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Получить информацию о свойствах канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommChannelView.ToString">
+            <summary>
+            Возвращает строковое представление текущего объекта
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommSerialLogic">
+            <summary>
+            Serial port communication channel logic.
+            <para>Логика работы канала связи через последовательный порт.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommSerialLogic.Settings">
+            <summary>
+            Настройки канала связи.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.Settings.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.PortName">
+            <summary>
+            Получить или установить имя последовательного порта.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.BaudRate">
+            <summary>
+            Получить или установить скорость обмена.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.Parity">
+            <summary>
+            Получить или установить контроль чётности.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.DataBits">
+            <summary>
+            Получить или установить биты данных.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.StopBits">
+            <summary>
+            Получить или установить стоповые биты.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.DtrEnable">
+            <summary>
+            Получить или установить использование сигнала Data Terminal Ready (DTR) .
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.RtsEnable">
+            <summary>
+            Получить или установить использование сигнала Request to Send (RTS).
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Settings.Behavior">
+            <summary>
+            Получить или установить режим работы канала связи.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.Settings.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean)">
+            <summary>
+            Инициализировать настройки на основе параметров канала связи.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.Settings.SetCommCnlParams(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи в соответствии с настройками.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommSerialLogic.SlaveInBufLen">
+            <summary>
+            The length of the input buffer in the Slave mode.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommSerialLogic.ReadIntervalTimeout">
+            <summary>
+            The maximum time allowed to elapse before the arrival of the next byte, ms.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommSerialLogic.CommCnlType">
+            <summary>
+            Наименование типа канала связи.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommSerialLogic.settings">
+            <summary>
+            Настройки канала связи.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommSerialLogic.serialConn">
+            <summary>
+            Соединение через последовательный порт.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.TypeName">
+            <summary>
+            Получить наименование типа канала связи.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialLogic.Behavior">
+            <summary>
+            Получить режим работы.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.OpenSerialPort">
+            <summary>
+            Открытие последовательного порта.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.CloseSerialPort">
+            <summary>
+            Закрытие последовательного порта.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.ListenSerialPort">
+            <summary>
+            Listens to the serial port for incoming data.
+            </summary>
+            <remarks>This methods works in a separate thread. Is used in Mono.</remarks>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.SerialPort_DataReceived(System.Object,System.IO.Ports.SerialDataReceivedEventArgs)">
+            <summary>
+            Обработать событие приёма данных по последовательному порту.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Collections.Generic.List{Scada.Comm.Devices.KPLogic})">
+            <summary>
+            Инициализировать канал связи.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.Start">
+            <summary>
+            Запустить работу канала связи.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.Stop">
+            <summary>
+            Остановить работу канала связи.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.BeforeSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия перед сеансом опроса КП или отправкой команды.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.AfterSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия после сеанса опроса КП или отправки команды.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialLogic.GetInfo">
+            <summary>
+            Получить информацию о работе канала связи.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommSerialView">
+            <summary>
+            Serial port communication channel user interface
+            <para>Пользовательский интерфейс канала связи через последовательный порт</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialView.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialView.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialView.Name">
+            <summary>
+            Получить наименование канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommSerialView.Descr">
+            <summary>
+            Получить описание канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialView.SetCommCnlParamsToDefault(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialView.ShowProps(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить свойства модуля
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommSerialView.GetPropsInfo(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Получить информацию о свойствах канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpClientLogic">
+            <summary>
+            TCP client communication channel logic
+            <para>Логика работы канала связи TCP-клиент</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpClientLogic.Settings">
+            <summary>
+            Настройки канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.Settings.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Settings.Host">
+            <summary>
+            Получить или установить удалённый хост
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Settings.TcpPort">
+            <summary>
+            Получить или установить удалённый TCP-порт по умолчанию
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Settings.ReconnectAfter">
+            <summary>
+            Получить или установить интервал повторного подключения, с
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Settings.StayConnected">
+            <summary>
+            Получить или установить признак, что необходимо оставаться на связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Settings.Behavior">
+            <summary>
+            Получить или установить режим работы канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Settings.ConnMode">
+            <summary>
+            Получить или установить режим соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.Settings.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean)">
+            <summary>
+            Инициализировать настройки на основе параметров канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.Settings.SetCommCnlParams(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи в соответствии с настройками
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpClientLogic.CommCnlType">
+            <summary>
+            Наименование типа канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpClientLogic.settings">
+            <summary>
+            Настройки канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpClientLogic.tcpConnList">
+            <summary>
+            Список соединений
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpClientLogic.sharedTcpConn">
+            <summary>
+            Общее соединение для всех КП линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientLogic.Behavior">
+            <summary>
+            Получить режим работы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.ListenIndividualConn">
+            <summary>
+            Цикл приёма данных по индивидуальным соединениям в режиме ведомого (метод вызывается в отдельном потоке)
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.ListenSharedConn">
+            <summary>
+            Цикл приёма данных по общему соединению в режиме ведомого (метод вызывается в отдельном потоке)
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Collections.Generic.List{Scada.Comm.Devices.KPLogic})">
+            <summary>
+            Инициализировать канал связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.Start">
+            <summary>
+            Запустить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.Stop">
+            <summary>
+            Остановить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.BeforeSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия перед сеансом опроса КП или отправкой команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.AfterSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия после сеанса опроса КП или отправки команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientLogic.GetInfo">
+            <summary>
+            Получить информацию о работе канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpClientView">
+            <summary>
+            TCP client communication channel user interface
+            <para>Пользовательский интерфейс канала связи TCP-клиент</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientView.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientView.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientView.Name">
+            <summary>
+            Получить наименование канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpClientView.Descr">
+            <summary>
+            Получить описание канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientView.SetCommCnlParamsToDefault(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientView.ShowProps(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить свойства модуля
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpClientView.GetPropsInfo(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Получить информацию о свойствах канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpChannelLogic">
+            <summary>
+            The base class for TCP communication channel logic
+            <para>Родительский класс логики работы канала связи TCP</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpChannelLogic.ConnectionModes">
+            <summary>
+            Режимы соединения
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpChannelLogic.ConnectionModes.Individual">
+            <summary>
+            Индивидуальное соединение для каждого КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpChannelLogic.ConnectionModes.Shared">
+            <summary>
+            Общее соединение для всех КП линии связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpChannelLogic.InBufLenght">
+            <summary>
+            Длина буфера принимаемых данных
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpChannelLogic.inBuf">
+            <summary>
+            Буфер принимаемых данных
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpChannelLogic.kpCallNumDict">
+            <summary>
+            Словарь КП по позывным
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpChannelLogic.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpChannelLogic.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Collections.Generic.List{Scada.Comm.Devices.KPLogic})">
+            <summary>
+            Инициализировать канал связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpChannelLogic.Stop">
+            <summary>
+            Остановить работу канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpServerLogic">
+            <summary>
+            TCP server communication channel logic
+            <para>Логика работы канала связи TCP-сервер</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpServerLogic.DeviceSelectionModes">
+            <summary>
+            Режимы выбора КП для обработки входящих запросов
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.DeviceSelectionModes.ByIPAddress">
+            <summary>
+            По IP-адресу
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.DeviceSelectionModes.ByFirstPackage">
+            <summary>
+            По первому пакету данных
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.DeviceSelectionModes.ByDeviceLibrary">
+            <summary>
+            Используя библиотеку КП
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpServerLogic.Settings">
+            <summary>
+            Настройки канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Settings.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.Settings.TcpPort">
+            <summary>
+            Получить или установить TCP-порт для входящих соединений
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.Settings.InactiveTime">
+            <summary>
+            Получить или установить время неактивности TCP-соединения до его отключения, с
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.Settings.Behavior">
+            <summary>
+            Получить или установить режим работы канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.Settings.ConnMode">
+            <summary>
+            Получить или установить режим соединения
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.Settings.DevSelMode">
+            <summary>
+            Получить или установить режим выбора КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Settings.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean)">
+            <summary>
+            Инициализировать настройки на основе параметров канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Settings.SetCommCnlParams(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи в соответствии с настройками
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.CommCnlType">
+            <summary>
+            Наименование типа канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.settings">
+            <summary>
+            Настройки канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.tcpListener">
+            <summary>
+            Прослушиватель TCP-соединений
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.tcpConnList">
+            <summary>
+            Список соединений
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommTcpServerLogic.sharedTcpConn">
+            <summary>
+            Общее соединение для всех КП линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerLogic.Behavior">
+            <summary>
+            Получить режим работы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Execute">
+            <summary>
+            Цикл взаимодействия с TCP-клиентами (метод вызывается в отдельном потоке)
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.ProcAvailableDataIndiv(Scada.Comm.Channels.TcpConnection)">
+            <summary>
+            Обработать доступные данные в режиме соединения Individual
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.ProcAvailableDataShared(Scada.Comm.Channels.TcpConnection)">
+            <summary>
+            Обработать доступные данные в режиме соединения Shared
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.SetConnection(Scada.Comm.Devices.KPLogic,Scada.Comm.Channels.TcpConnection)">
+            <summary>
+            Установить соединение для КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.SetConnectionToAllKPs(Scada.Comm.Channels.TcpConnection)">
+            <summary>
+            Установить соединение всем КП на линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.BindConnByIP(Scada.Comm.Channels.TcpConnection)">
+            <summary>
+            Привязать соединение к КП по IP-адресу 
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.BindConnByFirstPackage(Scada.Comm.Channels.TcpConnection,System.String)">
+            <summary>
+            Привязать соединение к КП по позывному
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.BindConnByDeviceLibrary(Scada.Comm.Channels.TcpConnection,Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Привязать соединение к КП, используя библиотеку КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.ReceiveFirstPackage(Scada.Comm.Channels.TcpConnection)">
+            <summary>
+            Принять первый пакет данных, содержащий позывной
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Collections.Generic.List{Scada.Comm.Devices.KPLogic})">
+            <summary>
+            Инициализировать канал связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Start">
+            <summary>
+            Запустить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.Stop">
+            <summary>
+            Остановить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.AfterSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия после сеанса опроса КП или отправки команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerLogic.GetInfo">
+            <summary>
+            Получить информацию о работе канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommTcpServerView">
+            <summary>
+            TCP server communication channel user interface
+            <para>Пользовательский интерфейс канала связи TCP-сервер</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerView.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerView.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerView.Name">
+            <summary>
+            Получить наименование канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommTcpServerView.Descr">
+            <summary>
+            Получить описание канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerView.SetCommCnlParamsToDefault(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerView.ShowProps(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить свойства модуля
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommTcpServerView.GetPropsInfo(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Получить информацию о свойствах канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommUdpLogic">
+            <summary>
+            UDP communication channel logic
+            <para>Логика работы канала связи UDP</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommUdpLogic.DeviceSelectionModes">
+            <summary>
+            Режимы выбора КП для обработки входящих запросов
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommUdpLogic.DeviceSelectionModes.ByIPAddress">
+            <summary>
+            По IP-адресу
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommUdpLogic.DeviceSelectionModes.ByDeviceLibrary">
+            <summary>
+            Используя библиотеку КП
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommUdpLogic.Settings">
+            <summary>
+            Настройки канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.Settings.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.Settings.LocalUdpPort">
+            <summary>
+            Получить или установить локальный UDP-порт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.Settings.RemoteUdpPort">
+            <summary>
+            Получить или установить удалённый UDP-порт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.Settings.RemoteIpAddress">
+            <summary>
+            Получить или установить удалённый IP-адрес по умолчанию
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.Settings.Behavior">
+            <summary>
+            Получить или установить режим работы канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.Settings.DevSelMode">
+            <summary>
+            Получить или установить режим выбора КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.Settings.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean)">
+            <summary>
+            Инициализировать настройки на основе параметров канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.Settings.SetCommCnlParams(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи в соответствии с настройками
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommUdpLogic.CommCnlType">
+            <summary>
+            Наименование типа канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommUdpLogic.settings">
+            <summary>
+            Настройки канала связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommUdpLogic.udpConn">
+            <summary>
+            UPD-соединение
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.CommUdpLogic.kpCallNumDict">
+            <summary>
+            Словарь КП по позывным
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpLogic.Behavior">
+            <summary>
+            Получить режим работы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.StartUdpReceive">
+            <summary>
+            Запустить приём данных по UDP
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.UdpReceiveCallback(System.IAsyncResult)">
+            <summary>
+            Обработать принятые по UDP данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.Init(System.Collections.Generic.SortedList{System.String,System.String},System.Collections.Generic.List{Scada.Comm.Devices.KPLogic})">
+            <summary>
+            Инициализировать канал связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.Start">
+            <summary>
+            Запустить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.Stop">
+            <summary>
+            Остановить работу канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.BeforeSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия перед сеансом опроса КП или отправкой команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpLogic.AfterSession(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Выполнить действия после сеанса опроса КП или отправки команды
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.CommUdpView">
+            <summary>
+            UDP communication channel user interface
+            <para>Пользовательский интерфейс канала связи UDP</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpView.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpView.TypeName">
+            <summary>
+            Получить наименование типа канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpView.Name">
+            <summary>
+            Получить наименование канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.CommUdpView.Descr">
+            <summary>
+            Получить описание канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpView.SetCommCnlParamsToDefault(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Установить параметры канала связи по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpView.ShowProps(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить свойства модуля
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.CommUdpView.GetPropsInfo(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Получить информацию о свойствах канала связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.Connection">
+            <summary>
+            The base class for connection with physical device.
+            <para>Родительский класс соединения с физическим КП.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.Connection.BinStopCondition">
+            <summary>
+            The condition to stop reading data in a binary format.
+            <para>Условие остановки считывания данных в бинарном формате.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BinStopCondition.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BinStopCondition.#ctor(System.Byte)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BinStopCondition.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.BinStopCondition.StopCode">
+            <summary>
+            Получить код, приём которого останавливает считывание данных.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.BinStopCondition.StopSeq">
+            <summary>
+            Gets the sequence of bytes that stops reading.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BinStopCondition.CheckCondition(System.Byte[],System.Int32)">
+            <summary>
+            Check if the stop condition is satisfied.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.Connection.TextStopCondition">
+            <summary>
+            The condition to stop reading data in a text format.
+            <para>Условие остановки считывания данных в текстовом формате.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.TextStopCondition.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.TextStopCondition.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.TextStopCondition.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.TextStopCondition.#ctor(System.String[],System.Int32)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.TextStopCondition.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.TextStopCondition.StopEndings">
+            <summary>
+            Получить окончания строк, приём которых останавливает считывание данных.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.TextStopCondition.MaxLineCount">
+            <summary>
+            Получить максимальное количество считываемых строк.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.TextStopCondition.CheckCondition(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Проверить выполнение условия остановки.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.Connection.DataAccumThreadDelay">
+            <summary>
+            Задержка потока для накопления данных во внутреннем буфере соединения, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.Connection.DefaultReadTimeout">
+            <summary>
+            Таймаут чтения данных по умолчанию, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.Connection.DefaultWriteTimeout">
+            <summary>
+            Таймаут записи данных по умолчанию, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.Connection.OneLineStopCondition">
+            <summary>
+            Условие остановки считывания одной строки
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.Connection.writeToLog">
+            <summary>
+            Метод записи в журнал линии связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.Connection.newLine">
+            <summary>
+            Окончание строки для методов считывания и записи строк
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.Connected">
+            <summary>
+            Получить признак, что соединение установлено
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.NewLine">
+            <summary>
+            Получить или установить окончание строки для методов считывания и записи строк
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.DefaultLogFormat">
+            <summary>
+            Формат вывода протокола обмена данными в журнал по умлочанию
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.WriteToLog">
+            <summary>
+            Получить или установить метод записи в журнал линии связи
+            </summary>
+            <remarks>Свойство устанавливается из класса, унаследованного от KPLogic, 
+            для последующего вызова методов чтения и записи данных</remarks>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.LocalAddress">
+            <summary>
+            Получить или установить локальный адрес соединения
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.Connection.RemoteAddress">
+            <summary>
+            Получить или установить удалённый адрес соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.StringBuilderEndsWith(System.Text.StringBuilder,System.String,System.Boolean)">
+            <summary>
+            Проверить, что содержимое конструктора строк заканчивается на заданное значение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BuildReadLogText(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats)">
+            <summary>
+            Сформировать текст считывания данных для вывода в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BuildReadLogText(System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats)">
+            <summary>
+            Сформировать текст считывания данных для вывода в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BuildReadLinesLogText(System.Collections.Generic.List{System.String})">
+            <summary>
+            Сформировать текст считывания данных для вывода в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.BuildWriteLogText(System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats)">
+            <summary>
+            Сформировать текст записи данных для вывода в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные
+            </summary>
+            <returns>Количество считанных байт</returns>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.Read(System.Byte[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Считать данные и вывести информацию в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.Channels.Connection.BinStopCondition,System.Boolean@,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные с условиями остановки чтения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.Channels.Connection.BinStopCondition,System.Boolean@)">
+            <summary>
+            Считать данные с условиями остановки чтения и вывести информацию в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.ReadLines(System.Int32,Scada.Comm.Channels.Connection.TextStopCondition,System.Boolean@,System.String@)">
+            <summary>
+            Считать строки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.ReadLines(System.Int32,Scada.Comm.Channels.Connection.TextStopCondition,System.Boolean@)">
+            <summary>
+            Считать строки и вывести информацию в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.ReadLine(System.Int32,System.String@)">
+            <summary>
+            Считать одну строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.ReadLine(System.Int32)">
+            <summary>
+            Считать одну строку и вывести информацию в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.Write(System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Записать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Записать данные и вывести информацию в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.WriteLine(System.String,System.String@)">
+            <summary>
+            Записать строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.Connection.WriteLine(System.String)">
+            <summary>
+            Записать строку и вывести информацию в журнал
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.UI.FrmCommSerialProps">
+            <summary>
+            Serial port communication channel properties
+            <para>Свойства канала связи через последовательный порт</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommSerialProps.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommSerialProps.ShowDialog(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UI.FrmCommSerialProps.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommSerialProps.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommSerialProps.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.UI.FrmCommUdpProps">
+            <summary>
+            UDP communication channel properties
+            <para>Свойства канала связи UDP</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommUdpProps.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommUdpProps.ShowDialog(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UI.FrmCommUdpProps.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommUdpProps.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommUdpProps.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.UI.FrmCommTcpServerProps">
+            <summary>
+            TCP server communication channel properties
+            <para>Свойства канала связи TCP-сервер</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpServerProps.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpServerProps.ShowDialog(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UI.FrmCommTcpServerProps.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpServerProps.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpServerProps.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.UI.FrmCommTcpClientProps">
+            <summary>
+            TCP client communication channel properties
+            <para>Свойства канала связи TCP-клиент</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpClientProps.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpClientProps.ShowDialog(System.Collections.Generic.SortedList{System.String,System.String},System.Boolean@)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UI.FrmCommTcpClientProps.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpClientProps.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Channels.UI.FrmCommTcpClientProps.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.SerialConnection">
+            <summary>
+            Connection with a device via serial port
+            <para>Соединение с КП через последовательный порт</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.SerialConnection.ReopenAfter">
+            <summary>
+            Интервал повторного открытия порта, с
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.SerialConnection.openFailDT">
+            <summary>
+            Дата и время неудачной попытки открытия порта (UTC)
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.#ctor(System.IO.Ports.SerialPort)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.SerialConnection.Connected">
+            <summary>
+            Получить признак, что соединение установлено
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.SerialConnection.NewLine">
+            <summary>
+            Получить или установить окончание строки для методов считывания и записи строк
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.SerialConnection.SerialPort">
+            <summary>
+            Получить последовательный порт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.SerialConnection.WriteError">
+            <summary>
+            Ошибка записи в порт
+            </summary>
+            <remarks>Сигнализирует о нарушении связи с сетевым конвертером</remarks>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.Channels.Connection.BinStopCondition,System.Boolean@,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные с условиями остановки чтения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.ReadLines(System.Int32,Scada.Comm.Channels.Connection.TextStopCondition,System.Boolean@,System.String@)">
+            <summary>
+            Считать строки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.Write(System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Записать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.WriteLine(System.String,System.String@)">
+            <summary>
+            Записать строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.Open">
+            <summary>
+            Открыть соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.Close">
+            <summary>
+            Закрыть соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.SerialConnection.DiscardInBuffer">
+            <summary>
+            Очистить буфер входных данных порта
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.TcpConnection">
+            <summary>
+            TCP connection with a device.
+            <para>TCP-соединение с КП.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.OneByteReadTimeout">
+            <summary>
+            Таймаут чтения одного байта, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.DefaultMaxLineSize">
+            <summary>
+            Максимальный размер считываемых строк по умолчанию
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.DefaultReconnectAfter">
+            <summary>
+            Интервал повторного подключения по умолчанию, с
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.ActivityStr">
+            <summary>
+            Обозначение активности для строкового представления соединения
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.maxLineSize">
+            <summary>
+            Максимальный размер считываемых строк
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.connFailDT">
+            <summary>
+            Дата и время неудачной попытки соединения (UTC)
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.TcpConnection.relatedKPList">
+            <summary>
+            Список КП, относящихся к данному соединению
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.#ctor(System.Net.Sockets.TcpClient)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.Connected">
+            <summary>
+            Получить признак, что соединение установлено
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.TcpClient">
+            <summary>
+            Получить клиента TCP-соединения
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.NetStream">
+            <summary>
+            Получить поток данных TCP-соединения
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.ReconnectAfter">
+            <summary>
+            Получить или установить интервал повторного подключения, с
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.MaxLineSize">
+            <summary>
+            Получить или установить максимальный размер считываемых строк
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.ActivityDT">
+            <summary>
+            Получить или установить дату и время последней активности
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.JustConnected">
+            <summary>
+            Получить или установить признак, что соединение только что установлено и обмена данными не было
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.Broken">
+            <summary>
+            Получить или установить признак, что соединение обровано и его необходимо закрыть
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.TcpConnection.RelatedKPExists">
+            <summary>
+            Получить признак, что существует хотя бы один КП, относящийся к данному соединению
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.InternalInit(System.Net.Sockets.TcpClient)">
+            <summary>
+            Инициализировать соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.UpdateActivityDT">
+            <summary>
+            Обновить дату и время последней активности
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.TakeNetStream">
+            <summary>
+            Определить поток данных TCP-соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.TakeAddresses">
+            <summary>
+            Определить локальный и удалённый адрес соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.Channels.Connection.BinStopCondition,System.Boolean@,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные с условием остановки чтения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.ReadLines(System.Int32,Scada.Comm.Channels.Connection.TextStopCondition,System.Boolean@,System.String@)">
+            <summary>
+            Считать строки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Write(System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Записать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.WriteLine(System.String,System.String@)">
+            <summary>
+            Записать строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.ToString">
+            <summary>
+            Вернуть строковое представление соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.CanOpen(System.String@)">
+            <summary>
+            Проверить возможность установки TCP-соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Open(System.String,System.Int32)">
+            <summary>
+            Установить TCP-соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Close">
+            <summary>
+            Закрыть соединение, обнулить ссылки на соединение для КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Disconnect">
+            <summary>
+            Разорвать соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.Renew">
+            <summary>
+            Восстановить TCP-соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.ReadAvailable(System.Byte[],System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные, доступные на текущий момент
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.ClearNetStream(System.Byte[])">
+            <summary>
+            Очистить поток данных TCP-соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.AddRelatedKP(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Добавить КП, относящийся к данному соединению, в список
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.ClearRelatedKPs">
+            <summary>
+            Очистить список КП, относящихся к данному соединению
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.TcpConnection.GetFirstRelatedKP">
+            <summary>
+            Получить первый в списке КП, относящийся к данному соединению
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Channels.UdpConnection">
+            <summary>
+            UDP connection with a device.
+            <para>UDP-соединение с КП.</para>
+            </summary>
+            <remarks>
+            In fact, UDP does not create a connection object.
+            <para>На самом деле протокол UDP не создаёт объект соединения.</para>
+            </remarks>
+        </member>
+        <member name="F:Scada.Comm.Channels.UdpConnection.DatagramReceiveTimeout">
+            <summary>
+            Таймаут приёма датаграммы, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UdpConnection.connected">
+            <summary>
+            Признак, что соединение установлено
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UdpConnection.datagramBuf">
+            <summary>
+            Буфер неполностью считанной датаграммы
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Channels.UdpConnection.bufReadPos">
+            <summary>
+            Позиция чтения из буфера датаграммы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.#ctor(System.Net.Sockets.UdpClient,System.Int32,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.UdpConnection.Connected">
+            <summary>
+            Получить признак, что соединение установлено
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.UdpConnection.UdpClient">
+            <summary>
+            Получить UDP-клиента
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.UdpConnection.LocalPort">
+            <summary>
+            Получить или установить локальный порт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Channels.UdpConnection.RemotePort">
+            <summary>
+            Получить или установить удалённый порт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.InternalInit(System.Net.Sockets.UdpClient)">
+            <summary>
+            Инициализировать соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.CreateIPEndPoint">
+            <summary>
+            Создать объект IPEndPoint, описывающий удалённый хост
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.ReceiveDatagram(System.Net.IPEndPoint@,System.Int32@,System.Boolean@)">
+            <summary>
+            Принять датаграмму по UPD
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.StoreDatagram(System.Byte[],System.Int32)">
+            <summary>
+            Сохранить неполностью считанную датаграмму
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.Read(System.Byte[],System.Int32,System.Int32,System.Int32,Scada.Comm.Channels.Connection.BinStopCondition,System.Boolean@,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные с условиями остановки чтения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.ReadLines(System.Int32,Scada.Comm.Channels.Connection.TextStopCondition,System.Boolean@,System.String@)">
+            <summary>
+            Считать строки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.Write(System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Записать данные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.WriteLine(System.String,System.String@)">
+            <summary>
+            Записать строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.Close">
+            <summary>
+            Закрыть соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.Renew">
+            <summary>
+            Восстановить UDP-соединение
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Channels.UdpConnection.ClearDatagramBuffer">
+            <summary>
+            Очистить буфер неполностью считанной датаграммы
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.CommLineCmd">
+            <summary>
+            Specifies the communication line commands.
+            <para>Задает команды линии связи.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommLineCmd.StartLine">
+            <summary>
+            Start communication line.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommLineCmd.StopLine">
+            <summary>
+            Stop communication line.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommLineCmd.RestartLine">
+            <summary>
+            Restart communication line.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.CommPhrases">
+            <summary>
+            The phrases used by SCADA-Communicator and its libraries
+            <para>Фразы, используемые SCADA-Коммуникатором и его библиотеками</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.CommUtils">
+            <summary>
+            The class contains utility methods for SCADA-Communicator and its libraries
+            <para>Класс, содержащий вспомогательные методы для SCADA-Коммуникатора и его библиотек</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.CommUtils.ProtocolLogFormats">
+            <summary>
+            Форматы вывода протокола обмена данными в журнал
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.ProtocolLogFormats.Hex">
+            <summary>
+            16-ричный формат
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.ProtocolLogFormats.String">
+            <summary>
+            Строковый формат
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.CmdLifeTime">
+            <summary>
+            Время актуальности команды управления, с
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.MaxCmdFileNum">
+            <summary>
+            Максимальный номер имени файла команды управления
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.AppVersion">
+            <summary>
+            Версия Коммуникатора
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.CommLineDTFormat">
+            <summary>
+            Формат даты и времени для вывода в журнал линии связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.AppLogFileName">
+            <summary>
+            Имя файла журнала приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.CommUtils.AppStateFileName">
+            <summary>
+            Имя файла состояния приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.BytesToHex(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Преобразовать массив байт в строку 16-ричных чисел, разделённых пробелами
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.BytesToHex(System.Byte[])">
+            <summary>
+            Преобразовать массив байт в строку 16-ричных чисел, разделённых пробелами
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.BytesToString(System.Byte[],System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Преобразовать массив байт в текстовую строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.BytesToString(System.Byte[])">
+            <summary>
+            Преобразовать массив байт в текстовую строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.AddZeros(System.Int32,System.Int32)">
+            <summary>
+            Добавить к числу value спереди нули до достжения длины length
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.ExtractHostAndPort(System.String,System.Int32,System.String@,System.Int32@)">
+            <summary>
+            Извлечь хост и порт из позывного КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.ExtractAddrAndPort(System.String,System.Int32,System.Net.IPAddress@,System.Int32@)">
+            <summary>
+            Извлечь IP-адрес и порт из позывного КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetNowDT">
+            <summary>
+            Получить текущую дату и время для вывода в журнал линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetStringParam(System.Collections.Generic.SortedList{System.String,System.String},System.String,System.Boolean,System.String)">
+            <summary>
+            Получить строковое значение параметра
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetBoolParam(System.Collections.Generic.SortedList{System.String,System.String},System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Получить логическое значение параметра
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetIntParam(System.Collections.Generic.SortedList{System.String,System.String},System.String,System.Boolean,System.Int32)">
+            <summary>
+            Получить целочисленное значение параметра
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetEnumParam``1(System.Collections.Generic.SortedList{System.String,System.String},System.String,System.Boolean,``0)">
+            <summary>
+            Получить значение параметра перечислимого типа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.SaveCmd(System.String,System.String,System.String,System.String[],System.String@)">
+            <summary>
+            Записать команду службе SCADA-Коммуникатора в файл
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.SaveCmd(System.String,System.String,Scada.Data.Models.Command,System.String@)">
+            <summary>
+            Записать команду КП в файл
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetLineLogFileName(System.Int32)">
+            <summary>
+            Получить короткое имя файла журнала линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetLineStateFileName(System.Int32)">
+            <summary>
+            Получить короткое имя файла состояния линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.CommUtils.GetDeviceDataFileName(System.Int32)">
+            <summary>
+            Получить короткое имя файла данных КП
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.ConfigBaseSubset">
+            <summary>
+            Subset of the configuration database used by Communicator.
+            <para>Подмножество базы конфигурации, используемое Коммуникатором.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.ConfigBaseSubset.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.ConfigBaseSubset.InCnlTable">
+            <summary>
+            Gets the input channel table.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.ConfigBaseSubset.KPTable">
+            <summary>
+            Gets the device table.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.ICommLineService">
+            <summary>
+            Communication line service interface provided for device logic instances
+            <para>Интерфейс сервиса линии связи, предоставляемый объектам логики КП</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.ICommLineService.Number">
+            <summary>
+            Получить номер линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.ICommLineService.ServerComm">
+            <summary>
+            Gets the client to communicate with Server.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.ICommLineService.FindKPLogic(System.Int32,System.String)">
+            <summary>
+            Найти КП на линии связи по адресу и позывному
+            </summary>
+            <remarks>Если address меньше 0, то он не учитывается при поиске.
+            Если позывной равен null, то он не учитывается при поиске.</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.ICommLineService.FlushCurData(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Форсированно передать текущие данные SCADA-Серверу
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.ICommLineService.FlushArcData(Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Форсированно передать архивные данные и события SCADA-Серверу
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.ICommLineService.PassCmd(Scada.Data.Models.Command)">
+            <summary>
+            Передать команду ТУ, адресованную КП на данной линии связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPFactory">
+            <summary>
+            Factory for creating device instances
+            <para>Фабрика для создания экземпляров классов КП</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPFactory.GetKPLogic(System.String,System.String,System.Int32)">
+            <summary>
+            Получить экземпляр класса логики КП, загрузив его тип из библиотеки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPFactory.GetKPLogic(System.Type,System.Int32)">
+            <summary>
+            Получить экземпляр класса логики КП заданного типа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPFactory.GetKPViewType(System.String)">
+            <summary>
+            Получить тип интерфейса КП из библиотеки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPFactory.GetKPView(System.String,System.Int32)">
+            <summary>
+            Получить экземпляр класса интерфейса КП, загрузив его тип из библиотеки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPFactory.GetKPView(System.Type,System.Int32)">
+            <summary>
+            Получить экземпляр класса интерфейса КП заданного типа
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic">
+            <summary>
+            The base class for device communication logic.
+            <para>Родительский класс логики взаимодействия с КП.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.LastSrezListSize">
+            <summary>
+            Размер списка последних архивных срезов КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.LastEventListSize">
+            <summary>
+            Размер списка последних событий КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.LastCmdListSize">
+            <summary>
+            Размер списка последних команд ТУ
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.curData">
+            <summary>
+            Текущие данные тегов КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.curDataModified">
+            <summary>
+            Признаки изменения текущих данных с момента передачи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.tagsBySignal">
+            <summary>
+            All device tags with access by signals.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.arcSrezList">
+            <summary>
+            Список не переданных архивных срезов КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.eventList">
+            <summary>
+            Список не переданных событий КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.lastArcSrezList">
+            <summary>
+            Список последних архивных срезов КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.lastEventList">
+            <summary>
+            Список последних событий КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.lastCmdList">
+            <summary>
+            Список последних команд КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.lastCommSucc">
+            <summary>
+            Признак, что последний сеанс связи завершён успешно
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.kpStats">
+            <summary>
+            Статистика работы КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.#ctor(System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Bound">
+            <summary>
+            Gets or sets a value indicating whether the device is bound to Server.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Number">
+            <summary>
+            Получить номер КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Name">
+            <summary>
+            Получить или установить наименование КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Caption">
+            <summary>
+            Получить обозначение КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Dll">
+            <summary>
+            Получить наименование библиотеки КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Address">
+            <summary>
+            Получить или установить адрес КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.CallNum">
+            <summary>
+            Получить или установить позывной (строковый адрес) КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.ReqParams">
+            <summary>
+            Получить или установить параметры опроса КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.ReqTriesCnt">
+            <summary>
+            Получить или установить количество попыток перезапроса КП при ошибке
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Connection">
+            <summary>
+            Получить или установить соединение с физическим КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.SerialPort">
+            <summary>
+            Получить или установить ссылку на последовательный порт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.CustomParams">
+            <summary>
+            Получить или установить ссылку на пользовательские параметры линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.CommonProps">
+            <summary>
+            Получить или установить ссылку на общие свойства линии связи
+            </summary>
+            <remarks>Объект не является потокобезопасным</remarks>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.AppDirs">
+            <summary>
+            Получить или установить директории приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.WriteToLog">
+            <summary>
+            Получить или установить метод записи в журнал линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.CommLineSvc">
+            <summary>
+            Получить или установить сервис линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Terminated">
+            <summary>
+            Получить или установить признак завершения работы линии связи
+            </summary>
+            <remarks>Если значение равно true, то необходимо прервать сеанс опроса или отправку команды КП. 
+            Установка значения в false во время сеанса опроса приостанавливает завершение работы линии связи</remarks>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.CanSendCmd">
+            <summary>
+            Получить возможность отправки команд ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.ConnRequired">
+            <summary>
+            Получить требование наличия соединения для выполнения сеанса опроса КП и отправки команды ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTags">
+            <summary>
+            Получить все теги КП без разбивки на группы
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagGroups">
+            <summary>
+            Получить группы тегов КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.WorkState">
+            <summary>
+            Получить или установить состояние работы КП
+            </summary>
+            <remarks>Установка состояния работы извне объекта требуется 
+            при возникновении исключений в переопределяемых методах</remarks>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.WorkStateStr">
+            <summary>
+            Получить строковое представление состояния работы КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.LastSessDT">
+            <summary>
+            Получить дату и время последнего сеанса связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.LastCmdDT">
+            <summary>
+            Получить дату и время последней отправки команды ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.Stats">
+            <summary>
+            Получить статистику работы КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.ExecOnConnectionSet">
+            <summary>
+            Выполнить метод OnConnectionSet с обработкой исключений
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AppendKPDescr(System.Text.StringBuilder)">
+            <summary>
+            Добавить в конструктор строки описание КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.GetProcReqText(Scada.Comm.Channels.Connection,Scada.Comm.Devices.KPLogic)">
+            <summary>
+            Получить текст для вывода в журнал при обработке входящего запроса
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.GetMaxLength(System.String[])">
+            <summary>
+            Получить максимальную длину строки в массиве
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AppendKPTagsInfo(System.Text.StringBuilder)">
+            <summary>
+            Добавить в конструктор строки информацию о тегах КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AppendLastArcSrezInfo(System.Text.StringBuilder)">
+            <summary>
+            Добавить в конструктор строки информацию о последних архивных срезах КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AppendLastEventsInfo(System.Text.StringBuilder)">
+            <summary>
+            Добавить в конструктор строки информацию о последних событях КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AppendLastCmdsInfo(System.Text.StringBuilder)">
+            <summary>
+            Добавить в конструктор строки информацию о последних командах КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AppendTable(System.Text.StringBuilder,System.Boolean[],System.String[][])">
+            <summary>
+            Добавить таблицу в конструктор строки
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.ConvertTagDataToStr(System.Int32,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Преобразовать данные тега КП в строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.ConvertTagDataToStr(Scada.Comm.Devices.KPLogic.KPTag,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Converts the tag data to string.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.InitKPTags(System.Collections.Generic.List{Scada.Comm.Devices.KPLogic.TagGroup})">
+            <summary>
+            Инициализировать группы тегов, теги КП, их текущие данные и признаки изменения
+            </summary>
+            <remarks>В результате работы метода элементы списков TagGroups и KPTags не могут быть null</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.InitKPTags(System.Collections.Generic.List{Scada.Comm.Devices.KPLogic.KPTag})">
+            <summary>
+            Инициализировать теги КП, их текущие данные и признаки изменения
+            </summary>
+            <remarks>В результате работы метода элементы списка KPTags не могут быть null</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.SetCurData(System.Int32,System.Double,System.Int32)">
+            <summary>
+            Потокобезопасно установить текущие данные тега КП и признак их изменения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.SetCurData(System.Int32,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Потокобезопасно установить текущие данные тега КП и признак их изменения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.IncCurData(System.Int32,System.Double)">
+            <summary>
+            Потокобезопасно увеличить текущее значение тега КП без изменения статуса
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.InvalidateCurData(System.Int32,System.Int32)">
+            <summary>
+            Потокобезопасно установить текущие данные как недостоверные
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AddArcSrez(Scada.Comm.Devices.KPLogic.TagSrez)">
+            <summary>
+            Потокобезопасно добавить архивный срез в список срезов КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.AddEvent(Scada.Comm.Devices.KPLogic.KPEvent)">
+            <summary>
+            Потокобезопасно добавить событие в список событий КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.RequestNeeded(System.Int32@)">
+            <summary>
+            Проверить необходимость выполнения запроса
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.FinishRequest">
+            <summary>
+            Выполнить действия, необходимые для завершения запроса
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.CalcSessStats">
+            <summary>
+            Рассчитать статистику сеансов опроса и состояние работы КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.CalcCmdStats">
+            <summary>
+            Рассчитать статистику команд ТУ и состояние работы КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.Session">
+            <summary>
+            Выполнить сеанс опроса КП
+            </summary>
+            <remarks>Метод выполняется в потоке линии связи циклически или по времени</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.SendCmd(Scada.Data.Models.Command)">
+            <summary>
+            Отправить команду ТУ
+            </summary>
+            <remarks>Метод выполняется в потоке линии связи при появлении команды ТУ</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.ProcIncomingReq(System.Byte[],System.Int32,System.Int32,Scada.Comm.Devices.KPLogic@)">
+            <summary>
+            Обработать уже считанный входящий запрос, относящийся к произвольному КП на линии связи
+            </summary>
+            <remarks>Если targetKP равен null, значит метод должен вернуть КП, которому адресован запрос. 
+            Возвращает true, если запрос успешно разобран.
+            Метод выполняется в потоке канала связи</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.ProcUnreadIncomingReq(Scada.Comm.Channels.Connection,Scada.Comm.Devices.KPLogic@)">
+            <summary>
+            Обработать не считанный входящий запрос, относящийся к произвольному КП на линии связи
+            </summary>
+            <remarks>Если targetKP равен null, значит метод должен вернуть КП, которому адресован запрос. 
+            Возвращает true, если запрос успешно считан и разобран.
+            Метод выполняется в потоке канала связи</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.OnAddedToCommLine">
+            <summary>
+            Выполнить действия после добавления КП на линию связи
+            </summary>
+            <remarks>Метод вызывается после установки необходимых для работы КП свойств, 
+            перед привязкой тегов КП к входным каналам</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.OnCommLineStart">
+            <summary>
+            Выполнить действия при запуске линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.OnCommLineTerminate">
+            <summary>
+            Выполнить действия при завершении работы линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.OnCommLineAbort">
+            <summary>
+            Выполнить действия при прерывании работы линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.OnConnectionSet">
+            <summary>
+            Выполнить действия после установки соединения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.Bind(Scada.Comm.ConfigBaseSubset)">
+            <summary>
+            Binds the device to the configuration database.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.BindTag(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Привязать тег КП к входному каналу базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.CheckBehaviorSupport(Scada.Comm.Channels.CommChannelLogic.OperatingBehaviors)">
+            <summary>
+            Проверить поддержку режима работы канала связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.InvalidateCurData">
+            <summary>
+            Установить текущие данные как недостоверные
+            </summary>
+            <remarks>Метод вызывается при обрыве соединения, если ConnRequired равно true</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.GetInfo">
+            <summary>
+            Получить информацию о работе КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.GetCurData(System.Boolean)">
+            <summary>
+            Gets the current data of the device and clears the modification flags.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.MoveArcData(System.Collections.Generic.List{Scada.Comm.Devices.KPLogic.TagSrez})">
+            <summary>
+            Moves existing archives from the internal list to the destination.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.MoveEvents(System.Collections.Generic.List{Scada.Comm.Devices.KPLogic.KPEvent})">
+            <summary>
+            Moves existing events from the internal list to the destination.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic.KPStats">
+            <summary>
+            Статистика работы КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPStats.SessCnt">
+            <summary>
+            Получить или установить количество сеансов опроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPStats.SessErrCnt">
+            <summary>
+            Получить или установить количество неудачных сеансов опроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPStats.CmdCnt">
+            <summary>
+            Получить или установить количество команд ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPStats.CmdErrCnt">
+            <summary>
+            Получить или установить количество неудачных команд ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPStats.ReqCnt">
+            <summary>
+            Получить или установить количество запросов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPStats.ReqErrCnt">
+            <summary>
+            Получить или установить количество неудачных запросов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.KPStats.Reset">
+            <summary>
+            Сбросить статистику
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic.KPTag">
+            <summary>
+            Тег КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.KPTag.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.KPTag.#ctor(System.Int32,System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.Signal">
+            <summary>
+            Получить или установить сигнал (номер тега)
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.Index">
+            <summary>
+            Gets or sets the tag index.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.Name">
+            <summary>
+            Получить или установить наименование
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.CnlNum">
+            <summary>
+            Получить или установить номер входного канала базы конфигурации, привязанного к тегу
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.ObjNum">
+            <summary>
+            Получить или установить номер объекта входного канала
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.ParamID">
+            <summary>
+            Получить или установить идентификатор параметра входного канала
+            </summary>
+            <remarks>Необходим для событий КП</remarks>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPTag.Aux">
+            <summary>
+            Gets or sets the auxiliary object that contains data about the tag.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic.TagGroup">
+            <summary>
+            Группа тегов КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagGroup.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagGroup.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagGroup.Name">
+            <summary>
+            Получить наименование группы
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagGroup.KPTags">
+            <summary>
+            Получить список тегов КП, входящих в группу
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagGroup.AddNewTag(System.Int32,System.String,System.Object)">
+            <summary>
+            Creates and adds a new tag to the group.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic.TagSrez">
+            <summary>
+            Срез данных тегов за определённый момент времени
+            </summary>
+            <remarks>Особенность среза тегов заключается в использовании тегов КП вместо входных каналов</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagSrez.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagSrez.#ctor(System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagSrez.DateTime">
+            <summary>
+            Получить или установить временную метку
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagSrez.KPTags">
+            <summary>
+            Получить ссылки на теги КП, входящие в срез
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagSrez.TagData">
+            <summary>
+            Получить данные тегов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.TagSrez.Descr">
+            <summary>
+            Получить или установить описание среза для вывода в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagSrez.GetBoundTagIndexes">
+            <summary>
+            Получить массив индексов тегов среза, привязанных к входным каналам
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagSrez.SetTagData(System.Int32,System.Double,System.Int32)">
+            <summary>
+            Установить данные тега среза
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.TagSrez.SetTagData(System.Int32,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Установить данные тега среза
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic.KPEvent">
+            <summary>
+            Событие КП
+            </summary>
+            <remarks>Особенность события КП заключается в использовании тега КП вместо входного канала</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.KPEvent.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPLogic.KPEvent.#ctor(System.DateTime,System.Int32,Scada.Comm.Devices.KPLogic.KPTag)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.DateTime">
+            <summary>
+            Получить или установить временную метку
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.KPNum">
+            <summary>
+            Получить или установить номер КП из базы конфигурации
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.KPTag">
+            <summary>
+            Получить или установить ссылку на параметр КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.OldData">
+            <summary>
+            Получить или установить старые данные параметра КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.NewData">
+            <summary>
+            Получить или установить новые данные параметра КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.Checked">
+            <summary>
+            Получить или установить признак квитирования события
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.UserID">
+            <summary>
+            Получить или установить идентификатор пользователя из базы конфигурации, квитировавшего событие
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.Descr">
+            <summary>
+            Получить или установить описание события
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPLogic.KPEvent.Data">
+            <summary>
+            Получить или установить дополнительные данные события
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPLogic.WorkStates">
+            <summary>
+            Состояния работы КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.WorkStates.Undefined">
+            <summary>
+            Неопределено
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.WorkStates.Normal">
+            <summary>
+            Норма
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPLogic.WorkStates.Error">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPReqParams">
+            <summary>
+            Device request parameters
+            <para>Параметры опроса КП</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPReqParams.Default">
+            <summary>
+            Параметры опроса КП по умолчанию
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KPReqParams.Zero">
+            <summary>
+            Нулевые параметры опроса КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPReqParams.Timeout">
+            <summary>
+            Получить или установить таймаут запросов, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPReqParams.Delay">
+            <summary>
+            Получить или установить задержку после запросов, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPReqParams.Time">
+            <summary>
+            Получить или установить время опроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPReqParams.Period">
+            <summary>
+            Получить или установить период опроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPReqParams.CmdLine">
+            <summary>
+            Получить или установить командную строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPReqParams.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPReqParams.GetCmdLineArgs">
+            <summary>
+            Получить аргументы командной строки
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPView">
+            <summary>
+            The base class for device library user interface
+            <para>Родительский класс пользовательского интерфейса библиотеки КП</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPView.InCnlPrototype">
+            <summary>
+            Прототип входного канала
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.InCnlPrototype.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.InCnlPrototype.#ctor(System.String,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.InCnlPrototype.CtrlCnlProps">
+            <summary>
+            Получить или установить ссылку на прототип канала управления, связанного со входным каналом
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPView.CtrlCnlPrototype">
+            <summary>
+            Прототип канала управления
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.CtrlCnlPrototype.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.CtrlCnlPrototype.#ctor(System.String,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPView.KPCnlPrototypes">
+            <summary>
+            Прототипы каналов КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.KPCnlPrototypes.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPCnlPrototypes.InCnls">
+            <summary>
+            Получить прототипы входных каналов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPCnlPrototypes.CtrlCnls">
+            <summary>
+            Получить прототипы каналов управления
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KPView.KPProperties">
+            <summary>
+            Свойства КП, сохраняемые SCADA-Коммуникатором
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.KPProperties.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.KPProperties.#ctor(System.Collections.Generic.SortedList{System.String,System.String},System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPProperties.CustomParams">
+            <summary>
+            Получить ссылку на пользовательские параметры линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPProperties.CmdLine">
+            <summary>
+            Получить или установить командную строку
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPProperties.Modified">
+            <summary>
+            Получить или установить признак изменения пользовательских параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.#ctor">
+            <summary>
+            Конструктор для настройки библиотеки КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.#ctor(System.Int32)">
+            <summary>
+            Конструктор для настройки конкретного КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPDescr">
+            <summary>
+            Получить описание библиотеки КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.Version">
+            <summary>
+            Получить версию библиотеки КП
+            </summary>
+            <remarks>В будущем сделать данное свойство abstract</remarks>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.DefaultCnls">
+            <summary>
+            Получить прототипы каналов КП по умолчанию
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.DefaultReqParams">
+            <summary>
+            Получить параметры опроса КП по умолчанию
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.CanShowProps">
+            <summary>
+            Получить возможность отображения свойств КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.Number">
+            <summary>
+            Получить номер КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.KPProps">
+            <summary>
+            Получить или установить свойства КП, сохраняемые SCADA-Коммуникатором
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KPView.AppDirs">
+            <summary>
+            Получить или установить директории приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KPView.ShowProps">
+            <summary>
+            Отобразить свойства КП
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Properties.Resources.info_tooltip">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.SerialPortUtils">
+            <summary>
+            Serial port utilities
+            <para>Вспомогательные методы для работы с последовательным портом</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.SerialPortUtils.AuxSerialConnection">
+            <summary>
+            Вспомогательный класс соединения через последовательный порт, позволяющий изменять порт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.AuxSerialConnection.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.AuxSerialConnection.SetSerialPort(System.IO.Ports.SerialPort)">
+            <summary>
+            Установить последовательный порт соединения
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.SerialPortUtils.WriteDataImpossible">
+            <summary>
+            Сообщение о невозможности отправки данных
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.SerialPortUtils.WriteLineImpossible">
+            <summary>
+            Сообщение о невозможности отправки строк
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.SerialPortUtils.ReadDataImpossible">
+            <summary>
+            Сообщение о невозможности приёма данных
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.SerialPortUtils.ReadLinesImpossible">
+            <summary>
+            Сообщение о невозможности приёма строк
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.SerialPortUtils.serialConn">
+            <summary>
+            Соединение через последовательный порт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.#cctor">
+            <summary>
+            Статический конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.WriteToSerialPort(System.IO.Ports.SerialPort,System.Byte[],System.Int32,System.Int32,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Записать данные в последовательный порт
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="buffer">Буфер передаваемых данных</param>
+            <param name="index">Начальный индекс в буфере</param>
+            <param name="count">Количество передаваемых байт</param>
+            <param name="logFormat">Формат вывода данных в журнал</param>
+            <param name="logText">Строка для вывода в журнал</param>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.WriteToSerialPort(System.IO.Ports.SerialPort,System.Byte[],System.Int32,System.Int32,System.String@)">
+            <summary>
+            Записать данные в последовательный порт
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="buffer">Буфер передаваемых данных</param>
+            <param name="index">Начальный индекс в буфере</param>
+            <param name="count">Количество передаваемых байт</param>
+            <param name="logText">Строка для вывода в журнал</param>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.WriteLineToSerialPort(System.IO.Ports.SerialPort,System.String,System.String@)">
+            <summary>
+            Записать строку в последовательный порт
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="text">Записываемая в порт строка</param>
+            <param name="logText">Строка для вывода в журнал</param>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.ReadFromSerialPort(System.IO.Ports.SerialPort,System.Byte[],System.Int32,System.Int32,System.Int32,System.Boolean,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные из последовательного порта
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="buffer">Буфер принимаемых данных</param>
+            <param name="index">Начальный индекс в буфере</param>
+            <param name="count">Количество принимаемых байт</param>
+            <param name="timeout">Таймаут чтения данных, мс</param>
+            <param name="wait">Ожидать завершения таймаута после окончания чтения</param>
+            <param name="logFormat">Формат вывода данных в журнал</param>
+            <param name="logText">Строка для вывода в журнал</param>
+            <returns>Количество считанных байт</returns>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.ReadFromSerialPort(System.IO.Ports.SerialPort,System.Byte[],System.Int32,System.Int32,System.Int32,System.Boolean,System.String@)">
+            <summary>
+            Считать данные из последовательного порта
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="buffer">Буфер принимаемых данных</param>
+            <param name="index">Начальный индекс в буфере</param>
+            <param name="count">Количество принимаемых байт</param>
+            <param name="timeout">Таймаут чтения данных, мс</param>
+            <param name="wait">Ожидать завершения таймаута после окончания чтения</param>
+            <param name="logText">Строка для вывода в журнал</param>
+            <returns>Количество считанных байт</returns>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.ReadFromSerialPort(System.IO.Ports.SerialPort,System.Byte[],System.Int32,System.Int32,System.Byte,System.Int32,System.Boolean,Scada.Comm.CommUtils.ProtocolLogFormats,System.String@)">
+            <summary>
+            Считать данные из последовательного порта
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="buffer">Буфер принимаемых данных</param>
+            <param name="index">Начальный индекс в буфере</param>
+            <param name="maxCount">Максимальное количество принимаемых байт</param>
+            <param name="stopCode">Байт, означающий окончание считывания данных</param>
+            <param name="timeout">Таймаут чтения данных, мс</param>
+            <param name="wait">Ожидать завершения таймаута после окончания чтения</param>
+            <param name="logFormat">Формат вывода данных в журнал</param>
+            <param name="logText">Строка для вывода в журнал</param>
+            <returns>Количество считанных байт</returns>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.ReadFromSerialPort(System.IO.Ports.SerialPort,System.Byte[],System.Int32,System.Int32,System.Byte,System.Int32,System.Boolean,System.String@)">
+            <summary>
+            Считать данные из последовательного порта
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="buffer">Буфер принимаемых данных</param>
+            <param name="index">Начальный индекс в буфере</param>
+            <param name="maxCount">Максимальное количество принимаемых байт</param>
+            <param name="stopCode">Байт, означающий окончание считывания данных</param>
+            <param name="timeout">Таймаут чтения данных, мс</param>
+            <param name="wait">Ожидать завершения таймаута после окончания чтения</param>
+            <param name="logText">Строка для вывода в журнал</param>
+            <returns>Количество считанных байт</returns>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.ReadLinesFromSerialPort(System.IO.Ports.SerialPort,System.Int32,System.Boolean,System.String,System.Boolean@,System.String@)">
+            <summary>
+            Считать строки из последовательного порта
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="timeout">Таймаут чтения данных, мс</param>
+            <param name="wait">Ожидать завершения таймаута после окончания чтения</param>
+            <param name="endLine">Строка, при получении которой завершить приём данных</param>
+            <param name="endFound">Призкак получения завершающей строки</param>
+            <param name="logText">Строка для вывода в журнал</param>
+            <returns>Считанные из последовательного порта строки</returns>
+        </member>
+        <member name="M:Scada.Comm.SerialPortUtils.ReadLinesFromSerialPort(System.IO.Ports.SerialPort,System.Int32,System.Boolean,System.String[],System.Boolean@,System.String@)">
+            <summary>
+            Считать строки из последовательного порта
+            </summary>
+            <param name="serialPort">Последовательный порт</param>
+            <param name="timeout">Таймаут чтения данных, мс</param>
+            <param name="wait">Ожидать завершения таймаута после окончания чтения</param>
+            <param name="endLines">Массив строк, при получении которых завершить приём данных</param>
+            <param name="endFound">Призкак получения завершающей строки</param>
+            <param name="logText">Строка для вывода в журнал</param>
+            <returns>Считанные из последовательного порта строки</returns>
+        </member>
+        <member name="T:Scada.Comm.Settings">
+            <summary>
+            Communicator settings.
+            <para>Настройки Коммуникатора</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Settings.CommonParams">
+            <summary>
+            Общие параметры
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.CommonParams.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.ServerUse">
+            <summary>
+            Получить или установить признак использования SCADA-Сервера
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.ServerHost">
+            <summary>
+            Получить или установить имя компьютера или IP-адрес SCADA-Сервера
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.ServerPort">
+            <summary>
+            Получить или установить номер TCP-порта SCADA-Сервера
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.ServerUser">
+            <summary>
+            Получить или установить имя пользователя для подключения к SCADA-Серверу
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.ServerPwd">
+            <summary>
+            Получить или установить пароль пользователя для подключения к SCADA-Серверу
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.ServerTimeout">
+            <summary>
+            Получить или установить таймаут ожидания ответа SCADA-Сервера, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.WaitForStop">
+            <summary>
+            Получить или установить ожидание остановки циклов опроса линий связи, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.SendModData">
+            <summary>
+            Получить или установить признак передачи данных только изменившихся тегов КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommonParams.SendAllDataPer">
+            <summary>
+            Получить или установить период передачи на сервер всех данных КП, с
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.CommonParams.SetToDefault">
+            <summary>
+            Установить значения общих параметров по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.CommonParams.Clone">
+            <summary>
+            Создать полную копию общих параметров
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Settings.CommLine">
+            <summary>
+            Линия связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.CommLine.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Active">
+            <summary>
+            Получить или установить признак активности
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Bind">
+            <summary>
+            Получить или установить признак привязки к SCADA-Серверу
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Number">
+            <summary>
+            Получить или установить номер линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Name">
+            <summary>
+            Получить или установить наименование линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Caption">
+            <summary>
+            Получить обозначение линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.CommCnlType">
+            <summary>
+            Получить или установить тип канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.CommCnlParams">
+            <summary>
+            Получить параметры канала связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.ReqTriesCnt">
+            <summary>
+            Получить или установить количество попыток перезапроса КП при ошибке
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.CycleDelay">
+            <summary>
+            Получить или установить задержку после цикла опроса, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.CmdEnabled">
+            <summary>
+            Получить или установить признак разрешения команд ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.ReqAfterCmd">
+            <summary>
+            Получить или установить необходимость опроса КП после команды ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.DetailedLog">
+            <summary>
+            Получить или установить признак записи в журнал линии связи подробной информации
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.CustomParams">
+            <summary>
+            Получить пользовательские параметры линии связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.ReqSequence">
+            <summary>
+            Получить последовательность опроса КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Parent">
+            <summary>
+            Получить или установить родительский узел
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLine.Children">
+            <summary>
+            Получить список дочерних узлов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.CommLine.Clone">
+            <summary>
+            Создать полную копию настроек линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.CommLine.GetCaption(System.Int32,System.Object)">
+            <summary>
+            Получить обозначение линии связи
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Settings.KP">
+            <summary>
+            КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.KP.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Active">
+            <summary>
+            Получить или установить признак активности
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Bind">
+            <summary>
+            Получить или установить признак привязки к SCADA-Серверу
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Number">
+            <summary>
+            Получить или установить номер КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Name">
+            <summary>
+            Получить или установить наименование КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Caption">
+            <summary>
+            Получить обозначение КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Dll">
+            <summary>
+            Получить или установить библиотеку КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Address">
+            <summary>
+            Получить или установить адрес
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.CallNum">
+            <summary>
+            Получить или установить позывной
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Timeout">
+            <summary>
+            Получить или установить таймаут запросов, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Delay">
+            <summary>
+            Получить или установить задержку после запроса, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Time">
+            <summary>
+            Получить или установить время сеанса опроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Period">
+            <summary>
+            Получить или установить период сеансов опроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.CmdLine">
+            <summary>
+            Получить или установить командную строку
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Parent">
+            <summary>
+            Получить или установить родительский узел
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.KP.Children">
+            <summary>
+            Получить список дочерних узлов - он всегда равен null
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.KP.Clone">
+            <summary>
+            Создать полную копию КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.KP.SetReqParams(Scada.Comm.Devices.KPReqParams)">
+            <summary>
+            Sets the request parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.KP.GetCaption(System.Int32,System.Object)">
+            <summary>
+            Получить обозначение КП
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Settings.DefFileName">
+            <summary>
+            Имя файла настроек по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.Params">
+            <summary>
+            Получить настройки общих параметров
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CommLines">
+            <summary>
+            Получить настройки линий связи
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.CreateBakFile">
+            <summary>
+            Получить или установить признак создания резервного файла при сохранении настроек
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.Scada#ITreeNode#Parent">
+            <summary>
+            Получить или установить родительский узел - он всегда равен null
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Settings.Scada#ITreeNode#Children">
+            <summary>
+            Получить список дочерних узлов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.LoadCommonParams(System.Xml.XmlDocument)">
+            <summary>
+            Загрузить общие параметры
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.LoadCommLines(System.Xml.XmlDocument)">
+            <summary>
+            Загрузить линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.LoadCommLine(System.Xml.XmlElement)">
+            <summary>
+            Загрузить одну линию связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.Load(System.String,System.String@)">
+            <summary>
+            Загрузить настройки приложения из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.LoadCommLine(System.String,System.Int32,Scada.Comm.Settings.CommLine@,System.String@)">
+            <summary>
+            Загрузить линию связи из файла настроек
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.Save(System.String,System.String@)">
+            <summary>
+            Сохранить настройки приложения в файле
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Settings.Clone">
+            <summary>
+            Создать полную копию настроек
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Log</name>
+    </assembly>
+    <members>
+        <member name="T:Utils.ILog">
+            <summary>
+            Log interface
+            <para>Интерфейс журнала</para>
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteAction(System.String,Utils.Log.ActTypes)">
+            <summary>
+            Записать действие определённого типа в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteInfo(System.String)">
+            <summary>
+            Записать информационное действие в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteAction(System.String)">
+            <summary>
+            Записать обычное действие в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteError(System.String)">
+            <summary>
+            Записать ошибку в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteException(System.Exception,System.String,System.Object[])">
+            <summary>
+            Записать исключение в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteLine(System.String)">
+            <summary>
+            Записать строку в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.ILog.WriteBreak">
+            <summary>
+            Записать разделитель в журнал
+            </summary>
+        </member>
+        <member name="T:Utils.Log">
+            <summary>
+            Log file implementation
+            <para>Реализация файла журнала</para>
+            </summary>
+        </member>
+        <member name="T:Utils.Log.ActTypes">
+            <summary>
+            Типы действий, записываемые в журнал
+            </summary>
+        </member>
+        <member name="F:Utils.Log.ActTypes.Information">
+            <summary>
+            Информация
+            </summary>
+        </member>
+        <member name="F:Utils.Log.ActTypes.Action">
+            <summary>
+            Действие
+            </summary>
+        </member>
+        <member name="F:Utils.Log.ActTypes.Error">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="F:Utils.Log.ActTypes.Exception">
+            <summary>
+            Исключение
+            </summary>
+        </member>
+        <member name="T:Utils.Log.Formats">
+            <summary>
+            Форматы журнала
+            </summary>
+        </member>
+        <member name="F:Utils.Log.Formats.Simple">
+            <summary>
+            Простой (дата, время, описание)
+            </summary>
+        </member>
+        <member name="F:Utils.Log.Formats.Full">
+            <summary>
+            Полный (дата, время, компьютер, пользователь, действие, описание)
+            </summary>
+        </member>
+        <member name="T:Utils.Log.WriteLineDelegate">
+            <summary>
+            Делегат записи строки в журнал
+            </summary>
+        </member>
+        <member name="T:Utils.Log.WriteActionDelegate">
+            <summary>
+            Делегат записи действия в журнал
+            </summary>
+        </member>
+        <member name="F:Utils.Log.DefCapacity">
+            <summary>
+            Вместимость (макс. размер) файла по умолчанию, 1 МБ
+            </summary>
+        </member>
+        <member name="M:Utils.Log.#ctor">
+            <summary>
+            Создать новый экземпляр класса Log
+            </summary>
+        </member>
+        <member name="M:Utils.Log.#ctor(Utils.Log.Formats)">
+            <summary>
+            Создать новый экземпляр класса Log с заданным форматом записи
+            </summary>
+        </member>
+        <member name="P:Utils.Log.FileName">
+            <summary>
+            Получить или установить имя журнала
+            </summary>
+        </member>
+        <member name="P:Utils.Log.Encoding">
+            <summary>
+            Получить или установить кодировку журнала
+            </summary>
+        </member>
+        <member name="P:Utils.Log.Capacity">
+            <summary>
+            Получить или установить вместимость (макс. размер) журнала
+            </summary>
+        </member>
+        <member name="P:Utils.Log.CompName">
+            <summary>
+            Получить имя компьютера
+            </summary>
+        </member>
+        <member name="P:Utils.Log.UserName">
+            <summary>
+            Получить имя пользователя
+            </summary>
+        </member>
+        <member name="P:Utils.Log.Break">
+            <summary>
+            Получить или установить разделитель
+            </summary>
+        </member>
+        <member name="P:Utils.Log.DateTimeFormat">
+            <summary>
+            Получить или установить формат даты и времени
+            </summary>
+        </member>
+        <member name="M:Utils.Log.Open">
+            <summary>
+            Открыть журнал для добавления информации
+            </summary>
+        </member>
+        <member name="M:Utils.Log.Close">
+            <summary>
+            Закрыть журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.ActTypeToStr(Utils.Log.ActTypes)">
+            <summary>
+            Получить строковое представления типа действия
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteAction(System.String,Utils.Log.ActTypes)">
+            <summary>
+            Записать действие определённого типа в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteInfo(System.String)">
+            <summary>
+            Записать информационное действие в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteAction(System.String)">
+            <summary>
+            Записать обычное действие в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteError(System.String)">
+            <summary>
+            Записать ошибку в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteException(System.Exception,System.String,System.Object[])">
+            <summary>
+            Записать исключение в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteLine(System.String)">
+            <summary>
+            Записать строку в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.Log.WriteBreak">
+            <summary>
+            Записать разделитель в журнал
+            </summary>
+        </member>
+        <member name="T:Utils.LogStub">
+            <summary>
+            Log stub
+            <para>Заглушка журнала</para>
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteAction(System.String,Utils.Log.ActTypes)">
+            <summary>
+            Записать действие определённого типа в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteInfo(System.String)">
+            <summary>
+            Записать информационное действие в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteAction(System.String)">
+            <summary>
+            Записать обычное действие в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteError(System.String)">
+            <summary>
+            Записать ошибку в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteException(System.Exception,System.String,System.Object[])">
+            <summary>
+            Записать исключение в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteLine(System.String)">
+            <summary>
+            Записать строку в журнал
+            </summary>
+        </member>
+        <member name="M:Utils.LogStub.WriteBreak">
+            <summary>
+            Записать разделитель в журнал
+            </summary>
+        </member>
+    </members>
+</doc>

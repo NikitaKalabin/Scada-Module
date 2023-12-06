@@ -69,7 +69,6 @@
     <Compile Include="DataTransfer\SchemeDTO.cs" />
     <Compile Include="ISchemeComp.cs" />
     <Compile Include="Model\BaseComponent.cs" />
-    <Compile Include="Model\ChartComponent.cs" />
     <Compile Include="Model\DataTypes\Actions.cs" />
     <Compile Include="Model\DataTypes\CompareOperators.cs" />
     <Compile Include="Model\DataTypes\Condition.cs" />

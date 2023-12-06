@@ -1,0 +1,1160 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaAdminCommon</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Admin.AdminPhrases">
+            <summary>
+            The common phrases for Administrator.
+            <para>Общие фразы Администратора.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Config.AdminSettings">
+            <summary>
+            Administrator settings.
+            <para>Настройки Администратора.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Config.AdminSettings.DefFileName">
+            <summary>
+            The default settings file name.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.AdminSettings.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.AdminSettings.PathOptions">
+            <summary>
+            Gets the external application path options.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.AdminSettings.ChannelOptions">
+            <summary>
+            Gets the channel generation options.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.AdminSettings.FileAssociations">
+            <summary>
+            Gets the associations between file extensions and editors.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.AdminSettings.SetToDefault">
+            <summary>
+            Sets the default values.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.AdminSettings.Load(System.String,System.String@)">
+            <summary>
+            Loads the settings from the specified file.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.AdminSettings.Save(System.String,System.String@)">
+            <summary>
+            Saves the settings to the specified file.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Config.ChannelOptions">
+            <summary>
+            Represents the channel generation options.
+            <para>Представляет параметры генерации каналов.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.ChannelOptions.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.ChannelOptions.CnlMult">
+            <summary>
+            Gets or sets the multiplicity of the first channel of a device.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.ChannelOptions.CnlShift">
+            <summary>
+            Gets or sets the shift of the first channel of a device.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.ChannelOptions.CnlGap">
+            <summary>
+            Gets or sets the gap between channel numbers of different devices.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.ChannelOptions.PrependDeviceName">
+            <summary>
+            Gets or sets a value indicating whether to prepend a device name in channel names.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.ChannelOptions.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the options from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.ChannelOptions.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the options into the XML node.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Config.PathOptions">
+            <summary>
+            Represents the location options of external applications.
+            <para>Представляет параметры расположения внешних приложений.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.PathOptions.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.PathOptions.ServerDir">
+            <summary>
+            Gets or sets the directory of the Server application.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Config.PathOptions.CommDir">
+            <summary>
+            Gets or sets the directory of the Communicator application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.PathOptions.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the options from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Config.PathOptions.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the options into the XML node.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.AdminUtils">
+            <summary>
+            The class contains utility methods for Administrator and its libraries.
+            <para>Класс, содержащий вспомогательные методы для Администратора и его библиотек.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.AdminUtils.AppVersion">
+            <summary>
+            Version of Administrator.
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.AdminUtils.ProjectExt">
+            <summary>
+            Extension of a project file.
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.AdminUtils.MaxCnlNum">
+            <summary>
+            The maximum channel number for input and output channels.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.AdminUtils.NameIsValid(System.String)">
+            <summary>
+            Validates the name of a project item.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.AdminDirs">
+            <summary>
+            Directories of the Administrator application.
+            <para>Директории приложения Администратор.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.AdminDirs.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.AdminDirs.ExeDir">
+            <summary>
+            Gets the directory of the executable file.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.AdminDirs.ConfigDir">
+            <summary>
+            Gets the directory of the application configuration.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.AdminDirs.LangDir">
+            <summary>
+            Gets the directory of language files.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.AdminDirs.LogDir">
+            <summary>
+            Gets the directory of log files.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.AdminDirs.TempDir">
+            <summary>
+            Gets the directory of temporary files.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.AdminDirs.TemplateDir">
+            <summary>
+            Gets the directory of project templates.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.AdminDirs.Init(System.String)">
+            <summary>
+            Initializes the directories based on the directory of the executable file.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.BaseTableFormat">
+            <summary>
+            Specifies the file formats of the configuration database table.
+            <para>Задает форматы файлов таблиц базы конфигурации.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.BaseTableFormat.DAT">
+            <summary>
+            Runtime tables
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.BaseTableFormat.XML">
+            <summary>
+            Project tables
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.BaseTableFormat.CSV">
+            <summary>
+            Comma-separated values
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Deployment.DeploymentProfile">
+            <summary>
+            Deployment profile.
+            <para>Профиль развёртывания.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentProfile.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentProfile.InstanceID">
+            <summary>
+            Gets or set the reference to the instance to which the profile belongs.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentProfile.Name">
+            <summary>
+            Gets or sets the profile name.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentProfile.WebUrl">
+            <summary>
+            Gets or sets the web application address.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentProfile.ConnectionSettings">
+            <summary>
+            Gets the connection settings.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentProfile.DownloadSettings">
+            <summary>
+            Gets the download settings.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentProfile.UploadSettings">
+            <summary>
+            Gets the upload settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentProfile.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the settings from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentProfile.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the settings into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentProfile.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Deployment.DeploymentSettings">
+            <summary>
+            Deployment settings.
+            <para>Настройки развёртывания.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Deployment.DeploymentSettings.DefFileName">
+            <summary>
+            The default settings file name.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentSettings.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentSettings.Profiles">
+            <summary>
+            Gets the deployment profiles.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentSettings.ProjectDir">
+            <summary>
+            Gets or sets the project directory which contains the settings.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentSettings.FileName">
+            <summary>
+            Gets the settings file name.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.DeploymentSettings.Loaded">
+            <summary>
+            Gets a value indicating whether the settings are loaded.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentSettings.Load(System.String@)">
+            <summary>
+            Loads the deployment settings from the project directory if needed.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentSettings.Save(System.String@)">
+            <summary>
+            Saves the deployment settings to the project directory.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentSettings.GetExistingProfileNames(System.String)">
+            <summary>
+            Gets the existing profile names.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DeploymentSettings.RemoveProfilesByInstance(System.Int32,System.Boolean@)">
+            <summary>
+            Removes profiles belong to the specified instance.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Deployment.DownloadSettings">
+            <summary>
+            Configuration download settings.
+            <para>Настройки скачивания конфигурации с сервера.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.DownloadSettings.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Deployment.TransferSettings">
+            <summary>
+            Configuration transfer settings.
+            <para>Настройки передачи конфигурации.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.TransferSettings.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IncludeBase">
+            <summary>
+            Gets or sets a value indicating whether to transfer the configuration database.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IncludeInterface">
+            <summary>
+            Gets or sets a value indicating whether to transfer interface files.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IncludeServer">
+            <summary>
+            Gets or sets a value indicating whether to transfer Server settings.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IncludeComm">
+            <summary>
+            Gets or sets a value indicating whether to transfer Communicator settings.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IncludeWeb">
+            <summary>
+            Gets or sets a value indicating whether to transfer Webstation settings.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IgnoreRegKeys">
+            <summary>
+            Gets or sets a value indicating whether to ignore registration keys.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.TransferSettings.IgnoreWebStorage">
+            <summary>
+            Gets or sets a value indicating whether to ignore Webstation storage.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.TransferSettings.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the settings from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.TransferSettings.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the settings into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.TransferSettings.ToConfigOpions">
+            <summary>
+            Convert this transfer settings to Agent transfer options.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Deployment.UploadSettings">
+            <summary>
+            Configuration upload settings.
+            <para>Настройки передачи конфигурации на сервер.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.UploadSettings.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.UploadSettings.RestartServer">
+            <summary>
+            Gets or sets a value indicating whether to restart Server after upload is complete.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.UploadSettings.RestartComm">
+            <summary>
+            Gets or sets a value indicating whether to restart Communicator after upload is complete.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Deployment.UploadSettings.ObjNums">
+            <summary>
+            Gets the object numbers to filter the uploaded configuration.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.UploadSettings.SetObjNums(System.Collections.Generic.ICollection{System.Int32})">
+            <summary>
+            Sets the object numbers.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.UploadSettings.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the settings from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Deployment.UploadSettings.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the settings into the XML node.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.ImportExport">
+            <summary>
+            Import and export configuration.
+            <para>Импорт и экспорт конфигурации.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.ImportExport.ProjectInfoEntryName">
+            <summary>
+            The name of the archive entry that contains project information.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.ExtractArchive(System.String,System.String)">
+            <summary>
+            Extracts the specified archive.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.MergeDirectory(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Recursively moves the files overwriting the existing files.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.MergeDirectory(System.String,System.String)">
+            <summary>
+            Moves the files overwriting the existing files.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.ImportBaseTable(System.Data.DataTable,Scada.Data.Tables.IBaseTable)">
+            <summary>
+            Imports the configuration database table.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.PackDirectory(System.IO.Compression.ZipArchive,System.String,System.String,System.Boolean)">
+            <summary>
+            Adds the directory content to the archive.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.PackFiles(System.IO.Compression.ZipArchive,System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Adds the specified files to the archive.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.GetFilteredTable``1(Scada.Data.Tables.IBaseTable,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Gets a new table from the source table filtered by objects.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.GetInterfaceFiles(Scada.Data.Tables.BaseTable{Scada.Data.Entities.Interface},System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Gets the existing interface files filtered by objects.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.ImportArchive(System.String,Scada.Admin.Project.ScadaProject,Scada.Admin.Project.Instance,Scada.Agent.ConfigParts@)">
+            <summary>
+            Imports the configuration from the specified archive.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.ExportToArchive(System.String,Scada.Admin.Project.ScadaProject,Scada.Admin.Project.Instance,Scada.Admin.Deployment.UploadSettings)">
+            <summary>
+            Exports the configuration to the specified archive.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.ImportBaseTable(System.String,Scada.Admin.BaseTableFormat,Scada.Data.Tables.IBaseTable,System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Exports the configuration database table to the file.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.ImportExport.ExportBaseTable(System.String,Scada.Admin.BaseTableFormat,Scada.Data.Tables.IBaseTable,System.Int32,System.Int32)">
+            <summary>
+            Exports the configuration database table to the file.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.ConfigBase">
+            <summary>
+            The configuration database and the basis of a configuration.
+            <para>База данных конфигурации и основа конфигурации.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.CmdTypeTable">
+            <summary>
+            Gets the command type table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.CmdValTable">
+            <summary>
+            Gets the command value table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.CnlTypeTable">
+            <summary>
+            Gets the input channel type table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.CommLineTable">
+            <summary>
+            Gets the communication line table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.CtrlCnlTable">
+            <summary>
+            Gets the output channel table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.EvTypeTable">
+            <summary>
+            Gets the event type table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.FormatTable">
+            <summary>
+            Gets the format table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.FormulaTable">
+            <summary>
+            Gets the formula table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.InCnlTable">
+            <summary>
+            Gets the input channel table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.InterfaceTable">
+            <summary>
+            Gets the interface table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.KPTable">
+            <summary>
+            Gets the device table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.KPTypeTable">
+            <summary>
+            Gets the device type table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.ObjTable">
+            <summary>
+            Gets the object (location) table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.ParamTable">
+            <summary>
+            Gets the quantity table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.RightTable">
+            <summary>
+            Gets the right table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.RoleTable">
+            <summary>
+            Gets the role table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.RoleRefTable">
+            <summary>
+            Gets the role inheritance table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.UnitTable">
+            <summary>
+            Gets the unit table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.UserTable">
+            <summary>
+            Gets the user table.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.AllTables">
+            <summary>
+            Gets all the tables of the configuration database.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.BaseDir">
+            <summary>
+            Gets or sets the directory of the configuration database files.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.Loaded">
+            <summary>
+            Gets a value indicating whether the tables are loaded.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ConfigBase.Modified">
+            <summary>
+            Gets or sets a value indicating whether at least one table was modified.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.CreateAllTables">
+            <summary>
+            Creates all tables of the configuration database.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.AddRelations">
+            <summary>
+            Adds relations between the tables.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.AddRelation(Scada.Data.Tables.IBaseTable,Scada.Data.Tables.IBaseTable,System.String)">
+            <summary>
+            Adds a relation to the configuration database.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.Load(System.String@)">
+            <summary>
+            Loads the configuration database if needed.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.Save(System.String@)">
+            <summary>
+            Saves all the modified tables of the configuration database.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ConfigBase.SaveTable(Scada.Data.Tables.IBaseTable,System.String@)">
+            <summary>
+            Saves the specified table of the configuration database.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.Interface">
+            <summary>
+            Metadata about interface files
+            <para>Метаданные о файлах интерфейса</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Interface.InterfaceDir">
+            <summary>
+            Gets or sets the directory of the interface files.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.Instance">
+            <summary>
+            Represents a system instance that consists of one or more applications.
+            <para>Представляет экземпляр системы, состоящий из одного или нескольких приложений.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Project.Instance.DefaultName">
+            <summary>
+            The default instance name.
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Project.Instance.instnaceDir">
+            <summary>
+            The directory of the instance files
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.ID">
+            <summary>
+            Gets or sets the instance identifier.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.Name">
+            <summary>
+            Gets or sets the name of the instance.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.ServerApp">
+            <summary>
+            Gets the object represents the Server application.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.CommApp">
+            <summary>
+            Gets the object represents the Communicator application.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.WebApp">
+            <summary>
+            Gets the object represents the Webstation application.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.DeploymentProfile">
+            <summary>
+            Gets or sets the name of the deployment profile.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.InstanceDir">
+            <summary>
+            Gets or sets the directory of the instance files.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.Instance.AppSettingsLoaded">
+            <summary>
+            Gets a value indicating whether the application settings are loaded.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the instance configuration from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the instance configuration into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.LoadAppSettings(System.String@)">
+            <summary>
+            Loads the application settings if needed.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.CreateInstanceFiles(System.String@)">
+            <summary>
+            Creates all project files required for the instance.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.DeleteInstanceFiles(System.String@)">
+            <summary>
+            Deletes all project files of the instance.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.Instance.Rename(System.String,System.String@)">
+            <summary>
+            Renames the instance.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.ProjectVersion">
+            <summary>
+            Represents a project version.
+            <para>Представляет версию проекта.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Project.ProjectVersion.Default">
+            <summary>
+            The default project version.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ProjectVersion.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the structure.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ProjectVersion.Major">
+            <summary>
+            Gets or sets the major version.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ProjectVersion.Minor">
+            <summary>
+            Gets or sets the minor version.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ProjectVersion.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ProjectVersion.Parse(System.String)">
+            <summary>
+            Converts the string representation to a version.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.ScadaApp">
+            <summary>
+            Represents an application.
+            <para>Представляет приложение.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaApp.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaApp.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the application is present in the instance.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaApp.AppDir">
+            <summary>
+            Gets or sets the directory of the application files.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaApp.LoadFromXml(System.Xml.XmlElement)">
+            <summary>
+            Loads the application configuration from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaApp.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the application configuration into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaApp.CreateAppFiles(System.String@)">
+            <summary>
+            Creates project files required for the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaApp.DeleteAppFiles(System.String@)">
+            <summary>
+            Delete project files of the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaApp.ClearSettings">
+            <summary>
+            Clears the application settings.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.ScadaProject">
+            <summary>
+            Represents a project of a configuration.
+            <para>Представляет проект конфигурации.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Project.ScadaProject.DefaultName">
+            <summary>
+            The default project name.
+            </summary>
+        </member>
+        <member name="F:Scada.Admin.Project.ScadaProject.fileName">
+            <summary>
+            The project file name.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.Name">
+            <summary>
+            Gets or sets the name of the project.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.FileName">
+            <summary>
+            Gets the project file name.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.ProjectDir">
+            <summary>
+            Gets the project directory.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.Version">
+            <summary>
+            Gets or sets the project version.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.Description">
+            <summary>
+            Gets or sets the project description.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.ConfigBase">
+            <summary>
+            Gets the configuration database.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.Interface">
+            <summary>
+            Gets the interface metadata.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.Instances">
+            <summary>
+            Gets the instances including the appropriate settings of the applications.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ScadaProject.DeploymentSettings">
+            <summary>
+            Gets the deployment settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.SetToDefault">
+            <summary>
+            Sets the default values.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Clear">
+            <summary>
+            Clears the project properties.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.GetProjectFileName(System.String,System.String)">
+            <summary>
+            Gets a file name to store a project.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.CopyDirectory(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Copies the content of the directory.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.GetMaxInstanceID">
+            <summary>
+            Gets the maximum ID of existing instances.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Load(System.String)">
+            <summary>
+            Loads the project from the specified file.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Load(System.String,System.String@)">
+            <summary>
+            Tries to load the project from the specified file.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Save(System.String)">
+            <summary>
+            Saves the project to the specified file.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Save(System.String,System.String@)">
+            <summary>
+            Tries to save the project to the specified file.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Rename(System.String,System.String@)">
+            <summary>
+            Renames the instance.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.CreateInstance(System.String)">
+            <summary>
+            Creates a new instance that is not added to any project.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.ContainsInstance(System.String)">
+            <summary>
+            Determines whether an instance is in the project.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.GetInstanceNames(System.Boolean,System.String)">
+            <summary>
+            Gets the existing instance names.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.GetInfo">
+            <summary>
+            Gets the project info.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.Create(System.String,System.String,System.String,Scada.Admin.Project.ScadaProject@,System.String@)">
+            <summary>
+            Creates a new project with the specified parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ScadaProject.LoadDescription(System.String,System.String@,System.String@)">
+            <summary>
+            Loads the project description from the specified project file.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.CommApp">
+            <summary>
+            Represents the Communicator application.
+            <para>Представляет приложение Коммуникатор.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.CommApp.Settings">
+            <summary>
+            Gets the settings of the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.GetSettingsPath">
+            <summary>
+            Gets the full file name of the application settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.GetConfigDir">
+            <summary>
+            Gets the directory of the application configuration.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.LoadSettings(System.String@)">
+            <summary>
+            Loads the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.SaveSettings(System.String@)">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.CreateAppFiles(System.String@)">
+            <summary>
+            Creates project files required for the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.DeleteAppFiles(System.String@)">
+            <summary>
+            Delete project files of the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.ClearSettings">
+            <summary>
+            Clears the application settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.CommApp.GetAppDir(System.String)">
+            <summary>
+            Gets the directory of the application.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.WebApp">
+            <summary>
+            Represents the Webstation application
+            <para>Представляет приложение Вебстанция</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.GetConfigDir">
+            <summary>
+            Gets the directory of the application configuration.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.GetStorageDir">
+            <summary>
+            Gets the directory of the application storage.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.CreateAppFiles(System.String@)">
+            <summary>
+            Creates project files required for the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.DeleteAppFiles(System.String@)">
+            <summary>
+            Delete project files of the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.ClearSettings">
+            <summary>
+            Clears the application settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.WebApp.GetAppDir(System.String)">
+            <summary>
+            Gets the directory of the application.
+            </summary>
+        </member>
+        <member name="T:Scada.Admin.Project.ServerApp">
+            <summary>
+            Represents the Server application.
+            <para>Представляет приложение Сервер.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Admin.Project.ServerApp.Settings">
+            <summary>
+            Gets the settings of the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.GetSettingsPath">
+            <summary>
+            Gets the full file name of the application settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.GetConfigDir">
+            <summary>
+            Gets the directory of the application configuration.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.LoadSettings(System.String@)">
+            <summary>
+            Loads the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.SaveSettings(System.String@)">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.CreateAppFiles(System.String@)">
+            <summary>
+            Creates project files required for the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.DeleteAppFiles(System.String@)">
+            <summary>
+            Delete project files of the application.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.ClearSettings">
+            <summary>
+            Clears the application settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Admin.Project.ServerApp.GetAppDir(System.String)">
+            <summary>
+            Gets the directory of the application.
+            </summary>
+        </member>
+    </members>
+</doc>

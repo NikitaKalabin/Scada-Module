@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AddressBook</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Comm.Devices.AB.AbUtils">
+            <summary>
+            The class contains utility methods for the address book
+            <para>Класс, содержащий вспомогательные методы для адресной книги</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AbUtils.LoadAddressBook(System.String,Utils.Log.WriteLineDelegate,Scada.Comm.Devices.AB.AddressBook@)">
+            <summary>
+            Загрузить адресную книгу из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AbUtils.GetAddressBook(System.String,System.Collections.Generic.SortedList{System.String,System.Object},Utils.Log.WriteLineDelegate)">
+            <summary>
+            Загрузить адресную книгу из файла или получить её из общих свойств линии связи Коммуникатора
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook">
+            <summary>
+            Address book
+            <para>Адресная книга</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook.AddressBookItem">
+            <summary>
+            Базовый класс элементов справочника
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.Order">
+            <summary>
+            Получить порядок сортировки типа элемента
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.Value">
+            <summary>
+            Получить или установить значение элемента
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.Parent">
+            <summary>
+            Получить или установить родительский узел
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.Children">
+            <summary>
+            Получить список дочерних узлов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.ToString">
+            <summary>
+            Получить строковое представление объекта
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.AddressBookItem.CompareTo(Scada.Comm.Devices.AB.AddressBook.AddressBookItem)">
+            <summary>
+            Сравнить данный объект с заданным
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook.ContactGroup">
+            <summary>
+            Группа контактов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.ContactGroup.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.ContactGroup.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.ContactGroup.Name">
+            <summary>
+            Получить или установить имя группы
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.ContactGroup.Contacts">
+            <summary>
+            Получить контакты, упорядоченные по имени
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.ContactGroup.Order">
+            <summary>
+            Получить порядок сортировки типа элемента
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook.Contact">
+            <summary>
+            Контакт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Contact.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Contact.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Contact.Name">
+            <summary>
+            Получить или установить имя контакта
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Contact.ContactRecords">
+            <summary>
+            Получить записи контакта, упорядоченные по возрастанию
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Contact.PhoneNumbers">
+            <summary>
+            Получить телефонные номера
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Contact.Emails">
+            <summary>
+            Получить адреса электронной почты
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Contact.Order">
+            <summary>
+            Получить порядок сортировки типа элемента
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Contact.FillPhoneNumbers">
+            <summary>
+            Заполнить список телефонных номеров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Contact.FillEmails">
+            <summary>
+            Заполнить список адресов электронной почты
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook.ContactRecord">
+            <summary>
+            Запись контакта
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.ContactRecord.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook.PhoneNumber">
+            <summary>
+            Телефонный номер
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.PhoneNumber.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.PhoneNumber.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.PhoneNumber.Order">
+            <summary>
+            Получить порядок сортировки типа поля
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AddressBook.Email">
+            <summary>
+            Адрес электронной почты
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Email.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Email.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Email.Order">
+            <summary>
+            Получить порядок сортировки типа поля
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.AB.AddressBook.DefFileName">
+            <summary>
+            Имя файла адресной книги по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.ContactGroups">
+            <summary>
+            Получить группы контактов, упорядоченные по имени
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.AllContacts">
+            <summary>
+            Получить все контакты, упорядоченные по имени
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Scada#ITreeNode#Parent">
+            <summary>
+            Получить или установить родительский узел - он всегда равен null
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.AddressBook.Scada#ITreeNode#Children">
+            <summary>
+            Получить список дочерних узлов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Load(System.String,System.String@)">
+            <summary>
+            Загрузить адресную книгу из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.Save(System.String,System.String@)">
+            <summary>
+            Сохранить адресную книгу в файле
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.FindContactGroup(System.String)">
+            <summary>
+            Найти группу контактов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.FindContact(System.String)">
+            <summary>
+            Найти контакт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.FillAllContacts">
+            <summary>
+            Заполнить список всех контактов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.AddressBook.ToString">
+            <summary>
+            Получить строковое представление объекта
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.FrmAddressBook">
+            <summary>
+            Address book form
+            <para>Форма адресной книги</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.FrmAddressBook.Modified">
+            <summary>
+            Получить или установить признак изменения адресной книги
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.BuildTree">
+            <summary>
+            Построить дерево адресной книги
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.CreateContactGroupNode(Scada.Comm.Devices.AB.AddressBook.ContactGroup)">
+            <summary>
+            Создать узел дерева для группы контактов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.CreateContactNode(Scada.Comm.Devices.AB.AddressBook.Contact)">
+            <summary>
+            Создать узел дерева для контакта
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.CreatePhoneNumberNode(Scada.Comm.Devices.AB.AddressBook.ContactRecord)">
+            <summary>
+            Создать узел дерева для телефонного номера
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.CreateEmailNode(Scada.Comm.Devices.AB.AddressBook.ContactRecord)">
+            <summary>
+            Создать узел дерева для адреса электронной почты
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.FindInsertIndex``1(System.Collections.Generic.List{``0},System.Int32,System.Boolean@)">
+            <summary>
+            Найти индекс вставки элемента для сохранения упорядоченности списка
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.SetButtonsEnabled">
+            <summary>
+            Установить доступность кнопок
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.CheckEmail(System.String)">
+            <summary>
+            Проверить корректность формата адреса электронной почты
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.ShowDialog(Scada.Comm.AppDirs)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.AB.FrmAddressBook.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.AB.FrmAddressBook.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.AbPhrases">
+            <summary>
+            The phrases used by the address book
+            <para>Фразы, используемые адресной книгой</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.AB.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.AB.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

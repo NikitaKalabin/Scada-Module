@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Scada.Agent
+build_property.ProjectDir = C:\Users\User\Documents\SPE\repos2\scada\ScadaAgent\ScadaAgentCommon\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

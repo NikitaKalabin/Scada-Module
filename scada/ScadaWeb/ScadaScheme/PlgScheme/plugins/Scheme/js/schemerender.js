@@ -693,7 +693,6 @@ scada.scheme.DynamicTextRenderer.prototype.updateData = function (component, ren
 
 /********** Chart Renderer **********/
 
-// Chart renderer type extends scada.scheme.ComponentRenderer
 scada.scheme.ChartRenderer = function () {
     scada.scheme.ComponentRenderer.call(this);
 };
@@ -704,26 +703,170 @@ scada.scheme.ChartRenderer.constructor = scada.scheme.ChartRenderer;
 scada.scheme.ChartRenderer.prototype.createDom = function (component, renderContext) {
     var props = component.props;
 
-    var divComp = $("<div id='comp" + component.id + "'></div>");
+    var divComp = $("<div id='chart" + component.id + "'></div>");
     this.prepareComponent(divComp, component);
 
-    // create chart
-    var options = {
-        chart: {
-            type: props.ChartType
-        },
-        series: [{
-            data: props.Points
-        }],
-        ...props.Options
+    // Set div size
+    divComp.css({
+        width: props.Size.Width,
+        height: props.Size.Height
+    });
+
+    // Get the corresponding chart type
+    var chartTypeMap = {
+        0: "line",
+        1: "bar",
+        2: "area",
+        3: "pie",
+        4: "donut",
+        5: "radialBar",
+        6: "scatter",
+        7: "bubble",
+        8: "heatmap"
     };
 
-    var chart = new ApexCharts(divComp[0], options);
-    chart.render();
+    // Get the corresponding curve type
+    var curveStyleMap = {
+        0: 'straight',
+        1: 'smooth',
+        2: 'stepline'
+    };
+
+    // Create the chart options for ApexCharts
+    var options;
+
+    if (props.MaxValue != 0) {
+        var dataPoints = [];
+        var minPoints = [];
+        var maxPoints = [];
+
+        for (var i = 0; i < props.DataPoints.length; i++) {
+            var dataPair = {
+                x: props.Dates[i],
+                y: props.DataPoints[i]
+            };
+
+            var minPair = {
+                x: props.Dates[i],
+                y: props.MinValue
+            }
+
+            var maxPair = {
+                x: props.Dates[i],
+                y: props.MaxValue
+            }
+
+            dataPoints.push(dataPair);
+            minPoints.push(minPair);
+            maxPoints.push(maxPair);
+        }
+
+        console.log(dataPoints);
+
+        options = {
+            chart: {
+                type: "line",
+                height: "100%",
+                width: "100%"
+            },
+            series: [
+                {
+                    name: "Data",
+                    data: dataPoints
+                },
+                {
+                    name: "Min",
+                    data: minPoints
+                },
+                {
+                    name: "Max",
+                    data: maxPoints
+                }
+            ],
+            stroke: {
+                curve: curveStyleMap[props.CurveStyle]
+            }
+        };
+    } else
+    {
+        switch (props.ChartType) {
+            case 0: // line chart
+                options = {
+                    chart: {
+                        type: "line",
+                        height: "100%",
+                        width: "100%"
+                    },
+                    series: [{
+                        data: props.DataPoints
+                    }],
+                    stroke: {
+                        curve: curveStyleMap[props.CurveStyle]
+                    }
+                };
+                break;
+            case 1: // bar chart
+                options = {
+                    chart: {
+                        type: "bar",
+                        height: props.Size.Height,
+                        width: props.Size.Width
+                    },
+                    series: [{
+                        data: props.DataPoints
+                    }]
+                };
+                break;
+            case 2: // area chart
+                options = {
+                    chart: {
+                        type: "area",
+                        height: props.Size.Height,
+                        width: props.Size.Width
+                    },
+                    series: [{
+                        data: props.DataPoints
+                    }]
+                };
+                break;
+            default:
+                console.error("Invalid chart type:", props.ChartType);
+                return divComp;
+        }
+    }
+
+    // Logging for debugging purposes
+    console.log('component:', component);
+    console.log('ChartType:', props.ChartType);
+    console.log('DataPoints:', props.DataPoints);
+    console.log('chartTypeMap:', chartTypeMap);
+    console.log('ParsedChartType:', chartTypeMap[props.ChartType]);
+    console.log('Options:', options);
+
+    // Check if the DataPoints property is an array and is not empty
+    if (!Array.isArray(props.DataPoints) || props.DataPoints.length === 0) {
+        console.error('DataPoints is not an array or is empty:', props.DataPoints);
+        return divComp;
+    }
+
+        // Attach the chart to the DOM
+    component.dom = divComp;
+
+    // Check if the chart element is in the DOM
+    var checkInterval = setInterval(function() {
+        if (document.contains(divComp[0])) {
+            clearInterval(checkInterval);
+
+            // Create the chart
+            var chart = new ApexCharts(divComp[0], options);
+            chart.render();
+        } else {
+            console.error('Chart container is not in the DOM');
+        }
+    }, 100);
 
     return divComp;
 };
-
 
 
 /********** Static Picture Renderer **********/

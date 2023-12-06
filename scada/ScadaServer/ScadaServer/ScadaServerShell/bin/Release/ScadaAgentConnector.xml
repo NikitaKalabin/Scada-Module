@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaAgentConnector</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Agent.Connector.AgentWcfClient">
+            <summary>
+            Represents a client of the Agent service.
+            <para>Представляет клиента службы Агента.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Connector.AgentWcfClient.CheckConnectionSpan">
+            <summary>
+            The time span of checking connection.
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Connector.AgentWcfClient.client">
+            <summary>
+            The WCF service client.
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Connector.AgentWcfClient.connSettings">
+            <summary>
+            The connection settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Connector.AgentWcfClient.sessionID">
+            <summary>
+            The ID of the communication session.
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Connector.AgentWcfClient.activityDT">
+            <summary>
+            The timestamp of the last successful communication.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.#ctor(Scada.Agent.Connector.ConnectionSettings)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.AgentWcfClient.IsLocal">
+            <summary>
+            Gets a value indicating whether the connection is local.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.InitSvcClient">
+            <summary>
+            Initializes the WCF service client.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.Connect">
+            <summary>
+            Connects and authenticates with Agent
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.RestoreConnection">
+            <summary>
+            Restores a connection with Agent.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.RegisterActivity">
+            <summary>
+            Registers communication activity.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.CreateIV(System.Int64)">
+            <summary>
+            Creates an initialization vector based on the session ID.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.TestConnection(System.String@)">
+            <summary>
+            Tests the connection with Agent.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.ControlService(Scada.Agent.ServiceApp,Scada.Agent.ServiceCommand)">
+            <summary>
+            Sends the command to the service.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.GetServiceStatus(Scada.Agent.ServiceApp,Scada.Agent.ServiceStatus@)">
+            <summary>
+            Gets the current status of the specified service.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.GetAvailableConfig(Scada.Agent.ConfigParts@)">
+            <summary>
+            Gets available parts of the configuration.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.DownloadConfig(System.String,Scada.Agent.ConfigOptions)">
+            <summary>
+            Downloads the configuration to the file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.UploadConfig(System.String,Scada.Agent.ConfigOptions)">
+            <summary>
+            Uploads the configuration from the file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.ReadLog(Scada.Agent.RelPath,System.DateTime@,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Reads the log file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.ReadLog(Scada.Agent.RelPath,System.Int64,System.DateTime@,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Reads the rest of the log file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.AgentWcfClient.CreateCommSettings">
+            <summary>
+            Creates new settings for connecting to Server based on the connection settings of the Agent.
+            </summary>
+        </member>
+        <member name="T:Scada.Agent.Connector.ConnectionSettings">
+            <summary>
+            Specifies all settings required to make a connection to the Agent service.
+            <para>Задает все настройки, необходимые для подключения к службе Агента.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.ConnectionSettings.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.ConnectionSettings.Host">
+            <summary>
+            Gets or sets the computer name or IP address.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.ConnectionSettings.Port">
+            <summary>
+            Gets or sets the TCP port.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.ConnectionSettings.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.ConnectionSettings.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.ConnectionSettings.ScadaInstance">
+            <summary>
+            Gets or sets the system instance name.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.ConnectionSettings.SecretKey">
+            <summary>
+            Gets or sets the secret key.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.ConnectionSettings.SetToDefault">
+            <summary>
+            Sets the default values.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.ConnectionSettings.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the settings from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.ConnectionSettings.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the settings into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.ConnectionSettings.Clone">
+            <summary>
+            Clones the object.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.ConnectionSettings.Equals(Scada.Agent.Connector.ConnectionSettings,Scada.Agent.Connector.ConnectionSettings)">
+            <summary>
+            Determines whether two specified objects have the same value.
+            </summary>
+        </member>
+        <member name="T:Scada.Agent.Connector.IAgentClient">
+            <summary>
+            Interface that represents a client of the Agent service.
+            <para>Интерфейс, который представляет клиента службы Агента.</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.Connector.IAgentClient.IsLocal">
+            <summary>
+            Gets a value indicating whether the connection is local.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.TestConnection(System.String@)">
+            <summary>
+            Tests the connection with Agent.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.ControlService(Scada.Agent.ServiceApp,Scada.Agent.ServiceCommand)">
+            <summary>
+            Sends the command to the service.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.GetServiceStatus(Scada.Agent.ServiceApp,Scada.Agent.ServiceStatus@)">
+            <summary>
+            Gets the current status of the specified service.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.GetAvailableConfig(Scada.Agent.ConfigParts@)">
+            <summary>
+            Gets available parts of the configuration.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.DownloadConfig(System.String,Scada.Agent.ConfigOptions)">
+            <summary>
+            Downloads the configuration to the file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.UploadConfig(System.String,Scada.Agent.ConfigOptions)">
+            <summary>
+            Uploads the configuration from the file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.ReadLog(Scada.Agent.RelPath,System.DateTime@,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Reads the log file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.ReadLog(Scada.Agent.RelPath,System.Int64,System.DateTime@,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Reads the rest of the log file.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Connector.IAgentClient.CreateCommSettings">
+            <summary>
+            Creates new settings for connecting to Server based on the connection settings of the Agent.
+            </summary>
+        </member>
+    </members>
+</doc>

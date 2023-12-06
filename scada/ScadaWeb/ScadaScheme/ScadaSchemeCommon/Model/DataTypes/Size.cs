@@ -45,7 +45,7 @@ namespace Scada.Scheme.Model.DataTypes
         /// <summary>
         /// Размер по умолчанию
         /// </summary>
-        public static readonly Size Default = new Size(100, 100);
+        public static readonly Size Default = new Size(300, 150);
 
 
         /// <summary>
