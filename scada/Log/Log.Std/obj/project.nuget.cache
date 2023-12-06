@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Cv9yizoOfvlvP9+Y4R3/Y/psH+t5E7Nc5zuHdWcgwF3LXBAs1JYI0HXuTgSVtKbPh448hXOiAtftqnaqD0hDjQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\Documents\\SPE\\repos2\\scada\\Log\\Log.Std\\Log.Std.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

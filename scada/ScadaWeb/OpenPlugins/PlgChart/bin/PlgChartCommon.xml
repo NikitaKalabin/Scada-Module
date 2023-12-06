@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlgChartCommon</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Web.Plugins.Chart.ChartDataBuilder">
+            <summary>
+            Builds JavaScript of chart properties and data.
+            <para>Строит JavaScript свойств и данных графика.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.dataFormatter">
+            <summary>
+            Обеспечивает форматирование данных входных каналов.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.dataAccess">
+            <summary>
+            Объект для доступа к данным.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.cnlNums">
+            <summary>
+            Номера каналов отображаемого графика.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.startDate">
+            <summary>
+            Начальная дата отображаемых данных.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.period">
+            <summary>
+            Период отображаемых данных, дн.
+            </summary>
+            <remarks>Если период отрицательный, то используется интервал времени влево от начальной даты.</remarks>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.cnlPropsArr">
+            <summary>
+            Свойства каналов отображаемого графика.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.singleTrend">
+            <summary>
+            Одиночный тренд
+            </summary>
+            <remarks>Если количество каналов равно 1.</remarks>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartDataBuilder.trendBundle">
+            <summary>
+            Связка трендов
+            </summary>
+            <remarks>Если количество каналов больше 1.</remarks>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.#ctor(System.Int32[],System.DateTime,System.Int32,Scada.Client.DataAccess)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.ChartDataBuilder.StartDate">
+            <summary>
+            Получить нормализованную начальную дату отображаемых данных.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.ChartDataBuilder.EndDate">
+            <summary>
+            Получить нормализованную конечную дату отображаемых данных.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.ChartDataBuilder.Period">
+            <summary>
+            Получить нормализованный период отображаемых данных.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.GetQuantityName(Scada.Data.Models.InCnlProps)">
+            <summary>
+            Получить имя величины с указанием размерности.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.FillSingleTrend">
+            <summary>
+            Заполнить данные одиночного тренда.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.FillTrendBundle">
+            <summary>
+            Заполнить данные связки трендов.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.TrendPointToJs(System.Double,System.Int32,Scada.Data.Models.InCnlProps)">
+            <summary>
+            Преобразовать точку тренда в запись JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.GetTrendPointsJs(Scada.Data.Tables.Trend,Scada.Data.Models.InCnlProps)">
+            <summary>
+            Получить точки одиночного тренда в виде JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.GetTrendPointsJs(Scada.Web.Plugins.Chart.TrendBundle,System.Int32)">
+            <summary>
+            Получить точки связки трендов в виде JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.GetTimePointsJs(Scada.Data.Tables.Trend)">
+            <summary>
+            Получить метки времени одиночного тренда в виде JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.GetTimePointsJs(Scada.Web.Plugins.Chart.TrendBundle)">
+            <summary>
+            Получить метки времени связки трендов в виде JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.FillCnlProps">
+            <summary>
+            Fills the channel properies.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.FillData">
+            <summary>
+            Fills chart data for the normalized start date.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartDataBuilder.ToJs(System.Text.StringBuilder)">
+            <summary>
+            Converts the chart data to JavaScript.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.Chart.ChartUtils">
+            <summary>
+            The class contains utility methods for charts
+            <para>Класс, содержащий вспомогательные методы для графиков</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartUtils.ChartVersion">
+            <summary>
+            Версия графиков
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.ChartUtils.NormalChartCnt">
+            <summary>
+            Количество графиков, выше которого могут быть проблемы с производительностью
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartUtils.GetCnlSet(System.Collections.Generic.List{Scada.Web.Plugins.Chart.CnlViewPair})">
+            <summary>
+            Получить можество номеров канала из списка пар канал/представление
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartUtils.GetSelection(System.Collections.Generic.List{Scada.Web.Plugins.Chart.CnlViewPair},System.String@,System.String@)">
+            <summary>
+            Получить выбранные каналы и соответствующие им представления из списка
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartUtils.GetCnlViewPairsByView(System.Int32,Scada.Client.DataAccess,Scada.Web.Shell.UserViews)">
+            <summary>
+            Получить список пар канал/представление по ид. представления
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartUtils.FillViewList(System.Web.UI.WebControls.DropDownList,System.Int32,Scada.Web.Shell.UserViews)">
+            <summary>
+            Заполнить выпадающий список представлений
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.ChartUtils.AddUpdateModalHeightScript(System.Web.UI.Page)">
+            <summary>
+            Добавить на страницу скрипт обновления высоты диалогового окна
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.Chart.ChartPhrases">
+            <summary>
+            The phrases used by chart plugins
+            <para>Фразы, используемые плагинами графиков</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.Chart.CnlViewPair">
+            <summary>
+            Defines a input channel/view pair
+            <para>Определяет пару входной канал/представление</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.CnlViewPair.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.CnlViewPair.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.CnlViewPair.CnlNum">
+            <summary>
+            Получить или установить номер входного канала
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.CnlViewPair.ViewID">
+            <summary>
+            Получить или установить ид. представления
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.CnlViewPair.CnlName">
+            <summary>
+            Получить или установить наименование входного канала
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.CnlViewPair.Info">
+            <summary>
+            Получить или установить информацию о канале и представлении
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.CnlViewPair.FillInfo(Scada.Data.Models.InCnlProps,Scada.Web.Shell.UserViews)">
+            <summary>
+            Заполнить наименование канала и информацию
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.Chart.TrendBundle">
+            <summary>
+            Trend bundle that has a single timeline
+            <para>Связка трендов, имеющая единую шкалу времени</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.Chart.TrendBundle.Point">
+            <summary>
+            Точка по всем трендам с отметкой времени
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.TrendBundle.Point.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.TrendBundle.Point.#ctor(System.DateTime,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.TrendBundle.Point.DateTime">
+            <summary>
+            Получить метку времени
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.TrendBundle.Point.CnlData">
+            <summary>
+            Получить данные
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Plugins.Chart.TrendBundle.TimeDifference">
+            <summary>
+            Разность двух меток времени, менее которой они считаются равными, мс
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.TrendBundle.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.Chart.TrendBundle.Series">
+            <summary>
+            Получить временной ряд
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.TrendBundle.Init(Scada.Data.Tables.Trend[])">
+            <summary>
+            Инициализировать связку трендов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.Chart.TrendBundle.Init(Scada.Data.Tables.Trend[],System.DateTime)">
+            <summary>
+            Инициализировать связку трендов, включив в неё данные с указанного начального времени
+            </summary>
+        </member>
+    </members>
+</doc>

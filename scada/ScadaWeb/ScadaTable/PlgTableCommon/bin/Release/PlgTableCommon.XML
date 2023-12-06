@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlgTableCommon</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Table.TablePhrases">
+            <summary>
+            The phrases used by the table plugin and editor.
+            <para>Фразы, используемые плагином и редактором таблиц.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Table.TableUtils">
+            <summary>
+            The class contains utility methods for the tables.
+            <para>Класс, содержащий вспомогательные методы для таблиц.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Table.TableUtils.TableVersion">
+            <summary>
+            The tables version.
+            </summary>
+        </member>
+        <member name="T:Scada.Table.TableView">
+            <summary>
+            Table view.
+            <para>Табличное представление.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Table.TableView.Item">
+            <summary>
+            Элемент представления
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.Item.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.Item.#ctor(System.Int32,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Item.CnlNum">
+            <summary>
+            Получить или установить номер входного канала
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Item.CtrlCnlNum">
+            <summary>
+            Получить или установить номер канала управления
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Item.Hidden">
+            <summary>
+            Получить или установить признак, что элемент является скрытым
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Item.Caption">
+            <summary>
+            Получить или установить обозначение элемента
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Item.CnlProps">
+            <summary>
+            Получить или установить свойства входного канала элемента
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Item.CtrlCnlProps">
+            <summary>
+            Получить или установить свойства канала управления элемента
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.Items">
+            <summary>
+            Получить список элементов представления
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.VisibleItems">
+            <summary>
+            Получить список видимых элементов представления
+            </summary>
+            <remarks>Список заполняется при загрузке таблицы</remarks>
+        </member>
+        <member name="P:Scada.Table.TableView.Count">
+            <summary>
+            Получить количество элементов представления
+            </summary>
+        </member>
+        <member name="P:Scada.Table.TableView.VisibleCount">
+            <summary>
+            Получить количество видимых элементов представления
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.AddItem(Scada.Table.TableView.Item)">
+            <summary>
+            Добавить элемент в списки элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.LoadFromStream(System.IO.Stream)">
+            <summary>
+            Загрузить представление из потока
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.LoadFromFile(System.String,System.String@)">
+            <summary>
+            Загрузить представление из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.SaveToFile(System.String,System.String@)">
+            <summary>
+            Сохранить представление в файле
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.BindCnlProps(Scada.Data.Models.InCnlProps[])">
+            <summary>
+            Привязать свойства входных каналов к элементам представления
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.BindCtrlCnlProps(Scada.Data.Models.CtrlCnlProps[])">
+            <summary>
+            Привязать свойства каналов управления к элементам представления
+            </summary>
+        </member>
+        <member name="M:Scada.Table.TableView.Clear">
+            <summary>
+            Очистить представление
+            </summary>
+        </member>
+    </members>
+</doc>

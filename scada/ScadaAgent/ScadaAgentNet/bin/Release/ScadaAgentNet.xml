@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaAgentNet</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Agent.Net.AgentManager">
+            <summary>
+            Agent manager
+            <para>Менеджер агента</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentManager.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentManager.OnUnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Вывести информацию о необработанном исключении в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentManager.StartWcfService">
+            <summary>
+            Запустить WCF-службу для взаимодействия с агентом
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentManager.StopWcfService">
+            <summary>
+            Остановить WCF-службу, взаимодействующую с веб-интерфейсом
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentManager.StartAgent">
+            <summary>
+            Запустить агента
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentManager.StopAgent">
+            <summary>
+            Остановить агента
+            </summary>
+        </member>
+        <member name="T:Scada.Agent.Net.AgentSvc">
+            <summary>
+            WCF service for interacting with the agent
+            <para>WCF-сервис для взаимодействия с агентом</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.AgentSvc.ReceiveBufSize">
+            <summary>
+            Размер буфера для приёма файлов
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.AgentSvc.AppData">
+            <summary>
+            Данные приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.AgentSvc.Log">
+            <summary>
+            Журнал приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.AgentSvc.SessionManager">
+            <summary>
+            Менеджер сессий
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.AgentSvc.InstanceManager">
+            <summary>
+            Менеджер экземпляров систем
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.GetClientIP">
+            <summary>
+            Получить IP-адрес текущего подключения
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.TryGetSession(System.Int64,Scada.Agent.Engine.Session@)">
+            <summary>
+            Попытаться получить сессию по идентификатору
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.TryGetScadaInstance(System.Int64,Scada.Agent.Engine.ScadaInstance@)">
+            <summary>
+            Попытаться получить экземпляр системы по ид. сессии
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.ValidateMessage(Scada.Agent.Net.ConfigUploadMessage)">
+            <summary>
+            Проверить сообщение для загрузки конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.ReceiveFile(System.IO.Stream,System.String)">
+            <summary>
+            Принять файл
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.CreateSession(System.Int64@)">
+            <summary>
+            Создать новую сессию
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.Login(System.Int64,System.String,System.String,System.String,System.String@)">
+            <summary>
+            Войти в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.IsLoggedOn(System.Int64)">
+            <summary>
+            Проверить, что пользователь авторизован
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.ControlService(System.Int64,Scada.Agent.ServiceApp,Scada.Agent.ServiceCommand)">
+            <summary>
+            Управлять службой
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.GetServiceStatus(System.Int64,Scada.Agent.ServiceApp,Scada.Agent.ServiceStatus@)">
+            <summary>
+            Получить статус службы
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.GetAvailableConfig(System.Int64,Scada.Agent.ConfigParts@)">
+            <summary>
+            Получить доступные части конфигурации экземпляра системы
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.DownloadConfig(System.Int64,Scada.Agent.ConfigOptions)">
+            <summary>
+            Скачать конфигурацию
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.UploadConfig(Scada.Agent.Net.ConfigUploadMessage)">
+            <summary>
+            Загрузить конфигурацию
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.PackConfig(System.Int64,System.String,Scada.Agent.ConfigOptions)">
+            <summary>
+            Упаковать конфигурацию в архив
+            </summary>
+            <remarks>Метод для получения конфигурации локально</remarks>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.UnpackConfig(System.Int64,System.String,Scada.Agent.ConfigOptions)">
+            <summary>
+            Распаковать архив конфигурации
+            </summary>
+            <remarks>Метод для передачи конфигурации локально</remarks>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.Browse(System.Int64,Scada.Agent.RelPath,System.Collections.Generic.ICollection{System.String}@,System.Collections.Generic.ICollection{System.String}@)">
+            <summary>
+            Обзор директории
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.GetFileAgeUtc(System.Int64,Scada.Agent.RelPath)">
+            <summary>
+            Получить дату и время изменения файла (UTC)
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.DownloadFile(System.Int64,Scada.Agent.RelPath)">
+            <summary>
+            Скачать файл
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.AgentSvc.DownloadFileRest(System.Int64,Scada.Agent.RelPath,System.Int64)">
+            <summary>
+            Скачать часть файла с заданной позиции
+            </summary>
+        </member>
+        <member name="T:Scada.Agent.Net.ConfigUploadMessage">
+            <summary>
+            Message for uploading the configuration
+            <para>Сообщение для загрузки конфигурации</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.ConfigUploadMessage.SessionID">
+            <summary>
+            Идентификатор сессии
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.ConfigUploadMessage.ConfigOptions">
+            <summary>
+            Параметры передачи конфигурации
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.Net.ConfigUploadMessage.Stream">
+            <summary>
+            Поток данных конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.Net.ConfigUploadMessage.Dispose">
+            <summary>
+            Очистить ресурсы объекта
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,914 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaServerEngine</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Server.Engine.Calculator">
+            <summary>
+            Channel calculator 
+            <para>Калькулятор каналов</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Calculator.CalcCnlDataDelegate">
+            <summary>
+            Делегат вычисления данных входного канала
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Calculator.CalcCmdValDelegate">
+            <summary>
+            Делегат вычисления значения стандартной команды
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Calculator.CalcCmdDataDelegate">
+            <summary>
+            Делегат вычисления данных бинарной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.#ctor(Scada.Server.Engine.MainLogic)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.AddCnlFormulaSource(System.Int32,System.String)">
+            <summary>
+            Добавить исходный код формулы входного канала
+            </summary>
+            <remarks>
+            Требуется одно или два выражения на языке C#, разделённые точкой с запятой,
+            для вычисления значения и статуса канала соответственно</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.AddCtrlCnlStandardFormulaSource(System.Int32,System.String)">
+            <summary>
+            Добавить исходный код формулы канала управления для стандартной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.AddCtrlCnlBinaryFormulaSource(System.Int32,System.String)">
+            <summary>
+            Добавить исходный код формулы канала управления для бинарной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.AddAuxFormulaSource(System.String)">
+            <summary>
+            Добавить исходный код вспомогательной формулы
+            </summary>
+            <remarks>Требуется исходный код члена класса на языке C#</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.CompileSource">
+            <summary>
+            Компилировать исходный код формул калькулятора
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.GetCalcCnlData(System.Int32)">
+            <summary>
+            Получить метод вычисления данных входного канала
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.GetCalcCmdVal(System.Int32)">
+            <summary>
+            Получить метод вычисления значения стандартной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.GetCalcCmdData(System.Int32)">
+            <summary>
+            Получить метод вычисления данных бинарной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Calculator.ClearFormulas">
+            <summary>
+            Очистить формулы
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Comm">
+            <summary>
+            Communication with clients
+            <para>Взаимодействие с клиентами</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Comm.Dirs">
+            <summary>
+            Директории на SCADA-Сервере
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.Cur">
+            <summary>
+            Директория текущего среза
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.Hr">
+            <summary>
+            Директория часовых срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.Min">
+            <summary>
+            Директория минутных срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.Ev">
+            <summary>
+            Директория событий
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.BaseDAT">
+            <summary>
+            Директория базы конфигурации в формате DAT
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.Itf">
+            <summary>
+            Директория интерфейса (таблиц, схем и т.п.)
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.CurCopy">
+            <summary>
+            Директория копии текущего среза
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.HrCopy">
+            <summary>
+            Директория копий часовых срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.MinCopy">
+            <summary>
+            Директория копий минутных срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.Dirs.EvCopy">
+            <summary>
+            Директория копий событий
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.DirNames">
+            <summary>
+            Наименования директорий
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Comm.ClientInfo">
+            <summary>
+            Информация о подключенном клиенте
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ClientInfo.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ClientInfo.#ctor(System.Net.Sockets.TcpClient)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.TcpClient">
+            <summary>
+            Получить клиента TCP-соединения
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.NetStream">
+            <summary>
+            Получить поток данных TCP-соединения
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.Address">
+            <summary>
+            Получить IP-адрес компьютера клиента
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.Authenticated">
+            <summary>
+            Получить или установить признак успешной аутентификации
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.UserName">
+            <summary>
+            Получить или установить имя пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.UserRoleID">
+            <summary>
+            Получить или установить идентификатор роли пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.ActivityDT">
+            <summary>
+            Получить или установить дату и время последней активности
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.CmdList">
+            <summary>
+            Получить список команд ТУ
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.Dir">
+            <summary>
+            Получить или установить директорию запрашиваемого файла
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.FileName">
+            <summary>
+            Получить или установить имя запрашиваемого файла
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.FullFileNameInfo">
+            <summary>
+            Получить информацию о полном имени запрашиваемого файла
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.Comm.ClientInfo.FileStream">
+            <summary>
+            Получить или установить поток запрашиваемого файла
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ClientInfo.CloseFile">
+            <summary>
+            Закрыть запрашиваемый файл
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ClientInfo.ToString">
+            <summary>
+            Вернуть строковое представление соединения с клиентом
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Comm.CmdItem">
+            <summary>
+            Команда ТУ и связанная с ней информация для последующей обработки.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.TcpSendTimeout">
+            <summary>
+            Таймаут отправки данных по TCP, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.TcpReceiveTimeout">
+            <summary>
+            Таймаут приёма данных по TCP, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.InactiveTime">
+            <summary>
+            Время неактивности клиента до его отключения, с
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.CmdLifeTime">
+            <summary>
+            Время хранения команды ТУ в списке команд клиента, с
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.WaitForStop">
+            <summary>
+            Время ожидания остановки потока, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.InBufLenght">
+            <summary>
+            Длина буфера принимаемых данных
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.OutBufLenght">
+            <summary>
+            Длина буфера передаваемых данных
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.AppVersionBuf">
+            <summary>
+            Буфер для передачи номера версии приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.Comm.CmdDescrs">
+            <summary>
+            Описания команд
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.#ctor(Scada.Server.Engine.MainLogic)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ReadNetStream(System.Net.Sockets.NetworkStream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Считать информацию из потока данных TCP-соединения
+            </summary>
+            <remarks>Метод используется для считывания "большого" объёма данных</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.Disconnect(System.Net.Sockets.TcpClient,System.Net.Sockets.NetworkStream)">
+            <summary>
+            Разъединаться
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.GetCmdDescr(System.Byte)">
+            <summary>
+            Получить описание команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.Execute">
+            <summary>
+            Цикл взаимодействия с клиентами (метод вызывается в отдельном потоке)
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ReceiveData(Scada.Server.Engine.Comm.ClientInfo)">
+            <summary>
+            Принять и обработать данные от клиента
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ProcCommCommand(Scada.Server.Engine.Comm.ClientInfo,System.Byte,System.Int32)">
+            <summary>
+            Обработать команду протокола обмена данными
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.FillCommandProps(Scada.Data.Models.Command,Scada.Server.Engine.MainLogic.CtrlCnl)">
+            <summary>
+            Заполнить свойства команды ТУ на основе канала управления
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.GetFullFileName(Scada.Server.Engine.Comm.Dirs,System.String)">
+            <summary>
+            Получить полное имя файла
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.ProcCommands">
+            <summary>
+            Отправить команды ТУ из очереди на обработку.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.DoSendCommand(System.Int32,Scada.Data.Models.Command,System.Int32)">
+            <summary>
+            Непосредственно отправить команду ТУ на обработку.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.Start">
+            <summary>
+            Запустить взаимодействие с клиентами
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.Stop">
+            <summary>
+            Остановить взаимодействие с клиентами
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.GetClientsInfo">
+            <summary>
+            Получить информацию о подключенных клиентах
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.SendCommand(System.Int32,Scada.Data.Models.Command,System.Int32)">
+            <summary>
+            Отправить команду ТУ по заданному каналу управления
+            </summary>
+            <remarks>Метод вызывается серверными модулями</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.Comm.PassCommand(Scada.Data.Models.Command)">
+            <summary>
+            Передать команду ТУ подключенным клиентам
+            </summary>
+            <remarks>Метод вызывается серверными модулями</remarks>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic">
+            <summary>
+            Main server logic implementation
+            <para>Реализация основной логики сервера</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic.WorkStateNames">
+            <summary>
+            Наименования состояний работы
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WorkStateNames.#cctor">
+            <summary>
+            Статический конструктор
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.WorkStateNames.Normal">
+            <summary>
+            Норма
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.WorkStateNames.Stopped">
+            <summary>
+            Остановлен
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.WorkStateNames.Error">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.WaitForStop">
+            <summary>
+            Время ожидания остановки потока, мс
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.MinCacheCapacity">
+            <summary>
+            Вместимость кэша таблиц минутных срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.HourCacheCapacity">
+            <summary>
+            Вместимость кэша таблиц часовых срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.MinCacheStorePer">
+            <summary>
+            Период хранения кэша таблиц минутных срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.HourCacheStorePer">
+            <summary>
+            Период хранения кэша таблиц часовых срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.CacheClearSpan">
+            <summary>
+            Интервал очистки кэша таблиц срезов
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.BaseFiles">
+            <summary>
+            Имена файлов базы конфигурации в формате DAT
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.AppInfoFormat">
+            <summary>
+            Формат текста информации о работе приложения для вывода в файл
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.AppDirs">
+            <summary>
+            Получить директории приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.AppLog">
+            <summary>
+            Получить журнал приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.Settings">
+            <summary>
+            Получить настройки приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.ServerIsReady">
+            <summary>
+            Получить признак, что сервер готов к работе
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.LoadModules">
+            <summary>
+            Загрузить модули
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CheckDataDirs">
+            <summary>
+            Проверить существование директорий данных
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CheckBaseFiles">
+            <summary>
+            Проверить существование файлов базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ReadInCnls">
+            <summary>
+            Считать входные каналы из базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ReadCtrlCnls">
+            <summary>
+            Считать каналы управления из базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ReadUsers">
+            <summary>
+            Считать пользователей из базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ReadFormulas">
+            <summary>
+            Считать формулы из базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ReadBase">
+            <summary>
+            Считать необходимые данные из базы конфигурации
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.InitCalculator">
+            <summary>
+            Инициализировать калькулятор для вычисления данных входных каналов
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.Execute">
+            <summary>
+            Цикл работы сервера (метод вызывается в отдельном потоке)
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CalcNextTime(System.DateTime,System.Int32)">
+            <summary>
+            Вычислить следующее время записи срезов
+            </summary>
+            <remarks>Период задаётся в секундах</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CalcNearestTime(System.DateTime,System.Int32)">
+            <summary>
+            Вычислить ближайшее время записи срезов
+            </summary>
+            <remarks>Период задаётся в секундах</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetSrezTableCache(System.DateTime,Scada.Server.SnapshotType)">
+            <summary>
+            Получить кэш таблицы срезов, создав его при необходимости
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ClearSrezTableCache(System.Collections.Generic.SortedList{System.DateTime,Scada.Server.Engine.MainLogic.SrezTableCache},System.TimeSpan,System.Int32)">
+            <summary>
+            Очистить устаревшие данные кэша
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ClearArchive(System.String,System.String,System.DateTime)">
+            <summary>
+            Очистить устаревшие архивные данные
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteSrez(Scada.Server.SnapshotType,System.DateTime)">
+            <summary>
+            Записать срез в таблицы срезов, выбрав нужные таблицы
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteCurSrez(Scada.Data.Tables.SrezAdapter,System.DateTime)">
+            <summary>
+            Записать срез в таблицу текущего среза
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteArcSrez(Scada.Data.Tables.SrezTable,Scada.Data.Tables.SrezAdapter,System.DateTime,Scada.Server.Engine.MainLogic.AvgData[])">
+            <summary>
+            Записать срез в таблицу архивных (минутных или часовых) срезов
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteReceivedSrez(Scada.Data.Tables.SrezTable,Scada.Data.Tables.SrezAdapter,Scada.Data.Tables.SrezTableLight.Srez,System.DateTime,Scada.Data.Tables.SrezTableLight.Srez@)">
+            <summary>
+            Записать принятый срез в таблицу архивных срезов
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteEvent(System.String,Scada.Data.Tables.EventAdapter,Scada.Data.Tables.EventTableLight.Event)">
+            <summary>
+            Записать событие в таблицу событий
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteEvent(Scada.Data.Tables.EventTableLight.Event)">
+            <summary>
+            Записать событие в таблицы событий в соответствии с настройками, выполнить действия модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteEvents(System.Collections.Generic.List{Scada.Data.Tables.EventTableLight.Event})">
+            <summary>
+            Записать события из заданного списка и очистить список
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteEventCheck(System.String,Scada.Data.Tables.EventAdapter,System.Int32,System.Int32)">
+            <summary>
+            Записать квитирование события в таблицу событий
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CalcCnlData(Scada.Server.Engine.MainLogic.InCnl,Scada.Data.Tables.SrezTableLight.CnlData,Scada.Data.Tables.SrezTableLight.CnlData@)">
+            <summary>
+            Вычислить данные входного канала
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GenEvent(Scada.Server.Engine.MainLogic.InCnl,Scada.Data.Tables.SrezTableLight.CnlData,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Генерировать событие в соответствии со свойствами и данными входного канала
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CalcDRCnls(System.Collections.Generic.List{Scada.Server.Engine.MainLogic.InCnl},Scada.Data.Tables.SrezTableLight.Srez,System.Collections.Generic.List{Scada.Data.Tables.EventTableLight.Event})">
+            <summary>
+            Вычислить дорасчётные каналы
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.SetUnreliable(System.Collections.Generic.List{Scada.Data.Tables.EventTableLight.Event})">
+            <summary>
+            Установить недостоверность неактивных каналов
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.WriteInfo">
+            <summary>
+            Записать в файл информацию о работе приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnServerStart">
+            <summary>
+            Вызвать событие OnServerStart для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnServerStop">
+            <summary>
+            Вызвать событие OnServerStop для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnCurDataProcessing(Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Executes the OnCurDataProcessing method for the modules.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnCurDataProcessed(System.Int32[],Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Вызвать событие OnCurDataProcessed для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnCurDataCalculated(System.Int32[],Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Вызвать событие OnCurDataCalculated для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnArcDataProcessing(Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Executes the OnArcDataProcessing method for the modules.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnArcDataProcessed(System.Int32[],Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Вызвать событие OnArcDataProcessed для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnEventCreating(Scada.Data.Tables.EventTableLight.Event)">
+            <summary>
+            Вызвать событие OnEventCreating для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnEventCreated(Scada.Data.Tables.EventTableLight.Event)">
+            <summary>
+            Вызвать событие OnEventCreated для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnEventChecked(System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Вызвать событие OnEventChecked для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.RaiseOnCommandReceived(System.Int32,Scada.Data.Models.Command,System.Int32,System.Boolean@)">
+            <summary>
+            Вызвать событие OnCommandReceived для модулей
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.Init(System.String)">
+            <summary>
+            Инициализировать объект
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.Start">
+            <summary>
+            Запустить работу Сервера
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.Stop">
+            <summary>
+            Остановить работу Сервера
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetCtrlCnl(System.Int32)">
+            <summary>
+            Получить канал управления по идентификатору
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CheckUser(System.String,System.String,System.Int32@)">
+            <summary>
+            Проверить имя и пароль пользователя, получить его роль
+            </summary>
+            <remarks>Если пароль пустой, то он не проверяется</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetSnapshotTable(System.DateTime,Scada.Server.SnapshotType,System.Int32[])">
+            <summary>
+            Получить таблицу срезов, содержащую данные заданных каналов
+            </summary>
+            <remarks>Номера каналов должны быть упорядочены по возрастанию</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetCnlNums">
+            <summary>
+            Gets active channel numbers.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetCurSnapshot(System.Int32[])">
+            <summary>
+            Получить текущий срез, содержащий данные заданных каналов
+            </summary>
+            <remarks>Номера каналов должны быть упорядочены по возрастанию</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetSnapshot(System.DateTime,Scada.Server.SnapshotType,System.Int32[])">
+            <summary>
+            Получить срез, содержащий данные заданных каналов
+            </summary>
+            <remarks>Номера каналов должны быть упорядочены по возрастанию</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetAvailableSnapshots(System.DateTime,Scada.Server.SnapshotType)">
+            <summary>
+            Gets timestamps of snapshots available on the specified date.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ProcCurData(Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Обработать новые текущие данные
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ProcArcData(Scada.Data.Tables.SrezTableLight.Srez)">
+            <summary>
+            Обработать новые архивные данные
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.GetProcSrezCnlData(System.Int32)">
+            <summary>
+            Получить данные входного канала обрабатываемого среза
+            </summary>
+            <remarks>Метод используется для вычисления по формулам базы конфигурации</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.SetProcSrezCnlData(System.Int32,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Установить данные входного канала обрабатываемого среза
+            </summary>
+            <remarks>Метод используется для вычисления по формулам базы конфигурации</remarks>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ProcEvent(Scada.Data.Tables.EventTableLight.Event)">
+            <summary>
+            Обработать новое событие
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CheckEvent(System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Квитировать событие
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.ProcCommand(Scada.Server.Engine.MainLogic.CtrlCnl,Scada.Data.Models.Command,System.Int32,System.Boolean@)">
+            <summary>
+            Обработать команду ТУ
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic.InCnl">
+            <summary>
+            Входной канал
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.InCnl.CalcCnlData">
+            <summary>
+            Метод вычисления данных входного канала
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic.CtrlCnl">
+            <summary>
+            Канал управления
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.CtrlCnl.CalcCmdVal">
+            <summary>
+            Метод вычисления значения стандартной команды
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Engine.MainLogic.CtrlCnl.CalcCmdData">
+            <summary>
+            Метод вычисления данных бинарной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.CtrlCnl.Clone">
+            <summary>
+            Клонировать канал управления
+            </summary>
+            <remarks>Клонируются только свойства, используемые приложением</remarks>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic.User">
+            <summary>
+            Пользователь
+            </summary>
+            <remarks>Класс содержит только те свойства, которые используются приложением</remarks>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.User.Name">
+            <summary>
+            Получить или установить имя
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.User.Password">
+            <summary>
+            Получить или установить пароль
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.User.RoleID">
+            <summary>
+            Получить или установить идентификатор роли
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.User.Clone">
+            <summary>
+            Клонировать пользователя
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic.SrezTableCache">
+            <summary>
+            Кэш таблиц срезов
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.SrezTableCache.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.SrezTableCache.#ctor(System.DateTime)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.SrezTableCache.AccessDT">
+            <summary>
+            Получить или установить дату и время последнего доступа к объекту
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.SrezTableCache.Date">
+            <summary>
+            Получить дату таблиц среза
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.SrezTableCache.SrezTable">
+            <summary>
+            Получить таблицу срезов
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.SrezTableCache.SrezTableCopy">
+            <summary>
+            Получить таблицу копий срезов
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.SrezTableCache.SrezAdapter">
+            <summary>
+            Получить адаптер таблицы срезов
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.SrezTableCache.SrezCopyAdapter">
+            <summary>
+            Получить адаптер таблицы копий срезов
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.SrezTableCache.FillSrezTable(System.Boolean)">
+            <summary>
+            Заполнить таблицу срезов или таблицу копий срезов данного кэша
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.MainLogic.SrezTableCache.FillSrezTable(Scada.Data.Tables.SrezTable,Scada.Data.Tables.SrezAdapter)">
+            <summary>
+            Заполнить таблицу срезов
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.MainLogic.AvgData">
+            <summary>
+            Данные для усреднения
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.AvgData.Sum">
+            <summary>
+            Сумма значений канала
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Engine.MainLogic.AvgData.Cnt">
+            <summary>
+            Количество значений канала
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Engine.Manager">
+            <summary>
+            Program execution management
+            <para>Управление работой программы</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Manager.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Manager.OnUnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Вывести информацию о необработанном исключении в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Manager.StartService">
+            <summary>
+            Запустить службу
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Manager.StopService">
+            <summary>
+            Остановить службу
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Engine.Manager.ShutdownService">
+            <summary>
+            Отключить службу немедленно при выключении компьютера
+            </summary>
+        </member>
+    </members>
+</doc>

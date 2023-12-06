@@ -324,7 +324,7 @@
             listViewItem10.Tag = "Scada.Scheme.Model.DynamicPicture";
             listViewItem11.Group = listViewGroup2;
             listViewItem11.IndentCount = 1;
-            listViewItem11.Tag = "Scada.Scheme.Model.ChartComponent";
+            listViewItem11.Tag = "Scada.Scheme.Model.Chart";
             this.lvCompTypes.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem6,
             listViewItem7,

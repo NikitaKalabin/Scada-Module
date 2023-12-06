@@ -1,0 +1,830 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaCommShell</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Comm.Shell.Code.CommLineCommand">
+            <summary>
+            Sends commands to communication lines.
+            <para>Отправляет команды линиям связи.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommLineCommand.#ctor(Scada.Comm.Settings.CommLine,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommLineCommand.Send(Scada.Comm.CommLineCmd,System.String@)">
+            <summary>
+            Sends the command.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.CommMessage">
+            <summary>
+            Messages sent by Communicator forms.
+            <para>Сообщения, отправляемые формами Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.CommNodeType">
+            <summary>
+            Types of Communicator tree nodes.
+            <para>Типы узлов дерева Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.CommShell">
+            <summary>
+            Provides access to the Communicator shell.
+            <para>Обеспечивает доступ к оболочке Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.GetTreeViewImages">
+            <summary>
+            Gets the images used by the explorer.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.GetTreeNodes(Scada.Comm.Settings,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Gets the tree nodes for the explorer.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.CreateCommLineNode(Scada.Comm.Settings.CommLine,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Creates a node that represents the communication line.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.CreateCommLineNode(Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Creates a node and a corresponding object that represents the communication line.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.UpdateCommLineNode(System.Windows.Forms.TreeNode,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Updates the nodes that represent a communication line.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.UpdateNodeText(System.Windows.Forms.TreeNode)">
+            <summary>
+            Updates the text of the node and its subnodes.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShell.CreateDeviceNode(Scada.Comm.Settings.KP,Scada.Comm.Settings.CommLine,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Creates a node that represents the device.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.CommEnvironment">
+            <summary>
+            Represents an environment of the Communicator shell.
+            <para>Представляет среду оболочки Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Code.CommEnvironment.kpViews">
+            <summary>
+            The user interface of the drivers accessed by full file name.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommEnvironment.#ctor(Scada.Comm.AppDirs,Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Code.CommEnvironment.AppDirs">
+            <summary>
+            Gets the application directories.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Code.CommEnvironment.ErrLog">
+            <summary>
+            Gets the application error log.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Code.CommEnvironment.AgentClient">
+            <summary>
+            Gets or sets the client of the Agent service.
+            </summary>
+            <remarks>Null allowed.</remarks>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommEnvironment.GetDrivers">
+            <summary>
+            Gets information about available driver files.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommEnvironment.GetKPView(System.String)">
+            <summary>
+            Gets the user interface of the driver.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommEnvironment.GetKPView(System.String,System.Int32,Scada.Comm.Devices.KPView.KPProperties)">
+            <summary>
+            Gets the user interface of the particular device.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommEnvironment.TryGetKPView(Scada.Comm.Settings.KP,System.Boolean,System.Collections.Generic.SortedList{System.String,System.String},Scada.Comm.Devices.KPView@,System.String@)">
+            <summary>
+            Gets a user interface object for the device.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.CommShellPhrases">
+            <summary>
+            The phrases used in the Communicator shell.
+            <para>Фразы, используемые оболочкой Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.CommShellUtils">
+            <summary>
+            The class contains utility methods for the Communicator shell.
+            <para>Класс, содержащий вспомогательные методы для оболочки Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Code.CommShellUtils.CommandSender">
+            <summary>
+            The command sender specified in command files.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.CommShellUtils.DrawTabItem(System.Windows.Forms.ListBox,System.Windows.Forms.DrawItemEventArgs)">
+            <summary>
+            Draws a list box item representing a tab.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Code.SettingsConverter">
+            <summary>
+            Converts entities to Communicator settings.
+            <para>Преобразует сущности в настройки Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.SettingsConverter.CreateCommLine(Scada.Data.Entities.CommLine)">
+            <summary>
+            Creates a communication line settings based on the entity.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.SettingsConverter.CreateKP(Scada.Data.Entities.KP,Scada.Data.Tables.BaseTable{Scada.Data.Entities.KPType})">
+            <summary>
+            Creates a device settings based on the entity.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Code.SettingsConverter.Copy(Scada.Data.Entities.KP,Scada.Comm.Settings.KP,Scada.Data.Tables.BaseTable{Scada.Data.Entities.KPType})">
+            <summary>
+            Copies properties from the device entity to the device settings.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Controls.CtrlLineCustomParams">
+            <summary>
+            Control for editing custom parameters of a communication line.
+            <para>Элемент управления для редактирования пользовательских параметров линии связи.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Controls.CtrlLineCustomParams.CommLine">
+            <summary>
+            Gets or sets the communication line settings to edit.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.SetColumnNames">
+            <summary>
+            Sets the column names for the translation.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.SetControlsEnabled">
+            <summary>
+            Enables or disables the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.CreateCustomParamItem(System.String,System.String)">
+            <summary>
+            Creates a new list view item that represents a custom parameter.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.OnSettingsChanged">
+            <summary>
+            Raises a SettingsChanged event.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.ShowCustomParams(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Fills the displayed list with the specified custom parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.RetrieveCustomParams(System.Collections.Generic.SortedList{System.String,System.String})">
+            <summary>
+            Fills the specified list with actual custom parameters.
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Shell.Controls.CtrlLineCustomParams.SettingsChanged">
+            <summary>
+            Occurs when the settings changes.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Controls.CtrlLineCustomParams.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineCustomParams.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Controls.CtrlLineMainParams">
+            <summary>
+            Control for editing main parameters of a communication line.
+            <para>Элемент управления для редактирования основных параметров линии связи.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Controls.CtrlLineMainParams.CommCnlItem">
+            <summary>
+            List item representing a communication channel.
+            <para>Элемент списка, представляющий канал связи.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Controls.CtrlLineMainParams.CommLine">
+            <summary>
+            Gets or sets the communication line settings to edit.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.FillCommCnlTypes">
+            <summary>
+            Fills the list of communication channel types.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.DisplayCommCnlParams(Scada.Comm.Shell.Controls.CtrlLineMainParams.CommCnlItem)">
+            <summary>
+            Displays the communication channel parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.OnSettingsChanged">
+            <summary>
+            Raises a SettingsChanged event.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Shell.Controls.CtrlLineMainParams.SettingsChanged">
+            <summary>
+            Occurs when the settings changes.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Controls.CtrlLineMainParams.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineMainParams.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Controls.CtrlLineReqSequence">
+            <summary>
+            Control for editing main request sequence of a communication line.
+            <para>Элемент управления для редактирования последовательности опроса линии связи.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Controls.CtrlLineReqSequence.CommLine">
+            <summary>
+            Gets or sets the communication line settings to edit.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Controls.CtrlLineReqSequence.Environment">
+            <summary>
+            Gets or sets the application environment.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Controls.CtrlLineReqSequence.CustomParams">
+            <summary>
+            Gets or sets the working copy of the custom parameters.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.ValidateProps">
+            <summary>
+            Validates the required control properties.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.SetColumnNames">
+            <summary>
+            Sets the column names for the translation.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.SetControlsEnabled">
+            <summary>
+            Enables or disables the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.FillDriverComboBox">
+            <summary>
+            Fills the combo box that specifies a device driver.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.CreateDeviceItem(Scada.Comm.Settings.KP,System.Int32@)">
+            <summary>
+            Creates a new list view item that represents a device.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.DisplayDevice(Scada.Comm.Settings.KP)">
+            <summary>
+            Displays the device properties.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.AddDevice(Scada.Comm.Settings.KP)">
+            <summary>
+            Adds the device to the request sequence.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.GetSelectedItem(System.Windows.Forms.ListViewItem@,Scada.Comm.Settings.KP@)">
+            <summary>
+            Gets the selected list view item and the corresponding device.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.OnSettingsChanged">
+            <summary>
+            Raises a SettingsChanged event.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.OnCustomParamsChanged">
+            <summary>
+            Raises a CustomParamsChanged event.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Shell.Controls.CtrlLineReqSequence.SettingsChanged">
+            <summary>
+            Occurs when the settings changes.
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Shell.Controls.CtrlLineReqSequence.CustomParamsChanged">
+            <summary>
+            Occurs when the custom line parameters changes.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Controls.CtrlLineReqSequence.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Controls.CtrlLineReqSequence.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmCommonParams">
+            <summary>
+            Form for editing common parameters of Communicator settings.
+            <para>Форма редактирования общих параметров Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.#ctor(Scada.Comm.Settings.CommonParams)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Forms.FrmCommonParams.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmCommonParams.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmCommonParams.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmDeviceCommand">
+            <summary>
+            Form to send a telecontrol command.
+            <para>Форма для отправки команды ТУ.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceCommand.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceCommand.#ctor(Scada.Comm.Settings.KP,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceCommand.AdjustControls">
+            <summary>
+            Sets the properties of controls according to the command type.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmDeviceCommand.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceCommand.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceCommand.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmDeviceData">
+            <summary>
+            Form to monitor a device.
+            <para>Форма для мониторинга устройства.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceData.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceData.#ctor(Scada.Comm.Settings.KP,Scada.Comm.Settings.CommLine,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Forms.FrmDeviceData.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceData.InitRefresh">
+            <summary>
+            Initializes the device data refresh process.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceData.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmDeviceData.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceData.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDeviceData.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmDrivers">
+            <summary>
+            Form for viewing a list of Communicator drivers.
+            <para>Форма просмотра списка драйверов Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmDrivers.DriverItem">
+            <summary>
+            List item representing a driver.
+            <para>Элемент списка, представляющий драйвер.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.#ctor(Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Forms.FrmDrivers.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.FillDriverList">
+            <summary>
+            Fills the list of drivers.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.InitDriverItem(Scada.Comm.Shell.Forms.FrmDrivers.DriverItem)">
+            <summary>
+            Initializes the driver item if needed.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.SetButtonEnabled">
+            <summary>
+            Enables or disables the Properties button.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmDrivers.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmDrivers.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmLineParams">
+            <summary>
+            Form for editing parameters of a communication line.
+            <para>Форма редактирования параметров линии связи.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.#ctor(Scada.Comm.Settings.CommLine,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Forms.FrmLineParams.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.DisplayControl(System.Int32)">
+            <summary>
+            Displays a control corresponding to the selected tab.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmLineParams.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineParams.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmLineStats">
+            <summary>
+            Form for displaying communication line stats.
+            <para>Форма для отображения статистики линии связи.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineStats.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineStats.#ctor(Scada.Comm.Settings.CommLine,Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Forms.FrmLineStats.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineStats.InitRefresh">
+            <summary>
+            Initializes the log refresh process.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineStats.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmLineStats.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineStats.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmLineStats.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Forms.FrmStats">
+            <summary>
+            Form for displaying Communicator stats.
+            <para>Форма для отображения статистики Коммуникатора.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmStats.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmStats.#ctor(Scada.Comm.Shell.Code.CommEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmStats.InitRefresh">
+            <summary>
+            Initializes the log refresh process.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Shell.Forms.FrmStats.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmStats.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Shell.Forms.FrmStats.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Shell.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_device">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_driver">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_line">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_line_inactive">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_lines">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_params">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Shell.Properties.Resources.comm_stats">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

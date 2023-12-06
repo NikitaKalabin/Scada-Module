@@ -1,0 +1,1562 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KpModbus</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Comm.Devices.Modbus.DeviceTemplateFactory">
+            <summary>
+            The factory for creating device templates.
+            <para>Фабрика для для создания шаблонов устройства.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.DeviceTemplateFactory.CreateDeviceTemplate">
+            <summary>
+            Creates a new device template.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.KpUtils">
+            <summary>
+            The class contains utility methods for the driver.
+            <para>Класс, содержащий вспомогательные методы драйвера.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.KpUtils.TemplateFactory">
+            <summary>
+            The default device template factory.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd">
+            <summary>
+            Modbus command.
+            <para>Команда Modbus.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.#ctor(Scada.Comm.Devices.Modbus.Protocol.TableType,System.Boolean)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.ReqDescr">
+            <summary>
+            Получить описание запроса для выполнения команды
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.Multiple">
+            <summary>
+            Получить или установить признак множественной команды
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.ElemType">
+            <summary>
+            Получить или установить тип элементов команды
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.ElemTypeEnabled">
+            <summary>
+            Получить признак, что команды разрешено использование типов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.ElemCnt">
+            <summary>
+            Получить или установить количество элементов, устанавливаемое командой
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.ByteOrder">
+            <summary>
+            Получить или установить массив, определяющий порядок байт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.ByteOrderStr">
+            <summary>
+            Получить или установить строковую запись порядка байт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.CmdNum">
+            <summary>
+            Получить или установить номер команды КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.Value">
+            <summary>
+            Получить или установить значение команды
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.Data">
+            <summary>
+            Получить или установить данные множественной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.InitReqPDU">
+            <summary>
+            Инициализировать PDU запроса, рассчитать длину ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.DecodeRespPDU(System.Byte[],System.Int32,System.Int32,System.String@)">
+            <summary>
+            Расшифровать PDU ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.LoadFromXml(System.Xml.XmlElement)">
+            <summary>
+            Loads the command from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the command into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.CopyFrom(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Copies the command properties from the source command.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.UpdateFuncCode">
+            <summary>
+            Обновить код функции в соответствии с типом таблицы данных
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusCmd.SetCmdData(System.Double)">
+            <summary>
+            Установить данные команды, преобразовав их в зависимости от типа элементов команды
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.DataUnit">
+            <summary>
+            Unit of Modbus data
+            <para>Блок данных Modbus</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.#ctor(Scada.Comm.Devices.Modbus.Protocol.TableType)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.Name">
+            <summary>
+            Получить или установить наименование
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.TableType">
+            <summary>
+            Получить или установить тип таблицы даных
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.Address">
+            <summary>
+            Получить или установить адрес начального элемента
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ReqDescr">
+            <summary>
+            Получить описание запроса для получения значений элементов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.FuncCode">
+            <summary>
+            Код функции запроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ExcFuncCode">
+            <summary>
+            Код функции, обозначающий исключение
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ReqPDU">
+            <summary>
+            Получить PDU запроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.RespPduLen">
+            <summary>
+            Получить длину PDU ответа на запрос
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ReqADU">
+            <summary>
+            Получить ADU запроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ReqStr">
+            <summary>
+            Получить строку запроса в режиме ASCII
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.RespAduLen">
+            <summary>
+            Получить длину ADU ответа на запрос
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.RespByteCnt">
+            <summary>
+            Получить количество байт, которое указывается в ответе
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.MaxElemCnt">
+            <summary>
+            Gets the maximum number of elements.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.DefElemType">
+            <summary>
+            Gets the default element type.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ElemTypeEnabled">
+            <summary>
+            Получить признак, что для блока данных или его элементов разрешено использование типов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DataUnit.ByteOrderEnabled">
+            <summary>
+            Получить признак, что для блока данных или его элементов разрешено использование порядка байт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.InitReqPDU">
+            <summary>
+            Инициализировать PDU запроса, рассчитать длину ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.InitReqADU(System.Byte,Scada.Comm.Devices.Modbus.Protocol.TransMode)">
+            <summary>
+            Инициализировать ADU запроса и рассчитать длину ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.DecodeRespPDU(System.Byte[],System.Int32,System.Int32,System.String@)">
+            <summary>
+            Расшифровать PDU ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.GetMaxElemCnt(Scada.Comm.Devices.Modbus.Protocol.TableType)">
+            <summary>
+            Gets the maximum number of elements depending on the data table type.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DataUnit.GetDefElemType(Scada.Comm.Devices.Modbus.Protocol.TableType)">
+            <summary>
+            Gets the element type depending on the data table type.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate">
+            <summary>
+            Device template
+            <para>Шаблон устройства</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings">
+            <summary>
+            Настройки шаблона
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.ZeroAddr">
+            <summary>
+            Получить или установить признак отображения адресов, начиная с 0
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.DecAddr">
+            <summary>
+            Получить или установить признак отображения адресов в 10-тичной системе
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.DefByteOrder2">
+            <summary>
+            Получить или установить строковую запись порядка байт по умолчанию для значений длиной 2 байта
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.DefByteOrder4">
+            <summary>
+            Получить или установить строковую запись порядка байт по умолчанию для значений длиной 4 байта
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.DefByteOrder8">
+            <summary>
+            Получить или установить строковую запись порядка байт по умолчанию для значений длиной 8 байт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.SetToDefault">
+            <summary>
+            Установить настройки шаблона по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.LoadFromXml(System.Xml.XmlElement)">
+            <summary>
+            Загрузить настройки шаблона из XML-узла
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Сохранить настройки шаблона в XML-узле
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.CopyFrom(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings)">
+            <summary>
+            Копировать настройки из заданных
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings.GetDefByteOrder(System.Int32)">
+            <summary>
+            Получить подходящий порядок байт по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Sett">
+            <summary>
+            Получить настройки шаблона
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.ElemGroups">
+            <summary>
+            Получить список групп элементов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Cmds">
+            <summary>
+            Получить список команд
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.SetToDefault">
+            <summary>
+            Sets the default values.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.LoadFromXml(System.Xml.XmlNode)">
+            <summary>
+            Loads the template from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the template into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.FindCmd(System.Int32)">
+            <summary>
+            Найти команду по номеру
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.GetActiveElemGroups">
+            <summary>
+            Получить активные группы элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Load(System.String,System.String@)">
+            <summary>
+            Загрузить шаблон устройства
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Save(System.String,System.String@)">
+            <summary>
+            Сохранить шаблон устройства
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.CopyFrom(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate)">
+            <summary>
+            Copies the template properties from the source template.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.CreateElemGroup(Scada.Comm.Devices.Modbus.Protocol.TableType)">
+            <summary>
+            Creates a new group of Modbus elements.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.CreateModbusCmd(Scada.Comm.Devices.Modbus.Protocol.TableType,System.Boolean)">
+            <summary>
+            Creates a new Modbus command.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.Elem">
+            <summary>
+            Represents a Modbus element (register).
+            <para>Представляет элемент (регистр) Modbus.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.Elem.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.Elem.Name">
+            <summary>
+            Получить или установить наименование
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.Elem.ElemType">
+            <summary>
+            Получить или установить тип
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.Elem.Quantity">
+            <summary>
+            Gets the quantity of addresses.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.Elem.DataLength">
+            <summary>
+            Gets the element data length.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.Elem.ByteOrder">
+            <summary>
+            Получить или установить массив, определяющий порядок байт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.Elem.ByteOrderStr">
+            <summary>
+            Получить или установить строковую запись порядка байт
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ElemGroup">
+            <summary>
+            Group of Modbus elements.
+            <para>Группа элементов Modbus.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.#ctor(Scada.Comm.Devices.Modbus.Protocol.TableType)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.Active">
+            <summary>
+            Получить или установить признак активности
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.Elems">
+            <summary>
+            Получить список элементов в группе
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.ElemData">
+            <summary>
+            Получить данные элементов в группе
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.ReqDescr">
+            <summary>
+            Получить описание запроса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.StartKPTagInd">
+            <summary>
+            Получить или установить индекс тега КП, соответствующего начальному элементу
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.StartSignal">
+            <summary>
+            Получить или установить сигнал КП, соответствующий начальному элементу
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.InitReqPDU">
+            <summary>
+            Инициализировать PDU запроса, рассчитать длину ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.DecodeRespPDU(System.Byte[],System.Int32,System.Int32,System.String@)">
+            <summary>
+            Расшифровать PDU ответа
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.LoadFromXml(System.Xml.XmlElement)">
+            <summary>
+            Loads the group from the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.SaveToXml(System.Xml.XmlElement)">
+            <summary>
+            Saves the group into the XML node.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.CopyFrom(Scada.Comm.Devices.Modbus.Protocol.ElemGroup)">
+            <summary>
+            Copies the group properties from the source group.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.CreateElem">
+            <summary>
+            Creates a new Modbus element.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.UpdateFuncCode">
+            <summary>
+            Обновить код функции в соответствии с типом таблицы данных
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ElemGroup.GetElemVal(System.Int32)">
+            <summary>
+            Получить значение элемента в соответствии с его типом, преобразованное в double
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ElemType">
+            <summary>
+            Types of Modbus elements
+            <para>Типы элементов Modbus</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Undefined">
+            <summary>
+            Тип не определён
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.UShort">
+            <summary>
+            2-байтное целое без знака
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Short">
+            <summary>
+            2-байтное целое со знаком
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.UInt">
+            <summary>
+            4-байтное целое без знака
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Int">
+            <summary>
+            4-байтное целое со знаком
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.ULong">
+            <summary>
+            8-байтное целое без знака
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Long">
+            <summary>
+            8-байтное целое со знаком
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Float">
+            <summary>
+            4-байтное вещественное с плавающей запятой
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Double">
+            <summary>
+            8-байтное вещественное с плавающей запятой
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ElemType.Bool">
+            <summary>
+            Логическое значение
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.FuncCodes">
+            <summary>
+            Codes of the supported Modbus functions
+            <para>Коды поддерживаемых функций Modbus</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.ReadDiscreteInputs">
+            <summary>
+            Считать дискретные входы
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.ReadCoils">
+            <summary>
+            Считать флаги
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.ReadInputRegisters">
+            <summary>
+            Считать входные регистры
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.ReadHoldingRegisters">
+            <summary>
+            Считать регистры хранения
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.WriteSingleCoil">
+            <summary>
+            Записать флаг
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.WriteSingleRegister">
+            <summary>
+            Записать регистр хранения
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.WriteMultipleCoils">
+            <summary>
+            Записать множество флагов
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.FuncCodes.WriteMultipleRegisters">
+            <summary>
+            Записать множество регистров хранения
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ModbusPhrases">
+            <summary>
+            Phrases used in Modbus implementation
+            <para>Фразы, используемые при реализации Modbus</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPhrases.#cctor">
+            <summary>
+            Статический конструктор
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils">
+            <summary>
+            The class contains utility methods for the Modbus protocol implementation.
+            <para>Класс, содержащий вспомогательные константы и методы для реализации протокола Modbus.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.Colon">
+            <summary>
+            Символ начала сообщения в режиме ASCII.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.CRLF">
+            <summary>
+            Окончание сообщения в режиме ASCII.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.DefTcpPort">
+            <summary>
+            Номер порта, используемого в режиме TCP по умолчанию.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.CalcCRC16(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Рассчитать CRC-16.
+            </summary>
+            <remarks>Метод взят из официального описания протокола Modbus.</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.CalcLRC(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Рассчитать LRC.
+            </summary>
+            <remarks>Метод взят из официального описания протокола Modbus.</remarks>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.GetTableTypeName(Scada.Comm.Devices.Modbus.Protocol.TableType)">
+            <summary>
+            Получить наименование типа таблицы данных.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.GetExcDescr(System.Byte)">
+            <summary>
+            Получить описание исключения, полученного от устройства.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.GetAddressRange(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Получить строковую запись диапазона адресов элемента.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.ParseByteOrder(System.String)">
+            <summary>
+            Разобрать массив, определяющий порядок байт, из строковой записи вида '01234567'.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.ApplyByteOrder(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32,System.Int32[],System.Boolean)">
+            <summary>
+            Копировать элементы массива с заданным порядоком байт.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.ApplyByteOrder(System.Byte[],System.Byte[],System.Int32[])">
+            <summary>
+            Копировать элементы массива с заданным порядоком байт.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.GetQuantity(Scada.Comm.Devices.Modbus.Protocol.ElemType)">
+            <summary>
+            Gets the required quantity of addresses depending on the element type.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.GetDataLength(Scada.Comm.Devices.Modbus.Protocol.ElemType)">
+            <summary>
+            Gets the length required to store element data depending on the element type.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusUtils.IsReadFunction(System.Byte)">
+            <summary>
+            Determines whether the specified function is a read function.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.TableType">
+            <summary>
+            Types of Modbus data tables
+            <para>Типы таблиц данных Modbus</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TableType.DiscreteInputs">
+            <summary>
+            Дискретные входы (1 бит, только чтение, 1X-обращения)
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TableType.Coils">
+            <summary>
+            Флаги (1 бит, чтение и запись, 0X-обращения)
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TableType.InputRegisters">
+            <summary>
+            Входные регистры (16 бит, только чтение, 3X-обращения)
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TableType.HoldingRegisters">
+            <summary>
+            Регистры хранения (16 бит, чтение и запись, 4X-обращения)
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.TransMode">
+            <summary>
+            Data transfer modes
+            <para>Режимы передачи данных</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TransMode.RTU">
+            <summary>
+            Передача данных в бинарном формате
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TransMode.ASCII">
+            <summary>
+            Передача данных в символьном формате
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.TransMode.TCP">
+            <summary>
+            Передача данных по протоколу TCP/IP
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll">
+            <summary>
+            Polls devices using Modbus protocol.
+            <para>Опрос устройств по протоколу Modbus.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.RequestDelegate">
+            <summary>
+            Делегат выполнения запроса
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.DefInBufSize">
+            <summary>
+            Размер буфера входных данных по умолчанию, байт
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.#ctor(System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.InBuf">
+            <summary>
+            Получить буфер входных данных
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.TransactionID">
+            <summary>
+            Gets the current transaction ID in the TCP mode.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.Timeout">
+            <summary>
+            Получить или установить таймаут запросов через последовательный порт
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.Connection">
+            <summary>
+            Получить или установить соединение с физическим КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.WriteToLog">
+            <summary>
+            Получить или установить метод записи строки в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.ExecWriteToLog(System.String)">
+            <summary>
+            Вызвать метод записи в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.CheckConnection">
+            <summary>
+            Проверить, что соединение установлено
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.RtuRequest(Scada.Comm.Devices.Modbus.Protocol.DataUnit)">
+            <summary>
+            Выполнить запрос в режиме RTU
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.AsciiRequest(Scada.Comm.Devices.Modbus.Protocol.DataUnit)">
+            <summary>
+            Выполнить запрос в режиме ASCII
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.TcpRequest(Scada.Comm.Devices.Modbus.Protocol.DataUnit)">
+            <summary>
+            Выполнить запрос в режиме TCP
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.Protocol.ModbusPoll.GetRequestMethod(Scada.Comm.Devices.Modbus.Protocol.TransMode)">
+            <summary>
+            Получить метод запроса, соответствующий режиму передачи данных.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.CtrlCmd">
+            <summary>
+            The control for editing command
+            <para>Элемент управления для редактирования команды</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlCmd.ZeroAddr">
+            <summary>
+            Получить признак отображения адресов, начиная с 0
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlCmd.AddrShift">
+            <summary>
+            Получить смещение адреса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlCmd.DecAddr">
+            <summary>
+            Получить признак отображения адресов в 10-тичной системе
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlCmd.AddrNotation">
+            <summary>
+            Получить обозначение системы счисления адресов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlCmd.Settings">
+            <summary>
+            Получить или установить ссылку настройки шаблона
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlCmd.ModbusCmd">
+            <summary>
+            Получить или установить редактируемую команду
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.ShowCmdProps(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Отобразить свойства команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.ShowFuncCode(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Отобразить код функции команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.ShowByteOrder(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Отобразить порядок байт команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.OnObjectChanged(System.Object)">
+            <summary>
+            Вызвать событие ObjectChanged
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.SetFocus">
+            <summary>
+            Установить фокус ввода
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Devices.Modbus.UI.CtrlCmd.ObjectChanged">
+            <summary>
+            Событие возникающее при изменении свойств редактируемого объекта
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.CtrlCmd.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlCmd.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.CtrlElem">
+            <summary>
+            The control for editing element
+            <para>Элемент управления для редактирования элемента Modbus</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElem.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElem.ElemInfo">
+            <summary>
+            Получить или установить редактируемый элемент
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElem.ShowElemProps(Scada.Comm.Devices.Modbus.UI.ElemInfo)">
+            <summary>
+            Отобразить свойства элемента
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElem.OnObjectChanged(System.Object)">
+            <summary>
+            Вызвать событие ObjectChanged
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElem.SetFocus">
+            <summary>
+            Установить фокус ввода
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Devices.Modbus.UI.CtrlElem.ObjectChanged">
+            <summary>
+            Событие возникающее при изменении свойств редактируемого объекта
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.CtrlElem.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElem.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElem.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup">
+            <summary>
+            The control for editing element group
+            <para>Элемент управления для редактирования группы элементов</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.ZeroAddr">
+            <summary>
+            Получить признак отображения адресов, начиная с 0
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.AddrShift">
+            <summary>
+            Получить смещение адреса
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.DecAddr">
+            <summary>
+            Получить признак отображения адресов в 10-тичной системе
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.AddrNotation">
+            <summary>
+            Получить обозначение системы счисления адресов
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.Settings">
+            <summary>
+            Получить или установить ссылку настройки шаблона
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.ElemGroup">
+            <summary>
+            Получить или установить редактируемую группу элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.ShowElemGroupProps(Scada.Comm.Devices.Modbus.Protocol.ElemGroup)">
+            <summary>
+            Отобразить свойства группы элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.ShowFuncCode(Scada.Comm.Devices.Modbus.Protocol.ElemGroup)">
+            <summary>
+            Отобразить код функции группы элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.OnObjectChanged(System.Object)">
+            <summary>
+            Вызвать событие ObjectChanged
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.SetFocus">
+            <summary>
+            Установить фокус ввода
+            </summary>
+        </member>
+        <member name="E:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.ObjectChanged">
+            <summary>
+            Событие возникающее при изменении свойств редактируемого объекта
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.CtrlElemGroup.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.ElemInfo">
+            <summary>
+            Information about Modbus element
+            <para>Информация об элементе Modbus</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.Elem">
+            <summary>
+            Получить или установить элемент
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.ElemGroup">
+            <summary>
+            Получить или установить группу элементов, в которую входит элемент
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.Settings">
+            <summary>
+            Получить или установить ссылку настройки шаблона
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.Address">
+            <summary>
+            Получить или установить адрес, начинающийся от 0
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.Signal">
+            <summary>
+            Получить или установить сигнал КП
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.AddressRange">
+            <summary>
+            Получить строковую запись диапазона адресов элемента
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.ElemInfo.Caption">
+            <summary>
+            Получить обозначение элемента в дереве
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.FrmDevProps">
+            <summary>
+            Device and communication line properties form
+            <para>Форма настройки свойств КП и линии связи</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.EditDevTemplate(System.String)">
+            <summary>
+            Редактировать шаблон устройства
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.MakeAbsolute(System.String)">
+            <summary>
+            Преобразовать имя файла, которое задано относительно директории конфигурации, в абсолютное
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.MakeRelative(System.String)">
+            <summary>
+            Преобразовать имя файла в относительное по отношению к директории конфигурации, 
+            если файл находится внутри этой директоии
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.ShowDialog(System.Int32,Scada.Comm.Devices.KPView.KPProperties,Scada.Comm.AppDirs,Scada.Comm.Devices.Modbus.UI.UiCustomization)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.FrmDevProps.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevProps.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate">
+            <summary>
+            Editing device template form.
+            <para>Форма редактирования шаблона устройства.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.NewFileName">
+            <summary>
+            Имя файла нового шаблона устройства
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.Modified">
+            <summary>
+            Получить или установить признак изменения шаблона устройства
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.SetFormTitle">
+            <summary>
+            Установить заголовок формы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.LoadTemplate(System.String)">
+            <summary>
+            Загрузить шаблон устройства из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.TranslateTree">
+            <summary>
+            Перевести текст основных узлов дерева
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.FillTree">
+            <summary>
+            Заполнить дерево в соответствии с шаблоном устройства
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.NewElemGroupNode(Scada.Comm.Devices.Modbus.Protocol.ElemGroup)">
+            <summary>
+            Создать узел группы элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.NewElemNode(Scada.Comm.Devices.Modbus.UI.ElemInfo)">
+            <summary>
+            Создать узел элемента группы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.NewCmdNode(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Создать узел команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.GetCmdCaption(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Получить обозначение команды в дереве
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.UpdateElemGroupNode">
+            <summary>
+            Обновить узел выбранной группы элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.UpdateElemNodes(System.Windows.Forms.TreeNode)">
+            <summary>
+            Обновить узлы элементов выбранной группы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.UpdateSignals(System.Windows.Forms.TreeNode)">
+            <summary>
+            Обновить сигналы КП элементов групп, начиная с заданного узла дерева
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.UpdateCmdNode">
+            <summary>
+            Обновить узел выбранной команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.ShowElemGroupProps(Scada.Comm.Devices.Modbus.Protocol.ElemGroup)">
+            <summary>
+            Отобразить свойства группы элементов
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.ShowElemProps(Scada.Comm.Devices.Modbus.UI.ElemInfo)">
+            <summary>
+            Отобразить свойства элемента
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.ShowCmdProps(Scada.Comm.Devices.Modbus.Protocol.ModbusCmd)">
+            <summary>
+            Отобразить свойства команды
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.DisableProps">
+            <summary>
+            Заблокировать редактирование свойств
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.SaveChanges(System.Boolean)">
+            <summary>
+            Сохраненить изменения
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.CheckChanges">
+            <summary>
+            Преверить необходимость сохранения изменений
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.ShowDialog(Scada.Comm.AppDirs,Scada.Comm.Devices.Modbus.UI.UiCustomization)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.ShowDialog(Scada.Comm.AppDirs,Scada.Comm.Devices.Modbus.UI.UiCustomization,System.Boolean,System.String@)">
+            <summary>
+            Отобразить форму модально, открыв заданный файл
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmDevTemplate.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.KpPhrases">
+            <summary>
+            The phrases used by the library.
+            <para>Фразы, используемые библиотекой.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings">
+            <summary>
+            Editing template settings form
+            <para>Форма редактирования настроек шаблона</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание формы без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.SettingsToControls(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings)">
+            <summary>
+            Установить значения элементов управления в соответствии с настройками
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.ControlsToSettings(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings)">
+            <summary>
+            Установить конфигурацию в соответствии с элементами управления 
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.ShowDialog(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate.Settings)">
+            <summary>
+            Отобразить форму модально
+            </summary>
+            <returns>Возвращает true, если настройки были изменены</returns>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.FrmTemplateSettings.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.TreeUpdateTypes">
+            <summary>
+            Types of updating the Modbus template tree
+            <para>Типы обновления дерева шаблона Modbus</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.TreeUpdateTypes.None">
+            <summary>
+            Обновление не требуется
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.TreeUpdateTypes.CurrentNode">
+            <summary>
+            Текущий узел
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.TreeUpdateTypes.ChildNodes">
+            <summary>
+            Дочерние узлы
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.TreeUpdateTypes.NextSiblings">
+            <summary>
+            Узлы того же уровня, следующие за текущим
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.Modbus.UI.TreeUpdateTypes.UpdateSignals">
+            <summary>
+            Обновить сигналы
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Modbus.UI.UiCustomization">
+            <summary>
+            Makes the driver UI flexible.
+            <para>Обеспечивает гибкость пользовательского интерфейса драйвера.</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.UiCustomization.TemplateFactory">
+            <summary>
+            Gets the device template factory.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Modbus.UI.UiCustomization.ExtendedSettingsAvailable">
+            <summary>
+            Gets a value indicating whether to display the extended settings button.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.Modbus.UI.UiCustomization.ShowExtendedSettings(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate)">
+            <summary>
+            Shows the extended settings form as a modal dialog box.
+            </summary>
+            <returns>Returns true if the settings changed.</returns>
+        </member>
+        <member name="T:Scada.Comm.Devices.KpModbusLogic">
+            <summary>
+            Device driver communication logic.
+            <para>Логика работы драйвера КП.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KpModbusLogic.TemplateDict">
+            <summary>
+            Словарь шаблонов устройств для общих свойств линии связи
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KpModbusLogic.TcpConnectPer">
+            <summary>
+            Периодичность попыток установки TCP-соединения, с
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KpModbusLogic.deviceTemplate">
+            <summary>
+            Шаблон устройства, используемый данным КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.#ctor(System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KpModbusLogic.TemplateDictKey">
+            <summary>
+            Gets the key of the template dictionary.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.GetTemplateDictionary">
+            <summary>
+            Gets or creates the template dictionary from the common line properties.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.PrepareTemplate(System.String)">
+            <summary>
+            Gets existing or create a new device template.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.InitModbusPoll">
+            <summary>
+            Initializes an object for polling data.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.SetNewLine">
+            <summary>
+            Установить окончание строки в соединении для режима ASCII
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.SetTagsData(Scada.Comm.Devices.Modbus.Protocol.ElemGroup)">
+            <summary>
+            Установить значения тегов КП в соответствии со значениями элементов группы
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.GetTemplateFactory">
+            <summary>
+            Gets a device template factory.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.CreateTagGroups(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate,System.Int32@)">
+            <summary>
+            Creates tag groups according to the specified template.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.ConvertTagDataToStr(System.Int32,Scada.Data.Tables.SrezTableLight.CnlData)">
+            <summary>
+            Преобразовать данные тега КП в строку
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.Session">
+            <summary>
+            Выполнить сеанс опроса КП
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.SendCmd(Scada.Data.Models.Command)">
+            <summary>
+            Отправить команду ТУ
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.OnAddedToCommLine">
+            <summary>
+            Выполнить действия после добавления КП на линию связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.OnCommLineStart">
+            <summary>
+            Выполнить действия при запуске линии связи
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusLogic.OnConnectionSet">
+            <summary>
+            Выполнить действия после установки соединения
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.KpModbusView">
+            <summary>
+            Device driver user interface.
+            <para>Пользовательский интерфейс драйвера КП.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KpModbusView.KpVersion">
+            <summary>
+            The driver version.
+            </summary>
+        </member>
+        <member name="F:Scada.Comm.Devices.KpModbusView.UiCustomization">
+            <summary>
+            The UI customization object.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusView.#ctor">
+            <summary>
+            Initializes a new instance of the class. Designed for general configuring.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusView.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the class. Designed for configuring a particular device.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KpModbusView.KPDescr">
+            <summary>
+            Gets the driver description.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KpModbusView.Version">
+            <summary>
+            Gets the driver version.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.KpModbusView.DefaultCnls">
+            <summary>
+            Gets the default channel prototypes.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusView.CreateCnlPrototypes(Scada.Comm.Devices.Modbus.Protocol.DeviceTemplate)">
+            <summary>
+            Creates channel prototypes based on the device template.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusView.Localize">
+            <summary>
+            Localizes the driver UI.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusView.GetUiCustomization">
+            <summary>
+            Gets a UI customization object.
+            </summary>
+        </member>
+        <member name="M:Scada.Comm.Devices.KpModbusView.ShowProps">
+            <summary>
+            Shows the driver properties.
+            </summary>
+        </member>
+        <member name="T:Scada.Comm.Devices.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Scada.Comm.Devices.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Scheme Editor</title>
+    <link href="css/editor.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script type="text/javascript" src="../../lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/api/checkbrowser.js"></script>
+    <script type="text/javascript" src="../../js/api/utils.js"></script>
+    <script type="text/javascript" src="../../js/api/ajaxqueue.js"></script>
+    <script type="text/javascript" src="../Scheme/js/schemecommon.js"></script>
+    <script type="text/javascript" src="../Scheme/js/schememodel.js"></script>
+    <script type="text/javascript" src="../Scheme/js/schemerender.js"></script>
+
+    <script type="text/javascript" src="js/editablescheme.js"></script>
+    <script type="text/javascript" src="js/showalert.js"></script>
+<script type="text/javascript">
+var editorID = 'dlTkjp4WOq';
+var phrases = {
+UnableLoadScheme: "Unable to upload scheme to the web page.",
+PageNotValid: "The web page is no longer actual. It is recommended to close it.",
+DataError: "Error processing data.",
+EditorClosed: "Scheme Editor was probably closed. It is recommended to close the web page.",
+BrowserOutdated: "Your browser is out of date. Please update to a modern browser.",
+};
+var serviceUrl = 'http://localhost:10001/ScadaSchemeEditor/SchemeEditorSvc/';
+</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!checkBrowser()) {
+                showAlert(phrases.BrowserOutdated);
+            }
+        });
+    </script>
+    <script type="text/javascript" src="js/editor.js"></script>
+</head>
+<body>
+    <div id="divSchWrapper" class="scheme-wrapper"></div>
+    <div id="divAlertWrapper"></div>
+</body>
+</html>

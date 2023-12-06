@@ -1,0 +1,2638 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaWebCommon</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Web.AppData">
+            <summary>
+            Common data of the web application
+            <para>Общие данные веб-приложения</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.AppData.LogFileName">
+            <summary>
+            Имя файла журнала приложения без директории
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.#cctor">
+            <summary>
+            Статический конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта из других классов
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.WebSettings">
+            <summary>
+            Получить настройки веб-приложения
+            </summary>
+            <remarks>Объект создаётся заново при изменении файла настроек веб-приложения</remarks>
+        </member>
+        <member name="P:Scada.Web.AppData.ViewSettings">
+            <summary>
+            Получить настройки представлений
+            </summary>
+            <remarks>Объект создаётся заново при изменении файла настроек представлений</remarks>
+        </member>
+        <member name="P:Scada.Web.AppData.PluginSpecs">
+            <summary>
+            Получить список спецификаций плагинов
+            </summary>
+            <remarks>Объект создаётся заново при изменении файла настроек веб-приложения</remarks>
+        </member>
+        <member name="P:Scada.Web.AppData.UiObjSpecs">
+            <summary>
+            Получить словарь спецификаций объектов пользовательского интерфейса, ключ - код типа объекта
+            </summary>
+            <remarks>Словарь заполняется на основе списка плагинов и 
+            создаётся заново при изменении файла настроек веб-приложения</remarks>
+        </member>
+        <member name="P:Scada.Web.AppData.AppDirs">
+            <summary>
+            Получить директории приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.Log">
+            <summary>
+            Получить журнал приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.Storage">
+            <summary>
+            Получить объект для работы с хранилищем приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.RememberMe">
+            <summary>
+            Получить объект для сохранения входа пользователей в систему
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.Stats">
+            <summary>
+            Получить объект для передачи обезличенной статистики команде разработчиков
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.UserMonitor">
+            <summary>
+            Получить монитор активности пользователей
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.ServerComm">
+            <summary>
+            Получить объект для обмена данными с сервером
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppData.DataAccess">
+            <summary>
+            Получить объект для потокобезопасного доступа к данным кэша клиентов
+            </summary>
+            <remarks>Объект создаётся заново при изменении файла настройки соединения с сервером</remarks>
+        </member>
+        <member name="P:Scada.Web.AppData.ViewCache">
+            <summary>
+            Получить кэш представлений
+            </summary>
+            <remarks>Объект создаётся заново при изменении файла настройки соединения с сервером</remarks>
+        </member>
+        <member name="M:Scada.Web.AppData.InitDictUpdaters">
+            <summary>
+            Инициализировать объекты для обновления словарей
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.InitSettingsUpdaters">
+            <summary>
+            Инициализировать объекты для обновления настроек
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.CreateDataObjects">
+            <summary>
+            Создать объекты доступа к данным
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.RefreshDictionaries">
+            <summary>
+            Обновить словари веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.RefreshWebSettings(System.Boolean@,System.Boolean@)">
+            <summary>
+            Обновить настройки веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.RefreshViewSettings">
+            <summary>
+            Обновить настройки представлений
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.ProcCultureChange">
+            <summary>
+            Обработать изменение культуры веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.LoadPlugins">
+            <summary>
+            Загрузить спецификации плагинов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.InitPlugins">
+            <summary>
+            Инициализировать плагины
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.FillUiObjSpecs">
+            <summary>
+            Создать и заполнить словарь спецификаций объектов пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.AppendExtraScripts">
+            <summary>
+            Добавить дополнительные скрипты к настройкам веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.Init(System.String)">
+            <summary>
+            Инициализировать общие данные веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.Refresh">
+            <summary>
+            Обновить общие данные веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.CheckUser(System.String,System.String,System.Boolean,System.Int32@,System.String@)">
+            <summary>
+            Проверить правильность имени и пароля пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.CheckLoggedOn(System.Boolean)">
+            <summary>
+            Проверить, что пользователь вошёл систему
+            </summary>
+            <remarks>Метод используется, если сессия не доступна</remarks>
+        </member>
+        <member name="M:Scada.Web.AppData.CheckLoggedOn(Scada.Web.UserRights@,System.Boolean)">
+            <summary>
+            Проверить, что пользователь вошёл систему, и получить его права
+            </summary>
+            <remarks>Метод используется, если сессия не доступна</remarks>
+        </member>
+        <member name="M:Scada.Web.AppData.AssignStamp(Scada.Client.BaseView)">
+            <summary>
+            Присвоить представлению уникальную в пределах приложения метку
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppData.GetAppData">
+            <summary>
+            Получить общие данные веб-приложения
+            </summary>
+        </member>
+        <member name="T:Scada.Web.AppDirs">
+            <summary>
+            Web application directories
+            <para>Директории веб-приложения</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.AppDirs.DefWebAppDir">
+            <summary>
+            Директория веб-приложения по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppDirs.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.WebAppDir">
+            <summary>
+            Получить директорию веб-приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.BinDir">
+            <summary>
+            Получить директорию исполняемых файлов
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.ConfigDir">
+            <summary>
+            Получить директорию конфигурации
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.LangDir">
+            <summary>
+            Получить директорию языковых файлов
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.LogDir">
+            <summary>
+            Получить директорию журналов
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.PluginsDir">
+            <summary>
+            Получить директорию плагинов
+            </summary>
+        </member>
+        <member name="P:Scada.Web.AppDirs.StorageDir">
+            <summary>
+            Получить директорию хранилища приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.AppDirs.Init(System.String)">
+            <summary>
+            Инициализировать директории относительно директории веб-приложения
+            </summary>
+        </member>
+        <member name="T:Scada.Web.DataTransferObject">
+            <summary>
+            Data transfer object for WCF services
+            <para>Объект для передачи данных WCF-сервисами</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DataTransferObject.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DataTransferObject.#ctor(System.Object)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DataTransferObject.#ctor(System.Boolean,System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.DataTransferObject.Success">
+            <summary>
+            Получить или установить признак, что объект получен успешно
+            </summary>
+        </member>
+        <member name="P:Scada.Web.DataTransferObject.ErrorMessage">
+            <summary>
+            Получить или установить сообщение об ошибке
+            </summary>
+        </member>
+        <member name="P:Scada.Web.DataTransferObject.Data">
+            <summary>
+            Получить или установить данные, запрашиваемые клиентом
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ClientApiSvc">
+            <summary>
+            WCF service that provides the client API
+            <para>WCF-сервис, обеспечивающий работу клиентского API</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ClientApiSvc.ArcDTO">
+            <summary>
+            Объект для передачи архивных данных и событий
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.ArcDTO.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.ArcDTO.#ctor(System.Object,System.Object)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.ArcDTO.DataAge">
+            <summary>
+            Получить или установить время изменения данных в источнике
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ClientApiSvc.CnlDataExt">
+            <summary>
+            Расширенные данные входого канала
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.CnlDataExt.#ctor(System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.CnlDataExt.CnlNum">
+            <summary>
+            Получить номер входного канала
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.CnlDataExt.Val">
+            <summary>
+            Получить или установить значение
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.CnlDataExt.Stat">
+            <summary>
+            Получить или установить статус
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.CnlDataExt.Text">
+            <summary>
+            Получить или установить отображаемый текст
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.CnlDataExt.TextWithUnit">
+            <summary>
+            Получить или установить отображаемый текст с размерностью
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.CnlDataExt.Color">
+            <summary>
+            Получить или установить цвет
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ClientApiSvc.HourCnlData">
+            <summary>
+            Часовые данные входных каналов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.HourCnlData.#ctor(System.Double)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.HourCnlData.Hour">
+            <summary>
+            Получить час от начала суток
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.HourCnlData.Modified">
+            <summary>
+            Получить или установить признак изменения данных относительно метки времени в запросе
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ClientApiSvc.HourCnlData.CnlDataExtArr">
+            <summary>
+            Получить или установить массив расширенных данных входных каналов
+            </summary>
+        </member>
+        <member name="F:Scada.Web.ClientApiSvc.MaxJsonLen">
+            <summary>
+            Максимальное количество символов в строке данных формата JSON, 10 МБ
+            </summary>
+        </member>
+        <member name="F:Scada.Web.ClientApiSvc.JsSerializer">
+            <summary>
+            Обеспечивает сериализацию результатов методов сервиса
+            </summary>
+        </member>
+        <member name="F:Scada.Web.ClientApiSvc.AppData">
+            <summary>
+            Общие данные веб-приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Web.ClientApiSvc.DataFormatter">
+            <summary>
+            Обеспечивает форматирование данных входных каналов и событий
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetViewFromCache(System.Int32,Scada.Web.UserRights)">
+            <summary>
+            Получить представление из кэша с проверкой прав на него
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetCnlSet(System.String,System.String,System.Int32,Scada.Web.UserRights)">
+            <summary>
+            Получить множество номеров каналов из условий запроса с проверкой прав
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetCnlList(System.String,System.String,System.Int32,Scada.Web.UserRights)">
+            <summary>
+            Получить список номеров каналов из условий запроса с проверкой прав
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.QueryParamToLongArray(System.String)">
+            <summary>
+            Преобразовать параметр запроса в массив 64-битных целых чисел
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.CreateCnlDataExtArr(System.Collections.Generic.IList{System.Int32},Scada.Data.Tables.SrezTableLight.Srez,System.Boolean,System.String)">
+            <summary>
+            Создать и заполнить массив расширенных данных входных каналов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetCurCnlDataExtArr(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Получить расширенные текущие данные входных каналов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.AppendHourCnlData(System.Collections.Generic.List{Scada.Web.ClientApiSvc.HourCnlData},System.Double,System.Collections.Generic.IList{System.Int32},Scada.Data.Tables.SrezTableLight.Srez,System.DateTime,System.DateTime)">
+            <summary>
+            Добавить часовые данные в список
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.AppendEmptyHourCnlData(System.Collections.Generic.List{Scada.Web.ClientApiSvc.HourCnlData},System.Double)">
+            <summary>
+            Добавить пустые часовые данные в список
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetHourCnlDataArr(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Collections.Generic.IList{System.Int32},System.Boolean,System.Int64[]@)">
+            <summary>
+            Получить часовые данные входных каналов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetErrorDtoJs(System.Exception)">
+            <summary>
+            Получить объект для передачи данных, содержащий информацию об ошибке, в формате JSON
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.Login(System.String,System.String)">
+            <summary>
+            Выполнить вход пользователя в систему
+            </summary>
+            <remarks>Для работы метода необходимо, чтобы существовал HTTP-контекст. 
+            Возвращает bool, упакованный в DataTransferObject, в формате в JSON</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.CheckLoggedOn">
+            <summary>
+            Проверить, что пользователь вошёл систему
+            </summary>
+            <remarks>Возвращает bool, упакованный в DataTransferObject, в формате в JSON</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetCurCnlData(System.Int32)">
+            <summary>
+            Получить текущие данные входного канала
+            </summary>
+            <remarks>Возвращает SrezTableLight.CnlData, упакованный в DataTransferObject, в формате в JSON</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetCurCnlDataExt(System.String,System.String,System.Int32)">
+            <summary>
+            Получить расширенные текущие данные по заданному фильтру
+            </summary>
+            <remarks>Возвращает CnlDataExt[], упакованный в DataTransferObject, в формате в JSON.
+            Если задан фильтр по представлению, то оно должно быть уже загружено в кэш</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetHourCnlData(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Получить часовые данные по заданному фильтру
+            </summary>
+            <remarks>Возвращает HourCnlDataExt[], упакованный в ArcDTO, в формате в JSON.
+            Если задан фильтр по представлению, то оно должно быть уже загружено в кэш</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetEvents(System.Int32,System.Int32,System.Int32,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int64)">
+            <summary>
+            Получить события по заданному фильтру
+            </summary>
+            <remarks>Возвращает DispEventProps[], упакованный в ArcDTO, в формате в JSON.
+            Если задан фильтр по представлению, то оно должно быть уже загружено в кэш</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.GetViewStamp(System.Int32)">
+            <summary>
+            Получить метку представления из кэша
+            </summary>
+            <remarks>Возвращает long, упакованный в DataTransferObject, в формате в JSON</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.ParseDateTime(System.String)">
+            <summary>
+            Преобразовать строку в дату
+            </summary>
+            <remarks>Возвращает long или null упакованный в DataTransferObject, в формате в JSON.
+            Число означает количество миллисекунд для создания даты в Javascript или 0 в случае ошибки</remarks>
+        </member>
+        <member name="M:Scada.Web.ClientApiSvc.RefreshDataFormatter">
+            <summary>
+            Пересоздать объект для форматирования
+            </summary>
+            <remarks>Необходимо вызвать при смене культуры веб-приложения</remarks>
+        </member>
+        <member name="T:Scada.Web.DictUpdater">
+            <summary>
+            Updates dictionary on file change.
+            <para>Обновляет словарь при изменении файла.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.DictUpdater.fileName">
+            <summary>
+            Имя файла словаря
+            </summary>
+        </member>
+        <member name="F:Scada.Web.DictUpdater.defaultFileName">
+            <summary>
+            Имя файла словаря по умолчанию
+            </summary>
+        </member>
+        <member name="F:Scada.Web.DictUpdater.initPhrasesAction">
+            <summary>
+            Ссылка на метод инициализации, которые берутся из загруженного словаря
+            </summary>
+        </member>
+        <member name="F:Scada.Web.DictUpdater.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="F:Scada.Web.DictUpdater.initialUpdate">
+            <summary>
+            Первое обновление настроек
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DictUpdater.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DictUpdater.#ctor(System.String,System.String,System.Action,Utils.ILog)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.DictUpdater.FileAge">
+            <summary>
+            Получить время изменения файла словаря при обновлении
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DictUpdater.Update(System.Boolean@,System.String@)">
+            <summary>
+            Обновить словарь из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DictUpdater.Update(System.Boolean@)">
+            <summary>
+            Обновить словарь из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DictUpdater.Update(System.String@)">
+            <summary>
+            Обновить словарь из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.DictUpdater.Update">
+            <summary>
+            Обновить словарь из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.ReportSpec">
+            <summary>
+            The base class for report specification
+            <para>Родительский класс спецификации отчёта</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.DataWndSpec">
+            <summary>
+            The base class for data window specification
+            <para>Родительский класс спецификации окна данных</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.DataWndSpec.DependsOnView">
+            <summary>
+            Получить признак, что содержимое окна зависит от текущего представления
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.PluginSpec">
+            <summary>
+            The base class for plugin specification
+            <para>Родительский класс спецификации плагина</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.PluginSpec.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.Name">
+            <summary>
+            Получить наименование плагина
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.Descr">
+            <summary>
+            Получить описание плагина
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.Version">
+            <summary>
+            Получить версию плагина
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.ViewSpecs">
+            <summary>
+            Получить спецификации представлений, которые реализуются плагином
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.ReportSpecs">
+            <summary>
+            Получить спецификации отчётов, которые реализуются плагином
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.DataWndSpecs">
+            <summary>
+            Получить спецификации окон данных, которые реализуются плагином
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.ScriptPaths">
+            <summary>
+            Получить пути к дополнительным скриптам, которые реализуются плагином
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.AppDirs">
+            <summary>
+            Получить или установить директории веб-приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.PluginSpec.Log">
+            <summary>
+            Получить или установить журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.PluginSpec.Init">
+            <summary>
+            Инициализировать плагин
+            </summary>
+            <remarks>Метод вызывается один раз</remarks>
+        </member>
+        <member name="M:Scada.Web.Plugins.PluginSpec.OnUserLogin(Scada.Web.UserData)">
+            <summary>
+            Выполнить действия после успешного входа пользователя в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.PluginSpec.OnUserLogout(Scada.Web.UserData)">
+            <summary>
+            Выполнить действия после выхода пользователя из системы
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.PluginSpec.GetMenuItems(Scada.Web.UserData)">
+            <summary>
+            Получить элементы меню, доступные пользователю
+            </summary>
+            <remarks>Поддерживается не более 2 уровней вложенности меню</remarks>
+        </member>
+        <member name="M:Scada.Web.Plugins.PluginSpec.CreateFromDll(System.String,System.String@)">
+            <summary>
+            Создать плагин, загрузив его из библиотеки
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.ContentSpec">
+            <summary>
+            The base class for content specification
+            <para>Родительский класс спецификации контента</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.ContentSpec.Name">
+            <summary>
+            Получить наименование контента
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.ContentSpec.Url">
+            <summary>
+            Получить ссылку на страницу контента
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.ContentSpec.ForEveryone">
+            <summary>
+            Получить признак, что контент доступен всем ролям и не требует назначения прав
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.UiObjSpec">
+            <summary>
+            The base class for user interface object specification
+            <para>Родительский класс спецификации объекта пользовательского интерфейса</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.UiObjSpec.TypeCode">
+            <summary>
+            Получить код типа объекта пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Plugins.UiObjSpec.GetUrl(System.Int32)">
+            <summary>
+            Получить ссылку на объект пользовательского интерфейса с заданным идентификатором
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Plugins.ViewSpec">
+            <summary>
+            The base class for view specification
+            <para>Родительский класс спецификации представления</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.ViewSpec.IconUrl">
+            <summary>
+            Получить ссылку на иконку типа представлений
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Plugins.ViewSpec.ViewType">
+            <summary>
+            Получить тип представления
+            </summary>
+        </member>
+        <member name="T:Scada.Web.RepUtils">
+            <summary>
+            The class contains utility methods for generating reports.
+            <para>Класс, содержащий вспомогательные методы для генерации отчётов.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.RepUtils.MaxDayPeriodLength">
+            <summary>
+            Макс. длина периода, который задаётся в днях
+            </summary>
+        </member>
+        <member name="F:Scada.Web.RepUtils.MaxMonthPeriodLength">
+            <summary>
+            Макс. длина периода, который задаётся в месяцах
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.BuildFileName(System.String,System.String)">
+            <summary>
+            Сформировать имя файла отчёта
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.WriteGenerationAction(Utils.Log,System.String,Scada.Web.UserData)">
+            <summary>
+            Записать сообщение о генерации отчёта в журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.ParseDates(System.String,System.String,System.DateTime@,System.DateTime@,System.String@)">
+            <summary>
+            Распознать даты, введённые пользователем, и вернуть сообщение в случае ошибки
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.CheckDayPeriod(System.DateTime,System.DateTime,System.Int32@,System.String@)">
+            <summary>
+            Проверить период, указанный в днях, рассчитать его длительность и вернуть сообщение в случае ошибки
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.CheckDayPeriod(System.DateTime,System.DateTime,System.String@)">
+            <summary>
+            Проверить период, указанный в днях, и вернуть сообщение в случае ошибки
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.CheckMonthPeriod(System.DateTime,System.DateTime,System.String@)">
+            <summary>
+            Проверить период, указанный в месяцах, и вернуть сообщение в случае ошибки
+            </summary>
+        </member>
+        <member name="M:Scada.Web.RepUtils.NormalizeTimeRange(System.DateTime@,System.Int32@,System.Boolean)">
+            <summary>
+            Нормализовать интервал времени
+            </summary>
+            <remarks>Чтобы начальная дата являлась левой границей интервала времени и период был положительным</remarks>
+        </member>
+        <member name="M:Scada.Web.RepUtils.NormalizeTimeRange(System.DateTime@,System.DateTime@,System.Int32@,System.Boolean)">
+            <summary>
+            Normalizes the time range.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.ContentItem">
+            <summary>
+            Content item
+            <para>Элемент контента</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ContentItem.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ContentItem.UiObjID">
+            <summary>
+            Получить или установить идентификатор объекта пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ContentItem.Text">
+            <summary>
+            Получить или установить текст
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ContentItem.Url">
+            <summary>
+            Получить или установить ссылку
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ContentItem.Path">
+            <summary>
+            Получить или установить путь
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ContentItem.ContentSpec">
+            <summary>
+            Получить спецификацию контента
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ContentItem.CompareTo(Scada.Web.Shell.ContentItem)">
+            <summary>
+            Сравнить текущий объект с другим объектом такого же типа
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.DataWndItem">
+            <summary>
+            Data window item
+            <para>Элемент окна данных</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.DataWndItem.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.DataWndItem.DataWndSpec">
+            <summary>
+            Получить или установить спецификацию окна данных
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.DataWndItem.ContentSpec">
+            <summary>
+            Получить спецификацию контента
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.ReportItem">
+            <summary>
+            Report item
+            <para>Элемент отчёта</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ReportItem.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ReportItem.ReportSpec">
+            <summary>
+            Получить или установить спецификацию отчёта
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ReportItem.ContentSpec">
+            <summary>
+            Получить спецификацию контента
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.ScriptPaths">
+            <summary>
+            Paths to the additional scripts those implement the shell functionality
+            <para>Пути к дополнительным скриптам, реализующим функциональность оболочки</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ScriptPaths.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ScriptPaths.ChartScriptPath">
+            <summary>
+            Получить или установить путь к скрипту отображения графика
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ScriptPaths.CmdScriptPath">
+            <summary>
+            Получить или установить путь к скрипту отправки команды
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ScriptPaths.EventAckScriptPath">
+            <summary>
+            Получить или установить путь к скрипту квитирования события
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ScriptPaths.UserProfilePath">
+            <summary>
+            Gets or sets the user profile URL template.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ScriptPaths.ExtraScripts">
+            <summary>
+            Получить или установить пути к дополнительным скриптам
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ScriptPaths.SetToDefault">
+            <summary>
+            Установить значения по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ScriptPaths.GenerateHtml">
+            <summary>
+            Генерировать HTML-код для добавления скриптов на веб-страницу
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.IWebTreeNode">
+            <summary>
+            Interface that represents tree node to display on a web page.
+            <para>Интерфейс, представляющий узел дерева для отображения на веб-странице.</para>
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.Text">
+            <summary>
+            Получить текст
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.Hidden">
+            <summary>
+            Получить признак, что узел скрыт.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.Url">
+            <summary>
+            Получить ссылку
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.Script">
+            <summary>
+            Получить скрипт
+            </summary>
+            <remarks>Скрипт имеет приоритет перед ссылкой, но наличие ссылки позволяет 
+            открывать страницу в новом окне из стандартного контекстного меню</remarks>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.IconUrl">
+            <summary>
+            Получить ссылку на иконку
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.Level">
+            <summary>
+            Получить или установить уровень вложенности
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.Children">
+            <summary>
+            Получить дочерние узлы
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.IWebTreeNode.DataAttrs">
+            <summary>
+            Получить атрибуты данных в виде пар "имя-значение"
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.IWebTreeNode.IsSelected(System.Object)">
+            <summary>
+            Определить, что узел соответствует выбранному объекту
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.RememberMe">
+            <summary>
+            Allows to remember that a user is logged on
+            <para>Позволяет запоминать, что пользователь вошёл в систему</para>
+            </summary>
+            <remarks>The object must be a singleton
+            <para>Объект должен являться синглтоном</para></remarks>
+        </member>
+        <member name="T:Scada.Web.Shell.RememberMe.Credentials">
+            <summary>
+            Учётные данные
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.Credentials.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.Credentials.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.Credentials.#ctor(System.String,System.String,System.DateTime)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.RememberMe.Credentials.BrowserID">
+            <summary>
+            Получить идентификатор, присваиваемый браузеру пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.RememberMe.Credentials.OneTimePassword">
+            <summary>
+            Одноразовый пароль
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.RememberMe.Credentials.CreateDT">
+            <summary>
+            Получить дату и время создания учётных данных
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.Credentials.GenerateID">
+            <summary>
+            Генерировать идентификатор случайным образом
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.RememberMe.ExpireSpan">
+            <summary>
+            Длительность хранения информации о входе пользователя в систему
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.RememberMe.storage">
+            <summary>
+            Объект для работы с хранилищем приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.RememberMe.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.RememberMe.fileLock">
+            <summary>
+            Объект для синхронизации достапа к файлам
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.#ctor(Scada.Web.Storage,Utils.Log)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.GetCredentialsFileName(System.String,System.Boolean)">
+            <summary>
+            Получить имя файла учётных данных пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.LoadCredentials(System.String)">
+            <summary>
+            Загрузить учётные данные пользователя из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.SaveCredentials(System.String,System.Collections.Generic.List{Scada.Web.Shell.RememberMe.Credentials})">
+            <summary>
+            Сохранить учётные данные пользователя в файле
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.ValidateUser(System.String,Scada.Web.Shell.RememberMe.Credentials,Scada.Web.Shell.RememberMe.Credentials@,System.String@)">
+            <summary>
+            Проверить, что пользователю разрешён вход в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.CreateCredentials(System.String)">
+            <summary>
+            Создать учётные данные для пользователя на стороне сервера
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.CreateCookie(System.String,Scada.Web.Shell.RememberMe.Credentials)">
+            <summary>
+            Создать cookie для записи информации о входе в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.ValidateUser(System.Web.HttpContext,System.String@,System.String@)">
+            <summary>
+            Проверить, что пользователю, данные которого записаны в cookies, разрешён вход в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.RestoreUsername(System.Web.HttpContext)">
+            <summary>
+            Извлечь имя пользователя из cookies
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.RememberUsername(System.String,System.Web.HttpContext)">
+            <summary>
+            Запомнить имя пользователя в cookies
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.RememberUser(System.String,System.Web.HttpContext)">
+            <summary>
+            Запомнить, что пользователь вошёл в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.ForgetUser(System.Web.HttpContext)">
+            <summary>
+            Удалить информацию о входе в систему из cookies
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.RememberMe.CompletelyForgetUser(System.String,System.Web.HttpContext)">
+            <summary>
+            Полностью удалить информацию о входах пользователя на стороне сервера и из cookies
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.SortOrders">
+            <summary>
+            Predefined item sort orders
+            <para>Предзаданные порядки сортировки элементов</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.SortOrders.First">
+            <summary>
+            Первый
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.SortOrders.Last">
+            <summary>
+            Последний
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.Stats">
+            <summary>
+            Provides sharing depersonalized stats with the developer team
+            <para>Обеспечивает передачу обезличенной статистики команде разработчиков</para>
+            </summary>
+            <remarks>The object must be a singleton
+            <para>Объект должен являться синглтоном</para></remarks>
+        </member>
+        <member name="F:Scada.Web.Shell.Stats.storage">
+            <summary>
+            Объект для работы с хранилищем приложения
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.Stats.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.Stats.fileLock">
+            <summary>
+            Объект для синхронизации достапа к файлу параметров статистики
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.Stats.serverID">
+            <summary>
+            Ид. сервера для передачи статистики
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.#ctor(Scada.Web.Storage,Utils.Log)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.GetServerID">
+            <summary>
+            Получить ид. сервера для передачи статистики, 
+            при первом получении загрузив его из хранилица или сгенерировав новый
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.GenerateServerID">
+            <summary>
+            Генерировать ид. сервера
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.LoadServerID(System.String)">
+            <summary>
+            Загрузить ид. сервера из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.SaveServerID(System.String,System.String)">
+            <summary>
+            Сохранить ид. сервера в файле
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.Stats.GenerateHtml(System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Генерировать HTML-код для передачи статистики
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.TreeViewRenderer">
+            <summary>
+            Renders tree view HTML.
+            <para>Формирует HTML код дерева.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.TreeViewRenderer.Options">
+            <summary>
+            Параметры отображения дерева
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.TreeViewRenderer.Options.ShowIcons">
+            <summary>
+            Получить или установить 
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.TreeViewRenderer.Options.FolderImageUrl">
+            <summary>
+            Получить или установить ссылку на иконку папки
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.TreeViewRenderer.Options.DocumentImageUrl">
+            <summary>
+            Получить или установить ссылку на иконку документа, если иконка узла пустая
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.TreeViewRenderer.GenDataAttrsHtml(Scada.Web.Shell.IWebTreeNode)">
+            <summary>
+            Генерировать HTML-код атрибутов данных
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.TreeViewRenderer.GenTreeViewHtml(System.Collections.IList,System.Object,Scada.Web.Shell.TreeViewRenderer.Options,System.Boolean)">
+            <summary>
+            Рекурсивно генерировать HTML-код дерева
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.TreeViewRenderer.GenerateHtml(System.Collections.IList,System.Object,Scada.Web.Shell.TreeViewRenderer.Options)">
+            <summary>
+            Генерировать HTML-код дерева для узлов, поддерживающих IWebTreeNode
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.UrlTemplates">
+            <summary>
+            URL templates of the web application pages
+            <para>Шаблоны адресов страниц веб-приложения</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.LoginWithReturn">
+            <summary>
+            Вход в систему с указанием ссылки для возврата
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.LoginWithAlert">
+            <summary>
+            Вход в систему с указанием ссылки для возврата и выводом сообщения
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.DefaultUserProfile">
+            <summary>
+            Профиль пользователя по умолчанию
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.DefaultStartPage">
+            <summary>
+            Стартовая страница по умолчанию
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.View">
+            <summary>
+            Представление
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.NoView">
+            <summary>
+            Отсутствующее представление
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UrlTemplates.Stats">
+            <summary>
+            Сайт сбора статистики
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.UserContent">
+            <summary>
+            Content accessible to the web application user.
+            <para>Контент, доступный пользователю веб-приложения.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserContent.log">
+            <summary>
+            Журнал.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserContent.reportItemDict">
+            <summary>
+            Словарь элементов отчётов, ключ - ид. отчёта.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserContent.dataWndItemDict">
+            <summary>
+            Словарь элементов окон данных, ключ - ид. окна данных.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.#ctor(Utils.Log)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.UserContent.ReportItems">
+            <summary>
+            Получить элементы отчётов, доступные пользователю.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.UserContent.DataWndItems">
+            <summary>
+            Получить элементы окон данных, доступные пользователю.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.AddContentFromBase(Scada.Web.UserRights,System.Collections.Generic.Dictionary{System.String,Scada.Web.Plugins.UiObjSpec},Scada.Client.DataAccess)">
+            <summary>
+            Добавление контента, прописанного в базе конфигурации.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.AddContentFromPlugins(System.Collections.Generic.List{Scada.Web.Plugins.PluginSpec})">
+            <summary>
+            Добавление контента, доступного всем, который задаётся спецификациями плагинов.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.Init(Scada.Web.UserData,Scada.Client.DataAccess)">
+            <summary>
+            Инициализировать доступный контент пользователя.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.GetReportItem(System.Int32)">
+            <summary>
+            Получить элемент отчёта по идентификатору.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.GetReportItem(System.Int32,System.Type,System.Boolean)">
+            <summary>
+            Получить элемент отчёта, имеющий спецификацию заданного типа, по идентификатору.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.GetDataWndItem(System.Int32)">
+            <summary>
+            Получить элемент окна данных по идентификатору.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserContent.GetDataWndItem(System.Int32,System.Type,System.Boolean)">
+            <summary>
+            Получить элемент окна данных, имеющий спецификацию заданного типа, по идентификатору.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.UserMenu">
+            <summary>
+            Main menu accessible to the web application user
+            <para>Главное меню, доступное пользователю веб-приложения</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserMenu.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserMenu.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserMenu.#ctor(Utils.Log)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.UserMenu.MenuItems">
+            <summary>
+            Получить элементы меню, доступные пользователю
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserMenu.MergeMenuItems(System.Collections.Generic.List{Scada.Web.Shell.MenuItem},System.Collections.Generic.List{Scada.Web.Shell.MenuItem},System.Int32)">
+            <summary>
+            Рекурсивно слить элементы меню
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserMenu.SetMenuItemLevels(System.Collections.Generic.List{Scada.Web.Shell.MenuItem},System.Int32)">
+            <summary>
+            Рекурсивно установить уровень вложенности элементов меню
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserMenu.Init(Scada.Web.UserData)">
+            <summary>
+            Инициализировать меню пользователя
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.UserViews">
+            <summary>
+            Views accessible to the web application user.
+            <para>Представления, доступные пользователю веб-приложения.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.UserViews.DataContext">
+            <summary>
+            Контекст для получения данных
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserViews.DataContext.UserRights">
+            <summary>
+            Права пользователя
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserViews.DataContext.UiObjSpecs">
+            <summary>
+            Спецификации объектов пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserViews.DataContext.DataAccess">
+            <summary>
+            Объект для доступа к данным кэша клиентов
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserViews.viewCache">
+            <summary>
+            Кэш представлений
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserViews.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.UserViews.viewNodeDict">
+            <summary>
+            Словарь узлов дерева представлений, ключ - ид. представления
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.#ctor(Scada.Client.ViewCache,Utils.Log)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.UserViews.ViewNodes">
+            <summary>
+            Получить узлы дерева представлений, доступные пользователю
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.CreateViewNodes(System.Collections.Generic.List{Scada.Web.Shell.ViewNode},System.Collections.Generic.List{Scada.Web.ViewSettings.ViewItem},System.Int32,Scada.Web.Shell.UserViews.DataContext)">
+            <summary>
+            Рекурсивно создать узлы дерева представлений на основе элементов настроек
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.FindNonEmptyViewNode(System.Collections.Generic.List{Scada.Web.Shell.ViewNode})">
+            <summary>
+            Рекурсивно найти узел дерева с непустым представлением
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.GetViewType(System.Int32)">
+            <summary>
+            Получить ссылку на тип представления с заданным идентификатором
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.LinearizeViewNodes(System.Collections.Generic.List{Scada.Web.Shell.ViewNode},System.Collections.Generic.List{Scada.Web.Shell.ViewNode})">
+            <summary>
+            Рекурсивно слить узлы дерева в линейный список
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.Init(Scada.Web.UserData,Scada.Client.DataAccess)">
+            <summary>
+            Инициализировать доступные представления пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.GetViewNode(System.Int32)">
+            <summary>
+            Получить узел дерева представлений по идентификатору
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.GetFirstViewNode">
+            <summary>
+            Получить первый доступный узел дерева представлений
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.GetView(System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Получить представление по идентификатору, если тип представления заранее не известен
+            </summary>
+            <remarks>Если тип представления известен, эффективнее использовать ViewCache.GetView</remarks>
+        </member>
+        <member name="M:Scada.Web.Shell.UserViews.GetLinearViewNodes">
+            <summary>
+            Получить линейный список узлов дерева представлений
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.ViewNode">
+            <summary>
+            View tree node.
+            <para>Узел дерева представлений.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.ViewNode.ScriptTemplate">
+            <summary>
+            Шаблон скрипта, открывающего представление
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ViewNode.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ViewNode.#ctor(Scada.Web.ViewSettings.ViewItem,Scada.Web.Plugins.ViewSpec)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.ViewID">
+            <summary>
+            Получить идентификатор представления
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.Text">
+            <summary>
+            Получить текст
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.AlarmCnlNum">
+            <summary>
+            Получить номер входного канала, информирующего о тревожном состоянии представления
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.Hidden">
+            <summary>
+            Получить признак, что узел скрыт.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.ViewSpec">
+            <summary>
+            Получить спецификацию представления
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.ViewUrl">
+            <summary>
+            Получить ссылку на представление
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.Url">
+            <summary>
+            Получить ссылку на страницу оболочки, содержащую представление
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.Script">
+            <summary>
+            Получить скрипт, открывающий представление
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.IconUrl">
+            <summary>
+            Получить ссылку на иконку
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.Level">
+            <summary>
+            Получить или установить уровень вложенности
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.IsEmpty">
+            <summary>
+            Получить признак, что узел пустой, т.е. для него не открывается представление
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.ChildNodes">
+            <summary>
+            Получить дочерние узлы
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.Children">
+            <summary>
+            Получить дочерние узлы
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.ViewNode.DataAttrs">
+            <summary>
+            Получить атрибуты данных в виде пар "имя-значение"
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ViewNode.InitDataAttrs">
+            <summary>
+            Инициализировать атрибуты данных
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.ViewNode.IsSelected(System.Object)">
+            <summary>
+            Определить, что узел соответствует выбранному объекту
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.MenuItem">
+            <summary>
+            Menu item.
+            <para>Элемент меню.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.MenuItem.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.MenuItem.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Text">
+            <summary>
+            Получить текст
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Hidden">
+            <summary>
+            Получить признак, что элемент скрыт.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Url">
+            <summary>
+            Получить ссылку
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Script">
+            <summary>
+            Получить скрипт
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.SortOrder">
+            <summary>
+            Получить порядок сортировки
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Level">
+            <summary>
+            Получить или установить уровень вложенности
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Subitems">
+            <summary>
+            Получить подпункты меню
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Scada#Web#Shell#IWebTreeNode#IconUrl">
+            <summary>
+            Получить ссылку на иконку
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Scada#Web#Shell#IWebTreeNode#Children">
+            <summary>
+            Получить дочерние узлы
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Shell.MenuItem.Scada#Web#Shell#IWebTreeNode#DataAttrs">
+            <summary>
+            Получить атрибуты данных в виде пар "имя-значение"
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.MenuItem.CompareTo(Scada.Web.Shell.MenuItem)">
+            <summary>
+            Сравнить текущий объект с другим объектом такого же типа
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.MenuItem.FromStandardMenuItem(Scada.Web.Shell.StandardMenuItems)">
+            <summary>
+            Создать элемент меню на основе стандартного элемента меню
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Shell.MenuItem.Scada#Web#Shell#IWebTreeNode#IsSelected(System.Object)">
+            <summary>
+            Определить, что узел соответствует выбранному объекту
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Shell.StandardMenuItems">
+            <summary>
+            Standard menu items
+            <para>Стандартные элементы меню</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.None">
+            <summary>
+            Элементы отсутствуют
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.Reports">
+            <summary>
+            Отчёты
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.Admin">
+            <summary>
+             Администрирование
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.Config">
+            <summary>
+             Конфигурация
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.Reg">
+            <summary>
+             Регистрация
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.Plugins">
+            <summary>
+             Плагины
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Shell.StandardMenuItems.About">
+            <summary>
+             О приложении
+            </summary>
+        </member>
+        <member name="T:Scada.Web.SettingsUpdater">
+            <summary>
+            Updates settings on file change
+            <para>Обновляет настройки при изменении файла</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.SettingsUpdater.fileName">
+            <summary>
+            Имя файла настроек
+            </summary>
+        </member>
+        <member name="F:Scada.Web.SettingsUpdater.recreate">
+            <summary>
+            Признак, что настройки необходимо создавать заново, если они изменились
+            </summary>
+        </member>
+        <member name="F:Scada.Web.SettingsUpdater.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.#ctor(Scada.ISettings,System.String,System.Boolean,Utils.Log)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.SettingsUpdater.Settings">
+            <summary>
+            Получить обновляемые настройки
+            </summary>
+        </member>
+        <member name="P:Scada.Web.SettingsUpdater.FileAge">
+            <summary>
+            Получить время изменения файла настроек при обновлении
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.Update(System.Boolean@,System.String@)">
+            <summary>
+            Обновить настройки из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.Update(System.Boolean@)">
+            <summary>
+            Обновить настройки из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.Update(System.String@)">
+            <summary>
+            Обновить настройки из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.Update">
+            <summary>
+            Обновить настройки из файла, если файл изменился
+            </summary>
+        </member>
+        <member name="M:Scada.Web.SettingsUpdater.ResetFileAge">
+            <summary>
+            Сбросить время изменения файла настроек
+            </summary>
+        </member>
+        <member name="T:Scada.Web.UserShot">
+            <summary>
+            Snapshot of application user data.
+            <para>Снимок данных пользователя приложения.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserShot.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserShot.#ctor(Scada.Web.UserShot)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.IpAddress">
+            <summary>
+            Получить IP-адрес пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.SessionID">
+            <summary>
+            Получить идентификатор сессии
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.LoggedOn">
+            <summary>
+            Получить признак, выполнен ли вход пользователя в систему
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.LogonDT">
+            <summary>
+            Получить дату и время входа пользователя в систему
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.StartPage">
+            <summary>
+            Gets or sets the start page for the current user.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.UserProps">
+            <summary>
+            Получить свойства пользователя
+            </summary>
+            <remarks>Объект пересоздаётся после входа в систему</remarks>
+        </member>
+        <member name="P:Scada.Web.UserShot.UserRights">
+            <summary>
+            Получить права пользователя
+            </summary>
+            <remarks>Объект пересоздаётся после входа в систему.
+            Объект после инициализации не изменяется экземпляром данного класса и не должен изменяться извне,
+            таким образом, чтение его данных является потокобезопасным</remarks>
+        </member>
+        <member name="P:Scada.Web.UserShot.UserMenu">
+            <summary>
+            Получить меню пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.UserViews">
+            <summary>
+            Получить представления пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.UserContent">
+            <summary>
+            Получить контент пользователя
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.WebSettings">
+            <summary>
+            Получить ссылку на настройки веб-приложения
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.ViewSettings">
+            <summary>
+            Получить ссылку на настройки представлений
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.PluginSpecs">
+            <summary>
+            Получить ссылку на список спецификаций плагинов
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserShot.UiObjSpecs">
+            <summary>
+            Получить ссылку на словарь спецификаций объектов пользовательского интерфейса, ключ - код типа объекта
+            </summary>
+        </member>
+        <member name="T:Scada.Web.WebUtils">
+            <summary>
+            The class contains utility methods for web applications.
+            <para>Класс, содержащий вспомогательные методы для веб-приложений.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebUtils.AppVersion">
+            <summary>
+            Версия веб-приложения.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebUtils.StyleTemplate">
+            <summary>
+            Шиблон для вставки стилей на веб-страницу.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebUtils.ScriptTemplate">
+            <summary>
+            Шиблон для вставки скрипта на веб-страницу.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebUtils.UnixEpoch">
+            <summary>
+            Начало отчёта времени в Unix, которое используется в Javascript реализации даты.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebUtils.CacheExpiration">
+            <summary>
+            Длительность хранения данных в кэше приложения.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebUtils.CookieExpiration">
+            <summary>
+            Длительность хранения данных в cookies.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.CheckHttpContext(System.Web.HttpContext,System.Boolean)">
+            <summary>
+            Проверить HTTP-контекст и его основные свойства на null.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.IsAjaxRequest(System.Web.HttpRequest)">
+            <summary>
+            Проверить, что выполняется AJAX-запрос.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.DisablePageCache(System.Web.HttpResponse)">
+            <summary>
+            Отключить кэширование страницы.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.HtmlEncodeWithBreak(System.Object)">
+            <summary>
+            Преобразовать строку для вывода на веб-страницу, заменив "\n" на тег "br".
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.DictionaryToJs(Scada.Localization.Dict)">
+            <summary>
+            Преобразовать словарь в объект JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.DictionaryToJs(System.String)">
+            <summary>
+            Получить словарь по ключу и преобразовать в объект JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.DateTimeToJs(System.DateTime)">
+            <summary>
+            Преобразовать дату в время в число миллисекунд для создания даты в JavaScript.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetErrorJson(System.Web.Script.Serialization.JavaScriptSerializer,System.Exception)">
+            <summary>
+            Получить объект для передачи данных, содержащий информацию об ошибке, в формате JSON.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.HideAlert(System.Web.UI.WebControls.Panel)">
+            <summary>
+            Скрыть сообщение на панели
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.ShowAlert(System.Web.UI.WebControls.Panel,System.String)">
+            <summary>
+            Отобразить сообщение на панели
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.ShowAlert(System.Web.UI.WebControls.Panel,System.Exception)">
+            <summary>
+            Отобразить текст исключения на панели
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.ShowAlert(System.Web.UI.WebControls.Panel,System.Web.UI.WebControls.Label)">
+            <summary>
+            Сделать видимым сообщение на панели
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.SetSelectedValue(System.Web.UI.WebControls.DropDownList,System.Object)">
+            <summary>
+            Sets the selected value of the drop down list if possible.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.UpdateModalHeight(System.Web.UI.Page)">
+            <summary>
+            Updates the modal dialog height.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.SetModalTitle(System.Web.UI.Page,System.String)">
+            <summary>
+            Sets the modal dialog title.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.CloseModal(System.Web.UI.Page,System.Boolean,System.String)">
+            <summary>
+            Closes the modal dialog.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsBool(System.Collections.Specialized.NameValueCollection,System.String,System.Boolean)">
+            <summary>
+            Получить логическое значение параметра из строки запроса.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsInt(System.Collections.Specialized.NameValueCollection,System.String,System.Int32)">
+            <summary>
+            Получить целое значение параметра из строки запроса.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsDate(System.Collections.Specialized.NameValueCollection,System.Nullable{System.DateTime},System.String,System.String,System.String)">
+            <summary>
+            Получить значение параметра из строки запроса как дату.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsDate(System.Collections.Specialized.NameValueCollection,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Получить значение параметра из строки запроса как дату.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsEnum``1(System.Collections.Specialized.NameValueCollection,System.String,``0)">
+            <summary>
+            Gets the XML attribute value as an enumeration element.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsIntArray(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Получить значение параметра из строки запроса как массив целых чисел.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.GetParamAsIntSet(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>
+            Получить значение параметра из строки запроса как множество целых чисел.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebUtils.DateToQueryParam(System.DateTime)">
+            <summary>
+            Преобразовать дату в значение параметра запроса.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.UserData">
+            <summary>
+            Application user data
+            <para>Данные пользователя приложения</para>
+            </summary>
+            <remarks>Inheritance is impossible because class is shared by different modules. 
+            The class is not thread safe
+            <para>Наследование невозможно, т.к. класс совместно используется различными модулями. 
+            Класс не является потокобезопасным</para></remarks>
+        </member>
+        <member name="F:Scada.Web.UserData.AppData">
+            <summary>
+            Общие данные веб-приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта из других классов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.ClearUser">
+            <summary>
+            Очистить данные пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.ClearAppDataRefs">
+            <summary>
+            Очистить ссылки на объекты общих данных приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.UpdateAppDataRefs">
+            <summary>
+            Обновить ссылки на объекты общих данных приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.RaiseOnUserLogin">
+            <summary>
+            Вызвать метод OnUserLogin для плагинов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.RaiseOnUserLogout">
+            <summary>
+            Вызвать метод OnUserLogout для плагинов
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.Login(System.String,System.String,System.String@)">
+            <summary>
+            Выполнить вход пользователя в систему
+            </summary>
+            <remarks>Если пароль равен null, то он не проверяется</remarks>
+        </member>
+        <member name="M:Scada.Web.UserData.Login(System.String,System.String@)">
+            <summary>
+            Выполнить вход пользователя в систему без проверки пароля
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.LoginForDebug">
+            <summary>
+            Выполнить вход пользователя в систему для последующей отладки
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.Logout">
+            <summary>
+            Выполнить выход пользователя из системы
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.ReLogin">
+            <summary>
+            Выполнить выход и повторный вход в систему
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.CheckLoggedOn(System.Boolean)">
+            <summary>
+            Проверить, что пользователь вошёл систему. 
+            Если вход не выполнен, то перейти на страницу входа или вызвать исключение
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserData.GetUserData">
+            <summary>
+            Получить данные пользователя приложения
+            </summary>
+            <remarks>Для веб-приложения данные пользователя сохраняются в сессии</remarks>
+        </member>
+        <member name="M:Scada.Web.UserData.ValidateUserName(System.String)">
+            <summary>
+            Проверить допустимость имени пользователя
+            </summary>
+        </member>
+        <member name="T:Scada.Web.UserMonitor">
+            <summary>
+            User activity monitor
+            <para>Монитор активности пользователей</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.UserMonitor.UserShotComparer">
+            <summary>
+            Класс, позволяющий сравнивать снимки данных пользователей
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.UserShotComparer.Compare(Scada.Web.UserShot,Scada.Web.UserShot)">
+            <summary>
+            Сравнить два объекта
+            </summary>
+        </member>
+        <member name="F:Scada.Web.UserMonitor.UserShotComp">
+            <summary>
+            Объект для сравнения снимков данных пользователей для сортировки
+            </summary>
+        </member>
+        <member name="F:Scada.Web.UserMonitor.log">
+            <summary>
+            Журнал
+            </summary>
+        </member>
+        <member name="F:Scada.Web.UserMonitor.userDataDict">
+            <summary>
+            Данные пользователей с доступом по ид. сессии
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.#ctor(Utils.Log)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.CheckWebOperationContext(System.ServiceModel.Web.WebOperationContext)">
+            <summary>
+            Проверить контекст веб-операции и его основные свойства на null
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.ExtractSessionID(System.String)">
+            <summary>
+            Извлечь ид. сессии из HTTP-заголовка
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.TryGetUserData(System.ServiceModel.Web.WebOperationContext,Scada.Web.UserData@)">
+            <summary>
+            Попытаться получить данные пользователя по контексту веб-операции
+            </summary>
+            <remarks>Метод получения данных пользователя не должен быть public,
+            потому что возникнут проблемы с многопоточностью</remarks>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.AddUser(Scada.Web.UserData)">
+            <summary>
+            Добавить информацию о пользователе
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.RemoveUser(System.String)">
+            <summary>
+            Удалить информацию о пользователе
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.UserIsLoggedOn(System.ServiceModel.Web.WebOperationContext,Scada.Web.UserRights@)">
+            <summary>
+            Проверить, что пользователь вошёл в систему, и получить его права
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.UserIsLoggedOn(System.ServiceModel.Web.WebOperationContext,Scada.Web.UserShot@)">
+            <summary>
+            Проверить, что пользователь вошёл в систему, и получить его снимок
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.CheckLoggedOn(Scada.Web.UserRights@,System.Boolean)">
+            <summary>
+            Проверить, что пользователь вошёл систему, и получить его права
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.CheckLoggedOn(Scada.Web.UserShot@,System.Boolean)">
+            <summary>
+            Проверить, что пользователь вошёл систему, и получить снимок его данных
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserMonitor.GetActiveUsers">
+            <summary>
+            Получить снимки данных активных пользователей
+            </summary>
+        </member>
+        <member name="T:Scada.Web.UserRights">
+            <summary>
+            Application user rights
+            <para>Права пользователя приложения</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.UserRights.viewCache">
+            <summary>
+            Кэш представлений
+            </summary>
+        </member>
+        <member name="F:Scada.Web.UserRights.globalRights">
+            <summary>
+            Общие права пользователя на все сущности
+            </summary>
+        </member>
+        <member name="F:Scada.Web.UserRights.uiObjRightsDict">
+            <summary>
+            Права на объекты пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.#ctor(Scada.Client.ViewCache)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserRights.ViewAllRight">
+            <summary>
+            Получить право на просмотр всех данных
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserRights.ControlAllRight">
+            <summary>
+            Получить право на любое управление
+            </summary>
+        </member>
+        <member name="P:Scada.Web.UserRights.ConfigRight">
+            <summary>
+            Получить право конфигурирования системы
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.SetToDefault">
+            <summary>
+            Установить значения прав по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.CheckArrays(System.Int32[],System.Int32[])">
+            <summary>
+            Проверить корректность массивов номеров входных каналов и ид. представлений
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.ElementsEqual(System.Int32[])">
+            <summary>
+            Проверить, что все элементы непустого массива равны
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.CheckRights(System.Int32[],System.Int32[],System.Int32@)">
+            <summary>
+            Проверить права на входные каналы, которые относятся к указанным представлениям
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.CheckRights(System.Int32,System.Int32)">
+            <summary>
+            Проверить права на входной канал, который относится к указанному представлению
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.CheckRights(System.Int32[],System.Int32)">
+            <summary>
+            Проверить права на входные каналы, все из которых относятся к указанному представлению
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.InitGeneralRights(System.Int32)">
+            <summary>
+            Инициализировать только основные права пользователя, исключая права на представления и контент
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.Init(System.Int32,Scada.Client.DataAccess)">
+            <summary>
+            Инициализировать права пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.GetUiObjRights(System.Int32)">
+            <summary>
+            Получить права на объект пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.CheckInCnlRights(System.Int32[],System.Int32[])">
+            <summary>
+            Проверить права на входные каналы, которые относятся к указанным представлениям
+            </summary>
+        </member>
+        <member name="M:Scada.Web.UserRights.CheckInCnlRights(System.Int32[],System.Int32[],System.Int32@)">
+            <summary>
+            Проверить права на входные каналы, которые относятся к указанным представлениям,
+            и вернуть ид. представления, если оно единственное
+            </summary>
+        </member>
+        <member name="T:Scada.Web.WebPhrases">
+            <summary>
+            The phrases used by the web application and its plugins
+            <para>Фразы, используемые веб-приложением и его плагинами</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ViewSettings">
+            <summary>
+            View settings.
+            <para>Настройки представлений.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ViewSettings.ViewItem">
+            <summary>
+            Элемент настроек, соответствующий представлению.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.ViewSettings.ViewItem.PathComparer">
+            <summary>
+            Сравнение элементов по пути.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.ViewItem.PathComparer.Compare(Scada.Web.ViewSettings.ViewItem,Scada.Web.ViewSettings.ViewItem)">
+            <summary>
+            Сравнить два объекта.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.ViewSettings.ViewItem.PathComp">
+            <summary>
+            Объект для сравнения элементов по пути.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.ViewItem.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.ViewItem.#ctor(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItem.ViewID">
+            <summary>
+            Получить или установить идентификатор представления.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItem.Text">
+            <summary>
+            Получить или установить текст.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItem.PathPart">
+            <summary>
+            Получить или установить часть пути, соответствующую элементу.
+            </summary>
+            <remarks>Свойство необходимо для загрузки настроек из базы конфигурации.</remarks>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItem.AlarmCnlNum">
+            <summary>
+            Получить или установить номер входного канала, информирующего о тревожном состоянии представления.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItem.Hidden">
+            <summary>
+            Получить или установить признак, что элемент скрыт.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItem.Subitems">
+            <summary>
+            Получить дочерние элементы.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.ViewItem.CompareTo(Scada.Web.ViewSettings.ViewItem)">
+            <summary>
+            Сравнить текущий объект с другим объектом такого же типа.
+            </summary>
+        </member>
+        <member name="F:Scada.Web.ViewSettings.DefFileName">
+            <summary>
+            Имя файла настроек по умолчанию.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.#ctor">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="P:Scada.Web.ViewSettings.ViewItems">
+            <summary>
+            Получить элементы настроек представлений.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.LoadViewItem(System.Xml.XmlElement,System.Collections.Generic.List{Scada.Web.ViewSettings.ViewItem})">
+            <summary>
+            Рекурсивно загрузить элемент настроек представлений.
+            </summary>
+            <remarks>Метод используется только при загрузке из файла.</remarks>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.AppendViewItem(System.Int32,System.String,System.Boolean,System.String[],System.Int32,System.Collections.Generic.List{Scada.Web.ViewSettings.ViewItem})">
+            <summary>
+            Рекурсивно добавить элемент настроек представлений.
+            </summary>
+            <remarks>Метод используется только при загрузке из базы конфигурации.</remarks>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.SortViewItems(System.Collections.Generic.List{Scada.Web.ViewSettings.ViewItem})">
+            <summary>
+            Рекурсивно сортировать элементы настроек представлений.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.Create">
+            <summary>
+            Создать новый объект настроек.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.Equals(Scada.ISettings)">
+            <summary>
+            Определить, равны ли заданные настройки текущим настройкам.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.LoadFromFile(System.String,System.String@)">
+            <summary>
+            Загрузить настройки из файла.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.SaveToFile(System.String,System.String@)">
+            <summary>
+            Сохранить настройки в файле.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.ViewSettings.LoadFromBase(Scada.Client.DataAccess,System.String@)">
+            <summary>
+            Загрузить настройки из базы конфигурации.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.WebSettings">
+            <summary>
+            Web application settings.
+            <para>Настройки веб-приложения.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebSettings.DefFileName">
+            <summary>
+            Имя файла настроек по умолчанию
+            </summary>
+        </member>
+        <member name="F:Scada.Web.WebSettings.MinDataRefrRate">
+            <summary>
+            Мин. частота обновления данных, мс
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.Culture">
+            <summary>
+            Получить или установить культуру веб-приложения
+            </summary>
+            <remarks>Переопределяет культуру, заданную в реестре для всех приложений SCADA</remarks>
+        </member>
+        <member name="P:Scada.Web.WebSettings.DataRefrRate">
+            <summary>
+            Получить или установить частоту обновления текущих данных и событий, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.ArcRefrRate">
+            <summary>
+            Получить или установить частоту обновления архивных данных, мс
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.DispEventCnt">
+            <summary>
+            Получить или установить количество отображаемых событий
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.ChartGap">
+            <summary>
+            Получить или установить расстояние между разделяемыми точками графика, с
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.StartPage">
+            <summary>
+            Получить или установить стартовую страницу после входа в систему
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.CmdEnabled">
+            <summary>
+            Получить или установить разрешение команд управления
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.CmdPassword">
+            <summary>
+            Получить или установить необходимость ввода пароля при отправке команды
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.RemEnabled">
+            <summary>
+            Получить или установить разрешение запоминать пользователя, вошедшего в систему
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.ViewsFromBase">
+            <summary>
+            Получить или установить признак загрузки настроек представлений из базы конфигурации
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.ShareStats">
+            <summary>
+            Получить или установить разрешение передачи обезличенной статистики команде разработчиков
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.CommSettings">
+            <summary>
+            Получить настройки соединения с сервером
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.ScriptPaths">
+            <summary>
+            Получить пути к дополнительным скриптам, реализующим функциональность оболочки
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.PluginFileNames">
+            <summary>
+            Получить имена файлов библиотек подключенных плагинов, упорядоченные по возрастанию
+            </summary>
+        </member>
+        <member name="P:Scada.Web.WebSettings.CustomOptions">
+            <summary>
+            Gets the groups of custom options.
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.SetToDefault">
+            <summary>
+            Установить значения настроек по умолчанию
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.Create">
+            <summary>
+            Создать новый объект настроек
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.Equals(Scada.ISettings)">
+            <summary>
+            Определить, равны ли заданные настройки текущим настройкам
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.LoadFromFile(System.String,System.String@)">
+            <summary>
+            Загрузить настройки из файла
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.SaveToFile(System.String,System.String@)">
+            <summary>
+            Сохранить настройки в файле
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.AddPluginFileName(System.String)">
+            <summary>
+            Добавить имя файла библиотеки плагина в список
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.RemovePluginFileName(System.String)">
+            <summary>
+            Удалить имя файла библиотеки плагина из списка
+            </summary>
+        </member>
+        <member name="M:Scada.Web.WebSettings.GetOptions(System.String)">
+            <summary>
+            Gets the list of options by the specified group name, or an empty list if the group is not found.
+            </summary>
+        </member>
+        <member name="T:Scada.Web.Storage">
+            <summary>
+            Web application file storage
+            <para>Файловое хранилище веб-приложения</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Storage.AllUsersName">
+            <summary>
+            Имя, обозначающее всех пользователей
+            </summary>
+        </member>
+        <member name="F:Scada.Web.Storage.AppSubdir">
+            <summary>
+            Поддиректория приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.#ctor">
+            <summary>
+            Конструктор, ограничивающий создание объекта без параметров
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Web.Storage.StorageDir">
+            <summary>
+            Получить или установить директорию хранилища приложения
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.GetAllUsersDir">
+            <summary>
+            Получить директорию хранилища всех пользователей
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.GetUserDir(System.String)">
+            <summary>
+            Получить директорию хранилища заданного пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.GetAllUsersAppDir">
+            <summary>
+            Получить директорию хранилища приложения для всех пользователей
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.GetUserAppDir(System.String)">
+            <summary>
+            Получить директорию хранилища приложения для заданного пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.GetAllUsersPluginDir(System.String)">
+            <summary>
+            Получить директорию хранилища плагина для всех пользователей
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.GetUserPluginDir(System.String,System.String)">
+            <summary>
+            Получить директорию хранилища плагина для заданного пользователя
+            </summary>
+        </member>
+        <member name="M:Scada.Web.Storage.ForceDir(System.String)">
+            <summary>
+            Создать директорию, если она не существует, и вернуть её путь
+            </summary>
+        </member>
+    </members>
+</doc>

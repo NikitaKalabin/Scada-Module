@@ -1,0 +1,766 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaServerShell</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Server.Shell.Code.ArcType">
+            <summary>
+            Specifies the type of archive.
+            <para>Задает тип архива.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Code.ArcType.CurData">
+            <summary>
+            Current data.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Code.ArcType.MinData">
+            <summary>
+            Minute data.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Code.ArcType.HourData">
+            <summary>
+            Hourly data.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Code.ArcType.Events">
+            <summary>
+            Events.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Code.CommShellUtils">
+            <summary>
+            The class contains utility methods for the Server shell.
+            <para>Класс, содержащий вспомогательные методы для оболочки Сервера.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Code.CommShellUtils.RefreshColumns(System.Windows.Forms.DataGridView)">
+            <summary>
+            Removes and adds table columns back to work around Mono bug.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Code.ServerMessage">
+            <summary>
+            Messages sent by Server forms.
+            <para>Сообщения, отправляемые формами Сервера.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Code.ServerEnvironment">
+            <summary>
+            Represents an environment of the Server shell.
+            <para>Представляет среду оболочки Сервера.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Code.ServerEnvironment.moduleViews">
+            <summary>
+            The user interface of the modules accessed by full file name.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Code.ServerEnvironment.#ctor(Scada.Server.AppDirs,Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Code.ServerEnvironment.AppDirs">
+            <summary>
+            Gets the application directories.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Code.ServerEnvironment.ErrLog">
+            <summary>
+            Gets the application error log.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Code.ServerEnvironment.AgentClient">
+            <summary>
+            Gets or sets the client of the Agent service.
+            </summary>
+            <remarks>Null allowed.</remarks>
+        </member>
+        <member name="M:Scada.Server.Shell.Code.ServerEnvironment.GetModuleView(System.String)">
+            <summary>
+            Gets the user interface of the driver.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Code.ServerEnvironment.GetServerComm(Scada.Server.Settings)">
+            <summary>
+            Gets the object that communicates with the Server service.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Code.ServerShell">
+            <summary>
+            Provides access to the Server shell.
+            <para>Обеспечивает доступ к оболочке Сервера.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Code.ServerShell.GetTreeViewImages">
+            <summary>
+            Gets the images used by the explorer.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Code.ServerShell.GetTreeNodes(Scada.Server.Settings,Scada.Server.Shell.Code.ServerEnvironment)">
+            <summary>
+            Gets the tree nodes for the explorer.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Code.ServerShellPhrases">
+            <summary>
+            The phrases used in the Server shell.
+            <para>Фразы, используемые оболочкой Сервера.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmArchive">
+            <summary>
+            Form for displaying list of archive files.
+            <para>Форма для отображения списка архивных файлов.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmArchive.FileItem">
+            <summary>
+            List item representing a file.
+            <para>Элемент списка, представляющий файл.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.#ctor(Scada.Server.Settings,Scada.Server.Shell.Code.ServerEnvironment,Scada.Server.Shell.Code.ArcType)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.SetFormTitle">
+            <summary>
+            Sets the form title.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.DisableControls">
+            <summary>
+            Disables the form controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.GetDirectory">
+            <summary>
+            Gets the directory of the required archive files.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.FillFileList">
+            <summary>
+            Fills the list of files.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.OpenFile(System.Boolean)">
+            <summary>
+            Opens the selected file.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmArchive.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmArchive.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmCommonParams">
+            <summary>
+            Form for editing common parameters of Server settings.
+            <para>Форма редактирования общих параметров Сервера.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.#ctor(Scada.Server.Settings)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmCommonParams.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.SetDirectoriesToDefault(System.Boolean)">
+            <summary>
+            Sets the default directories.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmCommonParams.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmCommonParams.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmEventTable">
+            <summary>
+            Form for viewing and editing an event table.
+            <para>Форма для просмотра и редактирования таблицы событий.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.#ctor(Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmEventTable.FileName">
+            <summary>
+            Gets or sets the file name of the event table.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmEventTable.AllowEdit">
+            <summary>
+            Gets or sets a value indicating whether the event table can be edited.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.LoadEventTable(System.Data.DataTable)">
+            <summary>
+            Loads the event table.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.SaveEventTable">
+            <summary>
+            Saves the event table.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.ValidateCell(System.Int32,System.Int32,System.Object)">
+            <summary>
+            Validates a value of the specified cell.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.ExportToCsv">
+            <summary>
+            Exports data to CSV.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmEventTable.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmEventTable.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmGenCommand">
+            <summary>
+            Form to send a telecontrol command.
+            <para>Форма для отправки команды ТУ.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenCommand.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenCommand.#ctor(Scada.Client.ServerComm,Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenCommand.AdjustControls">
+            <summary>
+            Sets the properties of controls according to the command type.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmGenCommand.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenCommand.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenCommand.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmGenData">
+            <summary>
+            Form for generating data.
+            <para>Форма для генерации данных.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenData.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenData.#ctor(Scada.Client.ServerComm,Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmGenData.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenData.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenData.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmGenerator">
+            <summary>
+            Form for generating Server data and commands.
+            <para>Форма генератора данных и команд Сервера.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenerator.#ctor(Scada.Server.Settings,Scada.Server.Shell.Code.ServerEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenerator.InitServerComm">
+            <summary>
+            Initializes the object to communicate with Server.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenerator.DisplayCommSettings">
+            <summary>
+            Displays server connection settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmGenerator.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenerator.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenerator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmGenEvent">
+            <summary>
+            Form to generate an event.
+            <para>Форма для генерации события.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenEvent.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenEvent.#ctor(Scada.Client.ServerComm,Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmGenEvent.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenEvent.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmGenEvent.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmModules">
+            <summary>
+            Form for editing a list of Server modules.
+            <para>Форма редактирования списка модулей Сервера.</para>
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmModules.ModuleItem">
+            <summary>
+            List item representing a module.
+            <para>Элемент списка, представляющий модуль.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.#ctor(Scada.Server.Settings,Scada.Server.Shell.Code.ServerEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmModules.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.FillUnusedModules">
+            <summary>
+            Fills the list of unused modules.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.InitModuleItem(Scada.Server.Shell.Forms.FrmModules.ModuleItem)">
+            <summary>
+            Initializes the module item if needed.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.CorrectItemDescr(System.String)">
+            <summary>
+            Correct the description of a module if needed.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.ShowItemDescr(System.Object)">
+            <summary>
+            Shows a description of the specified item.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.SetButtonsEnabled">
+            <summary>
+            Enables or disables the buttons.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmModules.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmModules.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmSaveParams">
+            <summary>
+            Form for editing saving parameters of Server settings.
+            <para>Форма редактирования параметров записи Сервера.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmSaveParams.WriteCurPerVals">
+            <summary>
+            The possible values of a current data writing period.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmSaveParams.InactUnrelTimeVals">
+            <summary>
+            The possible values of an unreliable on inactivity.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmSaveParams.WriteMinPerVals">
+            <summary>
+            The possible values of a minute data writing period.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.#ctor(Scada.Server.Settings)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmSaveParams.ChildFormTag">
+            <summary>
+            Gets or sets the object associated with the form.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.SettingsToControls">
+            <summary>
+            Setup the controls according to the settings.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.ControlsToSettings">
+            <summary>
+            Sets the settings according to the controls.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.Save">
+            <summary>
+            Saves the settings.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmSaveParams.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSaveParams.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmStats">
+            <summary>
+            Form for displaying Server stats.
+            <para>Форма для отображения статистики Сервера.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmStats.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmStats.#ctor(Scada.Server.Shell.Code.ServerEnvironment)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmStats.InitRefresh">
+            <summary>
+            Initializes the log refresh process.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmStats.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmStats.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmStats.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Forms.FrmSnapshotTable">
+            <summary>
+            Form for viewing and editing a snapshot table.
+            <para>Форма для просмотра и редактирования таблицы срезов.</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.#ctor(Utils.Log)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmSnapshotTable.FileName">
+            <summary>
+            Gets or sets the file name of the snapshot table.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Forms.FrmSnapshotTable.AllowEdit">
+            <summary>
+            Gets or sets a value indicating whether the snapshot table can be edited.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.LoadSnapshotTable(Scada.Data.Tables.SrezTable)">
+            <summary>
+            Loads the snapshot table.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.SaveSnapshotTable">
+            <summary>
+            Saves the snapshot table.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.FillDataTable1">
+            <summary>
+            Initializes and fills dataTable1.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.FillDataTable2(System.DateTime)">
+            <summary>
+            Initializes and fills dataTable2.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.ValidateCell(System.Int32,System.Int32,System.Object)">
+            <summary>
+            Validates a value of the specified cell.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.ExportToCsv">
+            <summary>
+            Exports data to CSV.
+            </summary>
+        </member>
+        <member name="F:Scada.Server.Shell.Forms.FrmSnapshotTable.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Scada.Server.Shell.Forms.FrmSnapshotTable.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Scada.Server.Shell.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_archive">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_data">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_event">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_generator">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_module">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_params">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_save">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Scada.Server.Shell.Properties.Resources.server_stats">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>

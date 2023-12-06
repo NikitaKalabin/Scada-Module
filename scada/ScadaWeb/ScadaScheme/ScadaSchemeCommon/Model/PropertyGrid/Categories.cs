@@ -42,5 +42,12 @@ namespace Scada.Scheme.Model.PropertyGrid
         public const string Data = "Data";
         public const string Design = "Design";
         public const string Layout = "Layout";
+
+        // Chart categories
+        public const string LineChart = "Line Chart";
+
+        public const string BarChart = "Bar Chart";
+
+        public const string PieChart = "Pie Chart";
     }
 }

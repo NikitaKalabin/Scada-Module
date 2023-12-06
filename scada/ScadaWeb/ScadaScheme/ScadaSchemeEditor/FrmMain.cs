@@ -124,7 +124,7 @@ namespace Scada.Scheme.Editor
                 attrTranslator.TranslateAttrs(typeof(BaseComponent));
                 attrTranslator.TranslateAttrs(typeof(StaticText));
                 attrTranslator.TranslateAttrs(typeof(DynamicText));
-                attrTranslator.TranslateAttrs(typeof(ChartComponent));
+                attrTranslator.TranslateAttrs(typeof(Chart));
                 attrTranslator.TranslateAttrs(typeof(StaticPicture));
                 attrTranslator.TranslateAttrs(typeof(DynamicPicture));
                 attrTranslator.TranslateAttrs(typeof(UnknownComponent));
@@ -159,7 +159,7 @@ namespace Scada.Scheme.Editor
                 return false;
             }
         }
-
+        
         /// <summary>
         /// Sets the standard component images.
         /// </summary>
@@ -196,8 +196,7 @@ namespace Scada.Scheme.Editor
 
                     // добавление элемента с указателем
                     lvCompTypes.Items.Add(new ListViewItem(
-                        AppPhrases.PointerItem, "pointer.png", listViewGroup)
-                    { IndentCount = 1 });
+                        AppPhrases.PointerItem, "pointer.png", listViewGroup) { IndentCount = 1 });
 
                     // добавление компонентов
                     foreach (CompItem compItem in spec.CompItems)
@@ -549,7 +548,7 @@ namespace Scada.Scheme.Editor
         }
 
 
-        private void Scheme_ItemChanged(object sender, SchemeChangeTypes changeType,
+        private void Scheme_ItemChanged(object sender, SchemeChangeTypes changeType, 
             object changedObject, object oldKey)
         {
             ExecuteAction(() =>

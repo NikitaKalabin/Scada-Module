@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaAgentCommon.UI</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Agent.UI.RemoteLogBox">
+            <summary>
+            Provides displaying and updating both local and remote log.
+            <para>Обеспечивает отображение и обновление как локального, так и удалённого журнала.</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Agent.UI.RemoteLogBox.logPath">
+            <summary>
+            The remote path of the log.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.UI.RemoteLogBox.#ctor(System.Windows.Forms.ListBox,System.Boolean)">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.UI.RemoteLogBox.AgentClient">
+            <summary>
+            Gets or sets the client of the Agent service.
+            </summary>
+        </member>
+        <member name="P:Scada.Agent.UI.RemoteLogBox.LogPath">
+            <summary>
+            Gets or sets the remote path of the log.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.UI.RemoteLogBox.RefreshUsingAgent">
+            <summary>
+            Refresh log content using Agent.
+            </summary>
+        </member>
+        <member name="M:Scada.Agent.UI.RemoteLogBox.Refresh">
+            <summary>
+            Refresh log content.
+            </summary>
+        </member>
+    </members>
+</doc>

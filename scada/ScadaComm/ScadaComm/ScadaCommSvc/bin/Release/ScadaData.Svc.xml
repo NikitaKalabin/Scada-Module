@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScadaData.Svc</name>
+    </assembly>
+    <members>
+        <member name="T:Scada.Svc.BaseSvcInstaller">
+            <summary>
+            The base class for Windows service installer
+            <para>Базовый класс установщика службы Windows</para>
+            </summary>
+        </member>
+        <member name="M:Scada.Svc.BaseSvcInstaller.Init(System.String,System.String)">
+            <summary>
+            Инициализировать установщик службы
+            </summary>
+        </member>
+        <member name="T:Scada.Svc.SvcProps">
+            <summary>
+            Windows service properties
+            <para>Свойства службы Windows</para>
+            </summary>
+        </member>
+        <member name="F:Scada.Svc.SvcProps.SvcPropsFileName">
+            <summary>
+            Имя файла, содержащего свойства службы
+            </summary>
+        </member>
+        <member name="F:Scada.Svc.SvcProps.ServiceNameEmptyError">
+            <summary>
+            Сообщение об ошибке, что имя службы пустое
+            </summary>
+        </member>
+        <member name="M:Scada.Svc.SvcProps.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Scada.Svc.SvcProps.#ctor(System.String,System.String)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Scada.Svc.SvcProps.ServiceName">
+            <summary>
+            Получить или установить имя службы
+            </summary>
+        </member>
+        <member name="P:Scada.Svc.SvcProps.Description">
+            <summary>
+            Получить или установить описание
+            </summary>
+        </member>
+        <member name="M:Scada.Svc.SvcProps.LoadFromFile(System.String,System.String@)">
+            <summary>
+            Загрузить свойства службы
+            </summary>
+        </member>
+        <member name="M:Scada.Svc.SvcProps.LoadFromFile">
+            <summary>
+            Загрузить свойства службы
+            </summary>
+        </member>
+    </members>
+</doc>
