@@ -7,6 +7,8 @@ using System.Drawing.Design;
 using System.Xml;
 using Scada.Scheme.Model.DataTypes;
 using CollectionConverter = Scada.Scheme.Model.PropertyGrid.CollectionConverter;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Scada.Scheme.Model
 {
@@ -115,8 +117,51 @@ namespace Scada.Scheme.Model
         }
 
         public Actions Action { get; set; }
-        public int InCnlNum { get; set; }//число строк
-        public int CtrlCnlNum { get; set; }//количество столбцов
+        public int InCnlNum { get; set; } = 1;//число строк
+        public int CtrlCnlNum { get; set; } = 1;//количество столбцов
+
+        public class Record
+        {
+            public Tuple<int, string> machineId { get; set; }
+            public Tuple<int, string> timestart { get; set; }
+            public Tuple<int, string> timeend { get; set; }
+            public Tuple<int, string> tmin { get; set; }
+            public Tuple<int, string> tmax { get; set; }
+            public Tuple<int, string> taverage { get; set; }
+        }
+
+        private string dataSource;
+        public string DataSource
+        {
+            get { return dataSource; }
+            set
+            {
+                if (dataSource != value)
+                {
+                    dataSource = value;
+
+                    if (dataSource != "")
+                    {
+
+                        string path = Path.GetFullPath(dataSource);
+                        string jsonString = File.ReadAllText(path);
+
+                        List<Record> data = JsonConvert.DeserializeObject<List<Record>>(jsonString);
+                        Cells = new List<TableCell>();
+
+                        for (int i = 0; i < data.Count; i++)
+                        {
+                            Cells.Add(new TableCell(data[i].machineId.Item2, data[i].machineId.Item1, i + 1));
+                            Cells.Add(new TableCell(data[i].timestart.Item2, data[i].timestart.Item1, i + 1));
+                            Cells.Add(new TableCell(data[i].timeend.Item2, data[i].timeend.Item1, i + 1));
+                            Cells.Add(new TableCell(data[i].tmin.Item2, data[i].tmin.Item1, i + 1));
+                            Cells.Add(new TableCell(data[i].taverage.Item2, data[i].taverage.Item1, i + 1));
+                            Cells.Add(new TableCell(data[i].tmax.Item2, data[i].tmax.Item1, i + 1));
+                        }
+                    }
+                }
+            }
+        }
     }
 
     [Serializable]
@@ -131,6 +176,12 @@ namespace Scada.Scheme.Model
             Text = "";
             RowSpan = 1;
             ColSpan = 1;
+        }
+        public TableCell(string text, int rowspan, int colspan)
+        {
+            Text = text;
+            RowSpan = rowspan;
+            ColSpan = colspan;
         }
 
         public void LoadFromXml(XmlNode xmlNode)

@@ -2079,6 +2079,12 @@
             Вернуть строковое представление объекта
             </summary>
         </member>
+        <member name="T:Scada.Scheme.Model.Table">
+            <summary>
+            Scheme component that represents a table
+            <para>Компонент схемы, представляющий таблицу</para>
+            </summary>
+        </member>
         <member name="T:Scada.Scheme.Model.UnknownComponent">
             <summary>
             Unknown scheme component
