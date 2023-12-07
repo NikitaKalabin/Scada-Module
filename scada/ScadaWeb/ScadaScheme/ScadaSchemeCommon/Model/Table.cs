@@ -22,7 +22,7 @@ namespace Scada.Scheme.Model
     {
         new public static readonly string DefaultText =
             Localization.UseRussian ? "Таблица" : "Table";
-        
+
 
         // Конструктор
         public Table()
@@ -31,7 +31,7 @@ namespace Scada.Scheme.Model
             HeaderColor = "";
             RowColor = "";
             Cells = new List<TableCell>();
-            
+
         }
 
         // Свойства для настройки отображения таблицы
@@ -78,7 +78,7 @@ namespace Scada.Scheme.Model
 
             HeaderColor = xmlNode.GetChildAsString("HeaderColor");
 
-         
+
             RowColor = xmlNode.GetChildAsString("RowColor");
 
             Cells.Clear();
@@ -124,15 +124,16 @@ namespace Scada.Scheme.Model
 
         public class Record
         {
-            public Tuple<int, string> machineId { get; set; }
-            public Tuple<int, string> timestart { get; set; }
-            public Tuple<int, string> timeend { get; set; }
-            public Tuple<int, string> tmin { get; set; }
-            public Tuple<int, string> tmax { get; set; }
-            public Tuple<int, string> taverage { get; set; }
+            public KeyValuePair<int, int> machineid { get; set; }
+            public KeyValuePair<int, string> timestart { get; set; }
+            public KeyValuePair<int, string> timeend { get; set; }
+            public KeyValuePair<int, int> tmin { get; set; }
+            public KeyValuePair<int, int> tavaerage { get; set; }
+            public KeyValuePair<int, int> tmax { get; set; }
         }
 
         private string dataSource;
+
         public string DataSource
         {
             get { return dataSource; }
@@ -144,7 +145,6 @@ namespace Scada.Scheme.Model
 
                     if (dataSource != "")
                     {
-
                         string path = Path.GetFullPath(dataSource);
                         string jsonString = File.ReadAllText(path);
 
@@ -153,12 +153,12 @@ namespace Scada.Scheme.Model
 
                         for (int i = 0; i < data.Count; i++)
                         {
-                            Cells.Add(new TableCell(data[i].machineId.Item2, data[i].machineId.Item1, i + 1));
-                            Cells.Add(new TableCell(data[i].timestart.Item2, data[i].timestart.Item1, i + 1));
-                            Cells.Add(new TableCell(data[i].timeend.Item2, data[i].timeend.Item1, i + 1));
-                            Cells.Add(new TableCell(data[i].tmin.Item2, data[i].tmin.Item1, i + 1));
-                            Cells.Add(new TableCell(data[i].taverage.Item2, data[i].taverage.Item1, i + 1));
-                            Cells.Add(new TableCell(data[i].tmax.Item2, data[i].tmax.Item1, i + 1));
+                            Cells.Add(new TableCell(data[i].machineid.Value.ToString(), i + 1, data[i].machineid.Key));
+                            Cells.Add(new TableCell(data[i].timestart.Value, i + 1, data[i].timestart.Key));
+                            Cells.Add(new TableCell(data[i].timeend.Value, i + 1, data[i].timeend.Key));
+                            Cells.Add(new TableCell(data[i].tmin.Value.ToString(), i + 1, data[i].tmin.Key));
+                            Cells.Add(new TableCell(data[i].tavaerage.Value.ToString(), i + 1, data[i].tavaerage.Key));
+                            Cells.Add(new TableCell(data[i].tmax.Value.ToString(), i + 1, data[i].tmax.Key));
                         }
                     }
                 }
