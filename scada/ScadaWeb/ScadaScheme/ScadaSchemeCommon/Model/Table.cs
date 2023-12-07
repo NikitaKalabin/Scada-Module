@@ -9,6 +9,7 @@ using Scada.Scheme.Model.DataTypes;
 using CollectionConverter = Scada.Scheme.Model.PropertyGrid.CollectionConverter;
 using System.IO;
 using Newtonsoft.Json;
+using CM = System.ComponentModel;
 
 namespace Scada.Scheme.Model
 {
@@ -27,27 +28,39 @@ namespace Scada.Scheme.Model
         public Table()
             : base()
         {
-            HeaderColor = "LightGray";
-            RowColors = new List<string> { "White" };
+            HeaderColor = "";
+            RowColor = "";
             Cells = new List<TableCell>();
             
         }
 
         // Свойства для настройки отображения таблицы
         #region Attributes
-        [Scheme.Model.PropertyGrid.DisplayName("Header Color"), Scheme.Model.PropertyGrid.Category("Appearance")]
+        [Scheme.Model.PropertyGrid.DisplayName("Header Color"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
         [Scheme.Model.PropertyGrid.Description("The background color of the table header.")]
+        [CM.Editor(typeof(ColorEditor), typeof(UITypeEditor))]
         #endregion
         public string HeaderColor { get; set; }
 
         // Свойства для хранения цвета каждой строки таблицы
         #region Attributes
-        [Scheme.Model.PropertyGrid.DisplayName("Row Colors"), Scheme.Model.PropertyGrid.Category("Appearance")]
+        [Scheme.Model.PropertyGrid.DisplayName("Row Color"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
         [Scheme.Model.PropertyGrid.Description("The background colors of the table rows.")]
-        [TypeConverter(typeof(CollectionConverter))]
-        [Editor(typeof(CollectionEditor), typeof(UITypeEditor))]
+        [CM.Editor(typeof(ColorEditor), typeof(UITypeEditor))]
         #endregion
-        public List<string> RowColors { get; set; }
+        public string RowColor { get; set; }
+
+        #region Attributes
+        [Scheme.Model.PropertyGrid.DisplayName("Cells Font"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
+        [Scheme.Model.PropertyGrid.Description("The font used to display text in the cells.")]
+        #endregion
+        public Font CellsFont { get; set; }
+
+        #region Attributes
+        [Scheme.Model.PropertyGrid.DisplayName("Header Font"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
+        [Scheme.Model.PropertyGrid.Description("The font used to display text in the header of the table.")]
+        #endregion
+        public Font HeaderFont { get; set; }
 
         // Свойства для хранения данных ячеек таблицы
         #region Attributes
@@ -65,15 +78,8 @@ namespace Scada.Scheme.Model
 
             HeaderColor = xmlNode.GetChildAsString("HeaderColor");
 
-            RowColors.Clear();
-            XmlNode rowsColorNode = xmlNode.SelectSingleNode("RowColors");
-            if (rowsColorNode != null)
-            {
-                foreach (XmlNode colorNode in rowsColorNode.SelectNodes("Color"))
-                {
-                    RowColors.Add(colorNode.InnerText);
-                }
-            }
+         
+            RowColor = xmlNode.GetChildAsString("RowColor");
 
             Cells.Clear();
             XmlNode cellsNode = xmlNode.SelectSingleNode("Cells");
@@ -94,11 +100,7 @@ namespace Scada.Scheme.Model
 
             xmlElem.AppendElem("HeaderColor", HeaderColor);
 
-            XmlElement rowColorsElem = xmlElem.AppendElem("RowColors");
-            foreach (string color in RowColors)
-            {
-                rowColorsElem.AppendElem("Color", color);
-            }
+            xmlElem.AppendElem("RowColor", RowColor);
 
             XmlElement cellsElem = xmlElem.AppendElem("Cells");
             foreach (TableCell cell in Cells)
@@ -111,7 +113,7 @@ namespace Scada.Scheme.Model
         public override BaseComponent Clone()
         {
             Table clonedComponent = (Table)base.Clone();
-            clonedComponent.RowColors = new List<string>(RowColors);
+            clonedComponent.RowColor = string.Copy(RowColor);
             clonedComponent.Cells = new List<TableCell>(Cells.ConvertAll(cell => (TableCell)cell.Clone()));
             return clonedComponent;
         }
