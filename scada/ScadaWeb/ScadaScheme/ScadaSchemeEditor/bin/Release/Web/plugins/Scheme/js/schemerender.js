@@ -879,7 +879,7 @@ scada.scheme.TableRenderer.constructor = scada.scheme.TableRenderer;
 scada.scheme.TableRenderer.prototype.createDom = function (component, renderContext) {
     var props = component.props;
     console.log("Props:", props);
-    var divComp = $("<div id='chart" + component.id + "'></div>");
+    var divComp = $("<div id='table" + component.id + "'></div>");
     this.prepareComponent(divComp, component);
 
     divComp.css({

@@ -111,6 +111,8 @@ namespace Scada.Web.Plugins.SchBasicComp
         public Actions Action { get; set; }
         public int InCnlNum { get; set; }
         public int CtrlCnlNum { get; set; }
+
+        
     }
 
     [Serializable]
@@ -145,5 +147,8 @@ namespace Scada.Web.Plugins.SchBasicComp
         {
             return MemberwiseClone();
         }
+
+       
+
     }
 }
