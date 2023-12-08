@@ -10,6 +10,8 @@ using CollectionConverter = Scada.Scheme.Model.PropertyGrid.CollectionConverter;
 using System.IO;
 using Newtonsoft.Json;
 using CM = System.ComponentModel;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Scada.Scheme.Model
 {
@@ -31,7 +33,10 @@ namespace Scada.Scheme.Model
             HeaderColor = "";
             RowColor = "";
             Cells = new List<TableCell>();
-
+            CtrlCnlNum = 0;
+            InCnlNum = 0;
+            RowCount = 1;
+            ColCount = 1;
         }
 
         // Свойства для настройки отображения таблицы
@@ -42,7 +47,7 @@ namespace Scada.Scheme.Model
         #endregion
         public string HeaderColor { get; set; }
 
-        // Свойства для хранения цвета каждой строки таблицы
+        // Свойства для хранения цвета каждой строк таблицы
         #region Attributes
         [Scheme.Model.PropertyGrid.DisplayName("Row Color"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
         [Scheme.Model.PropertyGrid.Description("The background colors of the table rows.")]
@@ -75,11 +80,14 @@ namespace Scada.Scheme.Model
         public override void LoadFromXml(XmlNode xmlNode)
         {
             base.LoadFromXml(xmlNode);
-
-            HeaderColor = xmlNode.GetChildAsString("HeaderColor");
-
-
             RowColor = xmlNode.GetChildAsString("RowColor");
+            RowCount = xmlNode.GetChildAsInt("RowCount");
+            ColCount = xmlNode.GetChildAsInt("ColCount");
+            CellsFont = Font.GetChildAsFont(xmlNode, "CellsFont");
+            HeaderColor = xmlNode.GetChildAsString("HeaderColor");
+            HeaderFont = Font.GetChildAsFont(xmlNode, "HeaderFont");
+            InCnlNum = xmlNode.GetChildAsInt("InCnlNum");
+            CtrlCnlNum = xmlNode.GetChildAsInt("CtrlCnlNum");
 
             Cells.Clear();
             XmlNode cellsNode = xmlNode.SelectSingleNode("Cells");
@@ -98,10 +106,14 @@ namespace Scada.Scheme.Model
         {
             base.SaveToXml(xmlElem);
 
-            xmlElem.AppendElem("HeaderColor", HeaderColor);
-
             xmlElem.AppendElem("RowColor", RowColor);
-
+            xmlElem.AppendElem("RowCount", RowCount);
+            xmlElem.AppendElem("ColCount", ColCount);
+            xmlElem.AppendElem("CellsFont", CellsFont);
+            xmlElem.AppendElem("HeaderColor", HeaderColor);
+            xmlElem.AppendElem("HeaderFont", HeaderFont);
+            xmlElem.AppendElem("InCnlNum", InCnlNum);
+            xmlElem.AppendElem("CtrlCnlNum", CtrlCnlNum);
             XmlElement cellsElem = xmlElem.AppendElem("Cells");
             foreach (TableCell cell in Cells)
             {
@@ -113,14 +125,22 @@ namespace Scada.Scheme.Model
         public override BaseComponent Clone()
         {
             Table clonedComponent = (Table)base.Clone();
-            clonedComponent.RowColor = string.Copy(RowColor);
             clonedComponent.Cells = new List<TableCell>(Cells.ConvertAll(cell => (TableCell)cell.Clone()));
+            clonedComponent.RowColor = RowColor;
+            clonedComponent.RowCount = RowCount;
+            clonedComponent.ColCount = ColCount;
+            clonedComponent.CellsFont = CellsFont;
+            clonedComponent.HeaderColor = HeaderColor;
+            clonedComponent.HeaderFont = HeaderFont;
             return clonedComponent;
         }
 
         public Actions Action { get; set; }
-        public int InCnlNum { get; set; } = 1;//число строк
-        public int CtrlCnlNum { get; set; } = 1;//количество столбцов
+        public int InCnlNum { get; set; }
+        public int CtrlCnlNum { get; set; }
+        public int RowCount { get; set; }
+
+        public int ColCount { get; set; }
 
         public class Record
         {
@@ -149,8 +169,16 @@ namespace Scada.Scheme.Model
                         string jsonString = File.ReadAllText(path);
 
                         List<Record> data = JsonConvert.DeserializeObject<List<Record>>(jsonString);
-                        Cells = new List<TableCell>();
 
+                        Cells = new List<TableCell>
+                        {
+                            new TableCell("Machine ID", 0, 1),
+                            new TableCell("Time Start", 0, 2),
+                            new TableCell("Time End", 0, 3),
+                            new TableCell("Tmin", 0, 4),
+                            new TableCell("Taverage", 0, 5),
+                            new TableCell("Tmax", 0, 6)
+                        };
                         for (int i = 0; i < data.Count; i++)
                         {
                             Cells.Add(new TableCell(data[i].machineid.Value.ToString(), i + 1, data[i].machineid.Key));
@@ -160,6 +188,9 @@ namespace Scada.Scheme.Model
                             Cells.Add(new TableCell(data[i].tavaerage.Value.ToString(), i + 1, data[i].tavaerage.Key));
                             Cells.Add(new TableCell(data[i].tmax.Value.ToString(), i + 1, data[i].tmax.Key));
                         }
+                        TableCell cellWithMaxRowSpan = Cells.OrderByDescending(cell => cell.RowSpan).FirstOrDefault();
+                        RowCount = cellWithMaxRowSpan.RowSpan;
+                        ColCount = 6;
                     }
                 }
             }

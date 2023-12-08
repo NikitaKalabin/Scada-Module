@@ -888,11 +888,11 @@ scada.scheme.TableRenderer.prototype.createDom = function (component, renderCont
     });
 
     component.dom = divComp;
-    if (props.InCnlNum == 0 || props.CtrlCnlNum == 0)  {
+    if (props.RowCount == 0 || props.ColCount == 0)  {
         console.error('No data');
         return divComp;
     }
-    var table = createDynamicTable(props.InCnlNum, props.CtrlCnlNum, props);
+    var table = createDynamicTable(props.RowCount, props.ColCount, props);
     //var table = createDynamicTable(1, 3, props);
     divComp.append(table);
     // Initialize DataTable on the table element
@@ -904,46 +904,9 @@ scada.scheme.TableRenderer.prototype.createDom = function (component, renderCont
     return divComp;
 };
 
-/*function createDynamicTable(rows, columns, props) {
-    console.log("Props in dynamic table function:", props);
-    var table = $("<table class='display' cellspacing='0' width='100%' hieght='100%'></table>");
-
-    // Set header color
-    var headerColor = props.HeaderColor || "";
-    var thead = $("<thead><tr></tr></thead>").appendTo(table);
-    thead.find("tr").css("background-color", headerColor);
-    for (var i = 1; i <= columns; i++) {
-        thead.find("tr").append("<th>Column " + i + "</th>");
-    }
-    // Set rows color
-    var rowsColor = props.RowColor || "";
-    var tbody = $("<tbody></tbody>").appendTo(table);
-    for (var i = 0; i < rows; i++) {
-        var rowData = [];
-        for (var j = 0; j < columns; j++) {
-            var cellData = props.Cells.find(cell => cell.RowSpan === i + 1 && cell.ColSpan === j + 1);
-            if (cellData) {
-                var cellContent = cellData.Text || "";
-                var cellColor = cellData.Color || ""; // Assuming you have a color property in cellData
-                var rowspan = cellData.RowSpan;
-                var colspan = cellData.ColSpan;
-                var cellHtml = "<td style='background-color:" + rowsColor + "'>" + cellContent + "</td>";
-                rowData.push(cellHtml);
-            } else {
-                rowData.push("<td style='background-color:" + rowsColor + "'></td>");
-            }
-        }
-        tbody.append("<tr>" + rowData.join("") + "</tr>");
-    }
-
-    return table;
-}*/
-
 function createDynamicTable(rows, columns, props) {
     console.log("Props in dynamic table function:", props);
     var table = $("<table class='display' cellspacing='0' width='100%' hieght='100%'></table>");
-
-    // Set header color and font
     var headerColor = props.HeaderColor || "";
     var headerFont = props.HeaderFont || {};
     var headerStyle = "background-color:" + headerColor +
@@ -955,10 +918,16 @@ function createDynamicTable(rows, columns, props) {
     var thead = $("<thead><tr></tr></thead>").appendTo(table);
     thead.find("tr").attr("style", headerStyle);
     for (var i = 1; i <= columns; i++) {
-        thead.find("tr").append("<th>Column " + i + "</th>");
+        var headerData = props.Cells.find(cell => cell.RowSpan === 0 && cell.ColSpan === i);
+        console.log("Header data:", headerData)
+        if (headerData) {
+             var headerContent = headerData.Text || "";
+        } else {
+             var headerContent = "Colunm " + i;
+        }
+        console.log("Header content:", headerContent)
+        thead.find("tr").append("<th> " + headerContent + "</th>");
     }
-
-    // Set rows color
     var rowsColor = props.RowsColor || "";
     var cellsFont = props.CellsFont || {};
     var bodyStyle = "background-color:" + rowsColor +
@@ -975,7 +944,7 @@ function createDynamicTable(rows, columns, props) {
 
             if (cellData) {
                 var cellContent = cellData.Text || "";
-                var cellColor = cellData.Color || ""; // Assuming you have a color property in cellData
+                var cellColor = cellData.Color || "";
                 var rowspan = cellData.RowSpan;
                 var colspan = cellData.ColSpan;
                 var cellHtml = "<td style='background-color:" + rowsColor + "; " + bodyStyle + "'>" + cellContent + "</td>";
@@ -989,8 +958,6 @@ function createDynamicTable(rows, columns, props) {
 
     return table;
 }
-
-
 
 
 /********** Static Picture Renderer **********/
