@@ -148,7 +148,7 @@ namespace Scada.Scheme.Model
             public KeyValuePair<int, string> timestart { get; set; }
             public KeyValuePair<int, string> timeend { get; set; }
             public KeyValuePair<int, int> tmin { get; set; }
-            public KeyValuePair<int, int> tavaerage { get; set; }
+            public KeyValuePair<int, int> taverage { get; set; }
             public KeyValuePair<int, int> tmax { get; set; }
         }
 
@@ -185,7 +185,7 @@ namespace Scada.Scheme.Model
                             Cells.Add(new TableCell(data[i].timestart.Value, i + 1, data[i].timestart.Key));
                             Cells.Add(new TableCell(data[i].timeend.Value, i + 1, data[i].timeend.Key));
                             Cells.Add(new TableCell(data[i].tmin.Value.ToString(), i + 1, data[i].tmin.Key));
-                            Cells.Add(new TableCell(data[i].tavaerage.Value.ToString(), i + 1, data[i].tavaerage.Key));
+                            Cells.Add(new TableCell(data[i].taverage.Value.ToString(), i + 1, data[i].taverage.Key));
                             Cells.Add(new TableCell(data[i].tmax.Value.ToString(), i + 1, data[i].tmax.Key));
                         }
                         TableCell cellWithMaxRowSpan = Cells.OrderByDescending(cell => cell.RowSpan).FirstOrDefault();
