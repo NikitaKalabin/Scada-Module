@@ -888,40 +888,89 @@ scada.scheme.TableRenderer.prototype.createDom = function (component, renderCont
     });
 
     component.dom = divComp;
-    if (props.InCnlNum == 0 || props.CtrlCnlNum == 0)  {
+    if (props.RowCount == 0 || props.ColCount == 0)  {
         console.error('No data');
         return divComp;
     }
-    var table = createDynamicTable(props.InCnlNum, props.CtrlCnlNum, props);
+    var table = createDynamicTable(props.RowCount, props.ColCount, props);
     //var table = createDynamicTable(1, 3, props);
     divComp.append(table);
     // Initialize DataTable on the table element
     table.DataTable({
         searching: false,
-        responsive: true
+        responsive: true,
+        ordering: false,
+      
     });
     return divComp;
-};
 
+};
 function createDynamicTable(rows, columns, props) {
-    var table = $("<table class='display' cellspacing='0' width='100%'></table>");
+    console.log("Props in dynamic table function:", props);
+    var table = $("<table class='display' cellspacing='0' width='100%' height='100%'></table>");
+    var headerColor = props.HeaderColor || "";
+    var headerFont = props.HeaderFont || {};
+    var headerStyle = "background-color:" + headerColor +
+        ";font-family:" + headerFont.Name +
+        ";font-size:" + headerFont.Size + "px" +
+        ";font-weight:" + (headerFont.Bold ? "bold" : "normal") +
+        ";font-style:" + (headerFont.Italic ? "italic" : "normal") +
+        ";text-decoration:" + (headerFont.Underline ? "underline" : "none");
+
     var thead = $("<thead><tr></tr></thead>").appendTo(table);
+    thead.find("tr").attr("style", headerStyle);
     for (var i = 1; i <= columns; i++) {
-        thead.find("tr").append("<th>Column " + i + "</th>");
+        var colSize = props.ColunmSize.find(colmnSize => colmnSize.ColNum === i);
+        var headerData = props.Cells.find(cell => cell.RowSpan === 0 && cell.ColSpan === i);
+        console.log("Header data:", headerData)
+        if (headerData) {
+            var headerContent = headerData.Text || "";
+        } else {
+            var headerContent = "Column " + i;
+        }
+        console.log("Header content:", headerContent);
+
+        // Set width for each column if ColunmSize is provided
+        var colStyle = "";
+        if (colSize && colSize.Width) {
+            colStyle += "width:" + colSize.Width + "px;";
+        }
+
+        thead.find("tr").append("<th style='" + colStyle + "'> " + headerContent + "</th>");
     }
+
+    var rowsColor = props.RowsColor || "";
+    var cellsFont = props.CellsFont || {};
+    var bodyStyle = "background-color:" + rowsColor +
+        ";font-family:" + cellsFont.Name +
+        ";font-size:" + cellsFont.Size + "px" +
+        ";font-weight:" + (cellsFont.Bold ? "bold" : "normal") +
+        ";font-style:" + (cellsFont.Italic ? "italic" : "normal") +
+        ";text-decoration:" + (cellsFont.Underline ? "underline" : "none");
+
     var tbody = $("<tbody></tbody>").appendTo(table);
     for (var i = 0; i < rows; i++) {
         var rowData = [];
         for (var j = 0; j < columns; j++) {
-            var cellData = props.Cells.find(cell => cell.Row === i && cell.Column === j);
+            var cellData = props.Cells.find(cell => cell.RowSpan === i + 1 && cell.ColSpan === j + 1);
+
             if (cellData) {
                 var cellContent = cellData.Text || "";
-                var rowspan = cellData.RowSpan || 1;
-                var colspan = cellData.ColSpan || 1;
-                var cellHtml = "<td rowspan='" + rowspan + "' colspan='" + colspan + "'>" + cellContent + "</td>";
+                var cellColor = cellData.Color || "";
+                var rowspan = cellData.RowSpan;
+                var colspan = cellData.ColSpan;
+
+                // Set width for each column if ColunmSize is provided
+                var colSize = props.ColunmSize.find(colmnSize => colmnSize.ColNum === j + 1);
+                var colStyle = "";
+                if (colSize && colSize.Width) {
+                    colStyle += "width:" + colSize.Width + "px;";
+                }
+
+                var cellHtml = "<td style='background-color:" + rowsColor + "; " + bodyStyle + " " + colStyle + "'>" + cellContent + "</td>";
                 rowData.push(cellHtml);
             } else {
-                rowData.push("<td></td>");
+                rowData.push("<td style='background-color:" + rowsColor + "; " + bodyStyle + "'></td>");
             }
         }
         tbody.append("<tr>" + rowData.join("") + "</tr>");
@@ -929,7 +978,6 @@ function createDynamicTable(rows, columns, props) {
 
     return table;
 }
-
 
 /********** Static Picture Renderer **********/
 

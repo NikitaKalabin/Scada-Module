@@ -33,6 +33,7 @@ namespace Scada.Scheme.Model
             HeaderColor = "";
             RowColor = "";
             Cells = new List<TableCell>();
+            ColunmSize = new List<SizeOfColumn>();
             CtrlCnlNum = 0;
             InCnlNum = 0;
             RowCount = 1;
@@ -77,13 +78,15 @@ namespace Scada.Scheme.Model
         public List<TableCell> Cells { get; set; }
 
         /// <summary>
-        /// Получить или установить размер ячеек.
+        /// Получить или установить размер колонок.
         /// </summary>
         #region Attributes
-        [Scheme.Model.PropertyGrid.DisplayName("Size Of Cells"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
-        [Scheme.Model.PropertyGrid.Description("The size of the table cells in pixels.")]
+        [Scheme.Model.PropertyGrid.DisplayName("Size Of Columns"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
+        [Scheme.Model.PropertyGrid.Description("The size of the table columns in pixels.")]
+        [TypeConverter(typeof(CollectionConverter))]
+        [Editor(typeof(CollectionEditor), typeof(UITypeEditor))]
         #endregion
-        public Size SizeOfCells { get; set; }
+        public List<SizeOfColumn> ColunmSize { get; set; }
 
         // Методы для работы с XML конфигурацией
         public override void LoadFromXml(XmlNode xmlNode)
@@ -244,4 +247,41 @@ namespace Scada.Scheme.Model
             return MemberwiseClone();
         }
     }
+
+    [Serializable]
+    public class SizeOfColumn : ICloneable
+    {
+        public int ColNum { get; set; }
+        public int Width { get; set; }
+
+        public SizeOfColumn()
+        {
+            ColNum = 0;
+            Width = 50;
+        }
+        public SizeOfColumn(int colNum, int width, int height)
+        {
+            ColNum = colNum;
+            Width = width;
+        }
+
+        public void LoadFromXml(XmlNode xmlNode)
+        {
+            ColNum = xmlNode.GetChildAsInt("ColNum");
+            Width = xmlNode.GetChildAsInt("Width");
+        }
+
+        public void SaveToXml(XmlElement xmlElem)
+        {
+            xmlElem.AppendElem("ColNum", ColNum);
+            xmlElem.AppendElem("Width", Width);
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+    }
 }
+
+
