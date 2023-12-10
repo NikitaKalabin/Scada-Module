@@ -899,12 +899,14 @@ scada.scheme.TableRenderer.prototype.createDom = function (component, renderCont
     table.DataTable({
         searching: false,
         responsive: true,
-        ordering: false
+        ordering: false,
+      
     });
     return divComp;
+
 };
 
-function createDynamicTable(rows, columns, props) {
+/*function createDynamicTable(rows, columns, props) {
     console.log("Props in dynamic table function:", props);
     var table = $("<table class='display' cellspacing='0' width='100%' hieght='100%'></table>");
     var headerColor = props.HeaderColor || "";
@@ -957,7 +959,84 @@ function createDynamicTable(rows, columns, props) {
     }
 
     return table;
+}*/
+
+function createDynamicTable(rows, columns, props) {
+    console.log("Props in dynamic table function:", props);
+    var table = $("<table class='display' cellspacing='0' width='100%' height='100%'></table>");
+    var headerColor = props.HeaderColor || "";
+    var headerFont = props.HeaderFont || {};
+    var headerStyle = "background-color:" + headerColor +
+        ";font-family:" + headerFont.Name +
+        ";font-size:" + headerFont.Size + "px" +
+        ";font-weight:" + (headerFont.Bold ? "bold" : "normal") +
+        ";font-style:" + (headerFont.Italic ? "italic" : "normal") +
+        ";text-decoration:" + (headerFont.Underline ? "underline" : "none");
+
+    // Add header height and width to the headerStyle
+    if (props.SizeOfCells && props.SizeOfCells.Height) {
+        headerStyle += ";height:" + props.SizeOfCells.Height + "px";
+    }
+
+    if (props.SizeOfCells && props.SizeOfCells.Width) {
+        headerStyle += ";width:" + props.SizeOfCells.Width + "px";
+    }
+
+    var thead = $("<thead><tr></tr></thead>").appendTo(table);
+    thead.find("tr").attr("style", headerStyle);
+    for (var i = 1; i <= columns; i++) {
+        var headerData = props.Cells.find(cell => cell.RowSpan === 0 && cell.ColSpan === i);
+        console.log("Header data:", headerData)
+        if (headerData) {
+            var headerContent = headerData.Text || "";
+        } else {
+            var headerContent = "Colunm " + i;
+        }
+        console.log("Header content:", headerContent)
+        thead.find("tr").append("<th> " + headerContent + "</th>");
+    }
+    var rowsColor = props.RowsColor || "";
+    var cellsFont = props.CellsFont || {};
+    var bodyStyle = "background-color:" + rowsColor +
+        ";font-family:" + cellsFont.Name +
+        ";font-size:" + cellsFont.Size + "px" +
+        ";font-weight:" + (cellsFont.Bold ? "bold" : "normal") +
+        ";font-style:" + (cellsFont.Italic ? "italic" : "normal") +
+        ";text-decoration:" + (cellsFont.Underline ? "underline" : "none");
+
+    // Add cell height and width to the bodyStyle
+    if (props.SizeOfCells && props.SizeOfCells.Height) {
+        bodyStyle += ";height:" + props.SizeOfCells.Height + "px";
+    }
+
+    if (props.SizeOfCells && props.SizeOfCells.Width) {
+        bodyStyle += ";width:" + props.SizeOfCells.Width + "px";
+    }
+
+    var tbody = $("<tbody></tbody>").appendTo(table);
+    for (var i = 0; i < rows; i++) {
+        var rowData = [];
+        for (var j = 0; j < columns; j++) {
+            var cellData = props.Cells.find(cell => cell.RowSpan === i + 1 && cell.ColSpan === j + 1);
+
+            if (cellData) {
+                var cellContent = cellData.Text || "";
+                var cellColor = cellData.Color || "";
+                var rowspan = cellData.RowSpan;
+                var colspan = cellData.ColSpan;
+                var cellHtml = "<td style='background-color:" + rowsColor + "; " + bodyStyle + "'>" + cellContent + "</td>";
+                rowData.push(cellHtml);
+            } else {
+                rowData.push("<td style='background-color:" + rowsColor + "; " + bodyStyle + "'></td>");
+            }
+        }
+        tbody.append("<tr>" + rowData.join("") + "</tr>");
+    }
+
+    return table;
 }
+
+
 
 
 /********** Static Picture Renderer **********/
