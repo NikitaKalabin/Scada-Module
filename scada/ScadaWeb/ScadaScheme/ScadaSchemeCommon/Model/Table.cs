@@ -76,6 +76,15 @@ namespace Scada.Scheme.Model
         #endregion
         public List<TableCell> Cells { get; set; }
 
+        /// <summary>
+        /// Получить или установить размер ячеек.
+        /// </summary>
+        #region Attributes
+        [Scheme.Model.PropertyGrid.DisplayName("Size Of Cells"), Scheme.Model.PropertyGrid.Category(Categories.Appearance)]
+        [Scheme.Model.PropertyGrid.Description("The size of the table cells in pixels.")]
+        #endregion
+        public Size SizeOfCells { get; set; }
+
         // Методы для работы с XML конфигурацией
         public override void LoadFromXml(XmlNode xmlNode)
         {
@@ -141,7 +150,6 @@ namespace Scada.Scheme.Model
         public int RowCount { get; set; }
 
         public int ColCount { get; set; }
-
         public class Record
         {
             public KeyValuePair<int, int> machineid { get; set; }
