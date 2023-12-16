@@ -1,8 +1,8 @@
-#Scada-Module
+# Scada-Module
 
 Additional module for Rapid SCADA(https://github.com/RapidScada/scada) with custom tables and charts.
 
-##Setup 
+## Setup 
 
 Instructions on how to run the project on your local machine...
 
@@ -21,9 +21,9 @@ Open ScadeScheme.sln, build and run project in realease
 
 ## Implementation Details
 
-###1.Chart class
+### 1.Chart class
 
-####Features
+#### Features
 
 - A lot of charts types, read more in https://apexcharts.com/docs/chart-types/line-chart/
 - Parse from json
@@ -31,9 +31,9 @@ Open ScadeScheme.sln, build and run project in realease
 
 ![plot](pngs/chart.jpg)
 
-###2.Table class
+### 2.Table class
 
-####Features
+#### Features
 
 - Tables with DataTables js library
 - Parse from json
